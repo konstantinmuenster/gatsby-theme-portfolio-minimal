@@ -21,7 +21,7 @@
     },
     "lint-staged": {
         "*.+(js|jsx|ts|tsx)": [
-            "yarn eslint"
+            "yarn lint"
         ],
         "*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)": [
             "yarn format",
