@@ -1,12 +1,31 @@
 {
-  "private": true,
-  "scripts": {
-    "test": "yarn workspace gatsby-theme-portfolio-minimal test",
-    "develop": "yarn workspace example-site develop",
-    "build": "yarn workspace example-site build"
-  },
-  "workspaces": [
-    "gatsby-theme-portfolio-minimal",
-    "example-site"
-  ]
+    "private": true,
+    "scripts": {
+        "test": "yarn workspace gatsby-theme-portfolio-minimal test",
+        "develop": "yarn workspace example-site develop",
+        "build": "yarn workspace example-site build",
+        "format": "prettier --write --ignore-path .gitignore \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|graphql|md|mdx)\"",
+        "lint": "yarn workspaces run lint"
+    },
+    "workspaces": [
+        "gatsby-theme-portfolio-minimal",
+        "example-site"
+    ],
+    "devDependencies": {
+        "husky": "^5.1.3",
+        "lint-staged": "^10.5.4",
+        "prettier": "^2.2.1"
+    },
+    "hooks": {
+        "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+        "*.+(js|jsx|ts|tsx)": [
+            "yarn eslint"
+        ],
+        "*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)": [
+            "yarn format",
+            "git add"
+        ]
+    }
 }
