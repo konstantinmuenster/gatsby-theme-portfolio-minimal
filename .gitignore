@@ -9,7 +9,10 @@ node_modules
 # production
 build
 public
+
+#development
 .cache
+.husky
 
 # misc
 .DS_Store
