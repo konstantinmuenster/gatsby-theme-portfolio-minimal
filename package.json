@@ -5,15 +5,14 @@
         "develop": "yarn workspace example-site develop",
         "build": "yarn workspace example-site build",
         "format": "prettier --write --ignore-path .gitignore \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|graphql|md|mdx)\"",
-        "lint": "yarn workspaces run lint",
-        "postinstall": "husky install"
+        "lint": "yarn workspaces run lint"
     },
     "workspaces": [
         "gatsby-theme-portfolio-minimal",
         "example-site"
     ],
     "devDependencies": {
-        "husky": "^5.1.3",
+        "husky": "4",
         "lint-staged": "^10.5.4",
         "prettier": "^2.2.1"
     },
@@ -27,8 +26,7 @@
             "yarn lint"
         ],
         "*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)": [
-            "yarn format",
-            "git add"
+            "yarn format"
         ]
     }
 }
