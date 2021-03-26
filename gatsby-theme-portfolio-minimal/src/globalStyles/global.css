@@ -1,0 +1,5 @@
+@import 'normalize.css';
+
+h1 {
+    color: var(--primary-color);
+}

@@ -22,7 +22,7 @@
         }
     },
     "lint-staged": {
-        "*.+(js|jsx|ts|tsx)": [
+        "*.+(ts|tsx)": [
             "yarn lint"
         ],
         "*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)": [

@@ -10,4 +10,10 @@ module.exports = {
             jsx: true,
         },
     },
+    settings: {
+        react: {
+            pragma: 'React',
+            version: '17.0.1',
+        },
+    },
 };
