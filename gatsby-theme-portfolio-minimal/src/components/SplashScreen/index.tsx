@@ -12,9 +12,18 @@ export function SplashScreen(): React.ReactElement {
 
     React.useEffect(() => {
         (async () => {
-            await backgroundControls.start({ opacity: 1, transition: { duration: 0.25 } });
-            await backdropControls.start({ height: '0%', transition: { delay: 0.8 } });
-            await backgroundControls.start({ opacity: 0, transition: { delay: 0.6 } });
+            await backgroundControls.start({
+                opacity: 1,
+                transition: { duration: 0.25 },
+            });
+            await backdropControls.start({
+                height: '0%',
+                transition: { delay: 0.8 },
+            });
+            await backgroundControls.start({
+                opacity: 0,
+                transition: { delay: 0.6 },
+            });
             setAnimationCompleted(true);
         })();
     }, [backgroundControls, backdropControls, setAnimationCompleted]);

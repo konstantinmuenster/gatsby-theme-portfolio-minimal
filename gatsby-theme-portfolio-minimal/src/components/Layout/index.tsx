@@ -28,7 +28,11 @@ export function Layout(props: LayoutProps): React.ReactElement {
 
     const layoutView = (
         <>
-            <Helmet bodyAttributes={{ 'data-theme': theme === Theme.Light ? Theme.Light : Theme.Dark }} />
+            <Helmet
+                bodyAttributes={{
+                    'data-theme': theme === Theme.Light ? Theme.Light : Theme.Dark,
+                }}
+            />
             <div className={classes.Layout}>
                 <header>
                     <Logo />

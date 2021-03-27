@@ -13,7 +13,7 @@ module.exports = {
                 //     themeColor: "#000000", // Used in manifest.json
                 //     display: "minimal-ui", // Used in manifest.json
                 // },
-            }
+            },
         },
     ],
 };

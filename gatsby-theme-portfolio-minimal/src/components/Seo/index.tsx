@@ -24,7 +24,10 @@ interface SeoProps {
 export function Seo(props: SeoProps): React.ReactElement {
     const location = useLocation();
     const data: AllSettingsQueryResult<SiteMetadata> = useStaticQuery(query);
-    const siteMetadata = { ...data.allSettings.edges[0].node.siteMetadata, ...props };
+    const siteMetadata = {
+        ...data.allSettings.edges[0].node.siteMetadata,
+        ...props,
+    };
 
     return (
         <Helmet
