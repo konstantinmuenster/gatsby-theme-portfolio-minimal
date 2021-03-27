@@ -1,4 +1,4 @@
-.lightTheme {
+body[data-theme='lightTheme'] {
     --primary-color: #000000;
     --secondary-color: #fff4d9;
     --tertiary-color: #f2f2f2;
@@ -12,7 +12,7 @@
     --base-font: 'Roboto', Arial, sans-serif;
 }
 
-.darkTheme {
+body[data-theme='darkTheme'] {
     --primary-color: #fafafa;
     --secondary-color: #2a2926;
     --tertiary-color: #252525;

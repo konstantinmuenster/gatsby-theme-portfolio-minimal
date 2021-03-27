@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useLocation } from '@reach/router';
-import { SettingsQueryResult } from '../../types/graphql';
+import { AllSettingsQueryResult } from '../../types/graphql';
 
 interface SiteMetadata {
     siteMetadata: {
@@ -23,7 +23,7 @@ interface SeoProps {
 
 export function Seo(props: SeoProps): React.ReactElement {
     const location = useLocation();
-    const data: SettingsQueryResult<{ node: SiteMetadata }> = useStaticQuery(query);
+    const data: AllSettingsQueryResult<SiteMetadata> = useStaticQuery(query);
     const siteMetadata = { ...data.allSettings.edges[0].node.siteMetadata, ...props };
 
     return (

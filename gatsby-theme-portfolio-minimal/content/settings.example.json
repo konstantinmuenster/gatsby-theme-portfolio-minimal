@@ -6,5 +6,13 @@
         "author": "Konstantin Münster",
         "siteUrl": "https://example.com",
         "language": "en"
+    },
+    "logo": {
+        "text": "Gatsby"
+    },
+    "featureToggles": {
+        "useDarkModeAsDefault": false,
+        "useDarkModeBasedOnUsersPreference": true,
+        "useSplashScreenAnimation": true
     }
 }

@@ -1,5 +1,5 @@
-export interface SettingsQueryResult<T> {
+export interface AllSettingsQueryResult<T> {
     allSettings: {
-        edges: T[];
+        edges: { node: T }[];
     };
 }

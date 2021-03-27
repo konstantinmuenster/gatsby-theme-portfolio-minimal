@@ -1,0 +1,8 @@
+.Layout {
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+}
