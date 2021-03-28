@@ -5,7 +5,7 @@ import '@fontsource/roboto/700.css';
 import '../../globalStyles/global.css';
 import '../../globalStyles/theme.css';
 import * as classes from './style.module.css';
-import { Theme, useThemeContext, useSplashScreenContext } from '../../context';
+import { Theme, useGlobalState } from '../../context';
 import { SplashScreen } from '../SplashScreen';
 import { Logo } from '../Logo';
 
@@ -15,9 +15,8 @@ interface LayoutProps {
 }
 
 export function Layout(props: LayoutProps): React.ReactElement {
-    const { theme } = useThemeContext();
-    const { animationCompleted } = useSplashScreenContext();
-    const showSplashScreen = props.useSplashScreenAnimation && !animationCompleted;
+    const { globalState } = useGlobalState();
+    const showSplashScreen = props.useSplashScreenAnimation && !globalState.splashScreenDone;
 
     const splashScreenView = (
         <>
@@ -30,7 +29,7 @@ export function Layout(props: LayoutProps): React.ReactElement {
         <>
             <Helmet
                 bodyAttributes={{
-                    'data-theme': theme === Theme.Light ? Theme.Light : Theme.Dark,
+                    'data-theme': globalState.theme === Theme.Light ? Theme.Light : Theme.Dark,
                 }}
             />
             <div className={classes.Layout}>

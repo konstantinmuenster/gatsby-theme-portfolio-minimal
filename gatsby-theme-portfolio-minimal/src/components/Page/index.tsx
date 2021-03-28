@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { AllSettingsQueryResult } from '../../types/graphql';
-import { ThemeProvider, Theme, SplashScreenProvider } from '../../context';
+import { GlobalStateProvider, Theme } from '../../context';
 import { Layout } from '../Layout';
 
 interface FeatureToggles {
@@ -21,14 +21,13 @@ export function Page(props: PageProps): React.ReactElement {
     const toggles = data.allSettings.edges[0].node.featureToggles;
 
     return (
-        <ThemeProvider
+        <GlobalStateProvider
             defaultTheme={toggles.useDarkModeAsDefault ? Theme.Dark : Theme.Light}
-            enableUsersPreference={toggles.useDarkModeBasedOnUsersPreference}
+            useDarkModeBasedOnUsersPreference={toggles.useDarkModeBasedOnUsersPreference}
+            useSplashScreenAnimation={toggles.useSplashScreenAnimation}
         >
-            <SplashScreenProvider useSplashScreenAnimation={toggles.useSplashScreenAnimation}>
-                <Layout useSplashScreenAnimation={toggles.useSplashScreenAnimation}>{props.children}</Layout>
-            </SplashScreenProvider>
-        </ThemeProvider>
+            <Layout useSplashScreenAnimation={toggles.useSplashScreenAnimation}>{props.children}</Layout>
+        </GlobalStateProvider>
     );
 }
 

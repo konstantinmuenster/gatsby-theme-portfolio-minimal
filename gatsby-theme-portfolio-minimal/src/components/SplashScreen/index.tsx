@@ -1,12 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion, useAnimation } from 'framer-motion';
-import { useSplashScreenContext } from '../../context';
+import { useGlobalState, ActionType } from '../../context';
 import { Logo } from '../Logo';
 import * as classes from './style.module.css';
 
 export function SplashScreen(): React.ReactElement {
-    const { setAnimationCompleted } = useSplashScreenContext();
+    const { dispatch } = useGlobalState();
     const backgroundControls = useAnimation();
     const backdropControls = useAnimation();
 
@@ -24,9 +24,9 @@ export function SplashScreen(): React.ReactElement {
                 opacity: 0,
                 transition: { delay: 0.6 },
             });
-            setAnimationCompleted(true);
+            dispatch({ type: ActionType.SetSplashScreenDone, value: true });
         })();
-    }, [backgroundControls, backdropControls, setAnimationCompleted]);
+    }, [backgroundControls, backdropControls, dispatch]);
 
     return (
         <motion.div className={classes.SplashScreen} initial={{ opacity: 0 }} animate={backgroundControls}>
