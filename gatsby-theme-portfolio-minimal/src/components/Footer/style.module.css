@@ -1,0 +1,46 @@
+.Footer {
+    width: 100%;
+    height: auto;
+    min-height: var(--footer-height);
+    background: var(--primary-color);
+    border-top: none;
+    margin-top: 10rem;
+}
+
+.ContentWrapper {
+    width: 100%;
+    height: 100%;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Links {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Links a {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--background-color);
+    letter-spacing: 1px;
+    margin-right: 2rem;
+}
+
+.Links a:last-child {
+    margin-right: 0;
+}
+
+@media (min-width: 768px) {
+    .Links a {
+        margin-right: 4rem;
+    }
+}

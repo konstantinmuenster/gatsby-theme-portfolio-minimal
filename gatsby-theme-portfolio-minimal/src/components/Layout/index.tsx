@@ -8,6 +8,7 @@ import * as classes from './style.module.css';
 import { Theme, useGlobalState } from '../../context';
 import { SplashScreen } from '../SplashScreen';
 import { Logo } from '../Logo';
+import { Footer } from '../Footer';
 
 interface LayoutProps {
     children: React.ReactElement;
@@ -37,7 +38,7 @@ export function Layout(props: LayoutProps): React.ReactElement {
                     <Logo />
                 </header>
                 <main>{props.children}</main>
-                <footer>I am the footer</footer>
+                <Footer />
             </div>
         </>
     );

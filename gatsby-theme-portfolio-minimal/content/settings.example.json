@@ -10,6 +10,18 @@
     "logo": {
         "text": "Gatsby"
     },
+    "navigation": {
+        "footer": [
+            {
+                "displayName": "Privacy",
+                "url": "/privacy"
+            },
+            {
+                "displayName": "Imprint",
+                "url": "/imprint"
+            }
+        ]
+    },
     "featureToggles": {
         "useDarkModeAsDefault": false,
         "useDarkModeBasedOnUsersPreference": true,

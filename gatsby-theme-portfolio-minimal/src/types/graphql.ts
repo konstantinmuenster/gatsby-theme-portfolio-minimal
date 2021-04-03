@@ -3,3 +3,9 @@ export interface AllSettingsQueryResult<T> {
         edges: { node: T }[];
     };
 }
+
+export interface AllSettingsQueryResultList<T> {
+    allSettings: {
+        nodes: T[];
+    };
+}

@@ -96,7 +96,7 @@ hr {
 }
 
 /* BREAKPOINT ADJUSTMENTS */
-@media (min-width: var(--breakpoints-sm)) {
+@media (min-width: 768px) {
     h1 {
         font-size: 2.625rem;
         line-height: 4rem;
