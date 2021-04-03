@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export enum Theme {
     Light = 'lightTheme',
@@ -57,8 +58,9 @@ function globalStateReducer(state: GlobalState, action: Action) {
 }
 
 function initializeTheme(defaultTheme: Theme, useDarkMode: boolean): Theme {
+    const darkModeEnabled = useMediaQuery('(prefers-color-scheme: dark)');
     let initialTheme = defaultTheme;
-    if (useDarkMode && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    if (useDarkMode && darkModeEnabled) {
         initialTheme = Theme.Dark;
     }
     return initialTheme;
