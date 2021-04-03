@@ -27,6 +27,7 @@
     "featureToggles": {
         "useDarkModeAsDefault": false,
         "useDarkModeBasedOnUsersPreference": true,
-        "useSplashScreenAnimation": true
+        "useSplashScreenAnimation": true,
+        "useCookieBar": false
     }
 }

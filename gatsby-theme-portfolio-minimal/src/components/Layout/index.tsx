@@ -9,10 +9,12 @@ import { Theme, useGlobalState } from '../../context';
 import { SplashScreen } from '../SplashScreen';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
+import { CookieBar } from '../CookieBar';
 
 interface LayoutProps {
     children: React.ReactElement;
     useSplashScreenAnimation: boolean;
+    useCookieBar: boolean;
 }
 
 export function Layout(props: LayoutProps): React.ReactElement {
@@ -38,6 +40,7 @@ export function Layout(props: LayoutProps): React.ReactElement {
                 <Header />
                 <main>{props.children}</main>
                 <Footer />
+                {props.useCookieBar && <CookieBar />}
             </div>
         </>
     );

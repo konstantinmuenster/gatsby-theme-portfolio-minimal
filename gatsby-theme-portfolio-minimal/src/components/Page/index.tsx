@@ -9,6 +9,7 @@ interface FeatureToggles {
         useDarkModeAsDefault: boolean;
         useDarkModeBasedOnUsersPreference: boolean;
         useSplashScreenAnimation: boolean;
+        useCookieBar: boolean;
     };
 }
 
@@ -26,7 +27,9 @@ export function Page(props: PageProps): React.ReactElement {
             useDarkModeBasedOnUsersPreference={toggles.useDarkModeBasedOnUsersPreference}
             useSplashScreenAnimation={toggles.useSplashScreenAnimation}
         >
-            <Layout useSplashScreenAnimation={toggles.useSplashScreenAnimation}>{props.children}</Layout>
+            <Layout useSplashScreenAnimation={toggles.useSplashScreenAnimation} useCookieBar={toggles.useCookieBar}>
+                {props.children}
+            </Layout>
         </GlobalStateProvider>
     );
 }
@@ -40,6 +43,7 @@ const query = graphql`
                         useDarkModeAsDefault
                         useDarkModeBasedOnUsersPreference
                         useSplashScreenAnimation
+                        useCookieBar
                     }
                 }
             }

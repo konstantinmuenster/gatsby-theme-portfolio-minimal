@@ -33,5 +33,18 @@ module.exports = (options) => ({
                   },
               }
             : null,
+        options.googleAnalytics
+            ? {
+                  resolve: `gatsby-plugin-gdpr-cookies`,
+                  options: {
+                      googleAnalytics: {
+                          trackingId: options.googleAnalytics.trackingId,
+                          cookieName: 'gatsby-gdpr-google-analytics',
+                          anonymize: options.googleAnalytics.anonymize || true,
+                      },
+                      environments: options.googleAnalytics.environments || ['production'],
+                  },
+              }
+            : null,
     ].filter((plugin) => plugin !== null),
 });

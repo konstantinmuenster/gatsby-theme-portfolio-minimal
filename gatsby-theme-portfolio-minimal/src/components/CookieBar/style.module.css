@@ -1,0 +1,8 @@
+.CookieBar {
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    bottom: 1rem;
+    width: 100%;
+    margin: 0;
+}
