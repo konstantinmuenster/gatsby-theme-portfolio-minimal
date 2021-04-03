@@ -8,6 +8,7 @@
     --breakpoint-lg: 1200px;
     --border-radius: 1rem;
     --page-width: 62.5rem;
+    --page-padding: 0 2.5rem;
     --header-height: 6.25rem;
     --footer-height: 7.5rem;
 }

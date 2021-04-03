@@ -12,7 +12,7 @@
     height: 100%;
     max-width: var(--page-width);
     margin: 0 auto;
-    padding: 2.5rem;
+    padding: var(--page-padding);
     display: flex;
     flex-direction: row;
     justify-content: space-between;

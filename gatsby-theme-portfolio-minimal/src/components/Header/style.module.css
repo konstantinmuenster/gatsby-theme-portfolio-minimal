@@ -1,0 +1,176 @@
+.Header {
+    width: 100%;
+    height: auto;
+    min-height: var(--header-height);
+    background: var(--background-color);
+}
+
+.ContentWrapper  {
+    width: 100%;
+    height: 100%;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: var(--page-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    z-index: 12;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.Burger:focus {
+    outline: none;
+}
+
+.Burger div {
+    position: relative;
+    width: 2rem;
+    height: 0.25rem;
+    background: var(--primary-color);
+    border-radius: 0.625rem;
+    transition: all 0.3s ease-in-out;
+    transform-origin: 1px;
+}
+
+.Burger div:nth-child(1) {
+    transform: rotate(0);
+}
+
+.Burger div:nth-child(2) {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.Burger div:nth-child(3) {
+    transform: rotate(0);
+}
+
+.TopNavigationBar {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--background-color);
+}
+
+.TopNavigationBar a {
+    position: relative;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--primary-color);
+    padding: 0;
+    margin-right: 4rem;
+}
+
+.TopNavigationBar a:last-child {
+    margin-right: 0;
+}
+
+.TopNavigationBar a.NavLink::before {
+    content: '';
+    position: absolute;
+    height: 0.1563rem;
+    width: 0%;
+    bottom: -0.125rem;
+    background-color: var(--primary-color);
+    transition: 200ms ease-out;
+}
+
+.TopNavigationBar a.NavLink:hover::before {
+    width: 100%;
+}
+
+.TopNavigationBar a.CtaButton {
+    width: auto;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: 0.125rem solid var(--primary-color);
+    background: var(--background-color);
+    padding: 0.5rem 1.5rem;
+    transition: 20ms ease-out;
+}
+
+.TopNavigationBar a.CtaButton:hover {
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+.SideBarWrapper {
+    position: fixed;
+    z-index: 10;
+    display: block;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    outline: 0;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(100%);
+    visibility: hidden;
+}
+
+.SideNavigationBar {
+    position: relative;
+    right: 0;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--background-color);
+    height: 100vh;
+    width: 55%;
+    text-align: left;
+    padding: 2rem;
+}
+
+.SideNavigationBar a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--primary-color);
+    padding: 1.5rem 0;
+}
+
+.SideNavigationBar a.CtaButton {
+    width: auto;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: 0.125rem solid var(--primary-color);
+    background: var(--background-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem auto;
+}
+
+.SideBarBackdrop {
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    display: none;
+}
+
+.Blurred main,
+.Blurred footer {
+    overflow: hidden;
+    filter: blur(5px);
+    transition: all 0.3s ease-out;
+    pointer-events: none;
+    user-select: none;
+}

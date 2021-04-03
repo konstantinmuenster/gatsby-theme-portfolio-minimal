@@ -7,19 +7,21 @@
         "siteUrl": "https://example.com",
         "language": "en"
     },
-    "logo": {
-        "text": "Gatsby"
-    },
+    "logo": { "text": "Gatsby" },
     "navigation": {
+        "header": [
+            { "displayName": "About", "url": "/#about" },
+            { "displayName": "Features", "url": "/#features" },
+            { "displayName": "Github", "url": "/#github" }
+        ],
+        "ctaButton": {
+            "openNewTab": true,
+            "displayName": "Resume",
+            "url": "/resume.pdf"
+        },
         "footer": [
-            {
-                "displayName": "Privacy",
-                "url": "/privacy"
-            },
-            {
-                "displayName": "Imprint",
-                "url": "/imprint"
-            }
+            { "displayName": "Privacy", "url": "/privacy" },
+            { "displayName": "Imprint", "url": "/imprint" }
         ]
     },
     "featureToggles": {
