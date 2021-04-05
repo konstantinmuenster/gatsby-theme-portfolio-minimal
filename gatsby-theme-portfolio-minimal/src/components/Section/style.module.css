@@ -1,0 +1,13 @@
+.Section {
+    width: 100%;
+    height: auto;
+    background: var(--background-color);
+}
+
+.ContentWrapper  {
+    width: 100%;
+    height: 100%;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: var(--page-padding);
+}

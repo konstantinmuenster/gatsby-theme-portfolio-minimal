@@ -1,0 +1,55 @@
+.Hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 60vh;
+    margin-bottom: 6rem;
+}
+
+.Hero h1 {
+    margin-bottom: 1.5rem;
+}
+
+.Hero h2 {
+    margin-top: -0.5rem;
+    margin-bottom: 0;
+}
+
+.Hero p {
+    font-size: 1.125rem;
+}
+
+.IconPrefix {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: var(--primary-color);
+}
+
+.Icon {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.Icon img {
+    width: 36px;
+    height: 36px;
+}
+
+@media (min-width: 768px) {
+    .Hero {
+        margin-bottom: 4rem;
+    }
+    .Hero h1 {
+        margin-bottom: 0;
+    }
+    .IconPrefix {
+        font-size: 2.625rem;
+        line-height: 4rem;
+    }
+    .Icon img {
+        width: 48px;
+        height: 48px;
+    }
+}

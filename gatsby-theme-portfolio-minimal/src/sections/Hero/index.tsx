@@ -1,0 +1,92 @@
+import React from 'react';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Section } from '../../components/Section';
+import { useGlobalState } from '../../context';
+import { motion, useAnimation } from 'framer-motion';
+import { ImagesInIconFormatQueryResult } from '../../types/graphql';
+import * as classes from './style.module.css';
+
+interface HeroSectionProps {
+    anchor: string;
+    content: {
+        iconPrefixText: string;
+        iconFileName: string;
+        title: string;
+        subtitlePrefix: string;
+        subtitleHighlight: string;
+        subtitleSuffix: string;
+        description: string;
+        socialProfiles: SocialProfiles[];
+    };
+}
+
+enum SocialProfiles {
+    Behance = 'BEHANCE',
+    Github = 'GITHUB',
+    Medium = 'MEDIUM',
+    Mail = 'MAIL',
+    LinkedIn = 'LINKEDIN',
+}
+
+export function HeroSection(props: HeroSectionProps): React.ReactElement {
+    const { globalState } = useGlobalState();
+    const images: ImagesInIconFormatQueryResult = useStaticQuery(query); // Returns all images from the image directory
+
+    // Filter for the referenced image by using the file name prop
+    const icon = images.allFile.images.filter((image) => {
+        return image.name + image.ext === props.content.iconFileName;
+    })[0];
+
+    const textControls = useAnimation();
+    const iconControls = useAnimation();
+    async function animationSequence() {
+        await textControls.start({ opacity: 1, y: 0, transition: { delay: 0.4 } });
+        await iconControls.start({
+            rotate: [0, -10, 12, -10, 9, 0, 0, 0, 0, 0, 0],
+            transition: { duration: 2.5, loop: 3, repeatDelay: 1 },
+        });
+    }
+
+    // Start the animation after the splash screen sequence is done
+    if (globalState.splashScreenDone) {
+        animationSequence();
+    }
+
+    return (
+        <Section anchor="hero">
+            <motion.div className={classes.Hero} initial={{ opacity: 0, y: 20 }} animate={textControls}>
+                <div>
+                    <span className={classes.IconPrefix}>{props.content.iconPrefixText}</span>
+                    <motion.div className={classes.Icon} animate={iconControls} style={{ originX: 0.7, originY: 0.7 }}>
+                        <GatsbyImage
+                            image={icon.childImageSharp.gatsbyImageData}
+                            alt={`Icon ${props.content.iconFileName}`}
+                        />
+                    </motion.div>
+                </div>
+                <h1>{props.content.title}</h1>
+                <h2>
+                    {props.content.subtitlePrefix}
+                    <u>{props.content.subtitleHighlight}</u>
+                    {props.content.subtitleSuffix}
+                </h2>
+                <p>{props.content.description}</p>
+            </motion.div>
+        </Section>
+    );
+}
+
+const query = graphql`
+    query ImagesInIconFormat {
+        allFile(filter: { absolutePath: { regex: "/images/" } }) {
+            images: nodes {
+                name
+                ext
+                childImageSharp {
+                    gatsbyImageData(width: 48, aspectRatio: 1)
+                }
+            }
+        }
+    }
+`;

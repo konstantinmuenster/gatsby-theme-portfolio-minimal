@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = (options) => ({
     siteMetadata: {
         siteUrl: options.siteUrl,
@@ -5,6 +7,8 @@ module.exports = (options) => ({
     plugins: [
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-robots-txt`,
+        `gatsby-transformer-sharp`,
+        `gatsby-plugin-sharp`,
         {
             resolve: `gatsby-transformer-json`,
             options: {
@@ -15,7 +19,14 @@ module.exports = (options) => ({
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `settings`,
-                path: `./content/settings.json`,
+                path: path.join('.', 'content', 'settings.json'),
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `images`,
+                path: path.join('.', 'content', 'images'),
             },
         },
         options.siteUrl ? `gatsby-plugin-sitemap` : null,
