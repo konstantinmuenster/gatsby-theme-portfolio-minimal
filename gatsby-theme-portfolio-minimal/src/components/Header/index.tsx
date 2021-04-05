@@ -65,7 +65,7 @@ export function Header(): React.ReactElement {
             </div>
             <div
                 className={classes.SideBarWrapper}
-                style={open ? { transform: 'translateX(0)', visibility: 'visible' } : undefined}
+                style={open ? { transform: 'translateX(0)', visibility: 'visible', display: 'block' } : undefined}
                 aria-hidden={!open}
                 tabIndex={open ? 1 : -1}
             >

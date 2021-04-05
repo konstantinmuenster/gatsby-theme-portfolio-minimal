@@ -110,7 +110,7 @@
 .SideBarWrapper {
     position: fixed;
     z-index: 10;
-    display: block;
+    display: none;
     top: 0;
     bottom: 0;
     right: 0;
