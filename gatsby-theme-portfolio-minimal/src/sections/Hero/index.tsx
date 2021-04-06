@@ -5,6 +5,7 @@ import { Section } from '../../components/Section';
 import { useGlobalState } from '../../context';
 import { motion, useAnimation } from 'framer-motion';
 import { ImagesInIconFormatQueryResult } from '../../types/graphql';
+import { SocialProfiles, SocialProfile } from '../../components/SocialProfiles';
 import * as classes from './style.module.css';
 
 interface HeroSectionProps {
@@ -17,16 +18,8 @@ interface HeroSectionProps {
         subtitleHighlight: string;
         subtitleSuffix: string;
         description: string;
-        socialProfiles: SocialProfiles[];
+        socialProfiles: SocialProfile[];
     };
-}
-
-enum SocialProfiles {
-    Behance = 'BEHANCE',
-    Github = 'GITHUB',
-    Medium = 'MEDIUM',
-    Mail = 'MAIL',
-    LinkedIn = 'LINKEDIN',
 }
 
 export function HeroSection(props: HeroSectionProps): React.ReactElement {
@@ -40,8 +33,10 @@ export function HeroSection(props: HeroSectionProps): React.ReactElement {
 
     const textControls = useAnimation();
     const iconControls = useAnimation();
+    const socialProfileControls = useAnimation();
     async function animationSequence() {
         await textControls.start({ opacity: 1, y: 0, transition: { delay: 0.4 } });
+        await socialProfileControls.start({ opacity: 1, x: 0 });
         await iconControls.start({
             rotate: [0, -10, 12, -10, 9, 0, 0, 0, 0, 0, 0],
             transition: { duration: 2.5, loop: 3, repeatDelay: 1 },
@@ -72,6 +67,9 @@ export function HeroSection(props: HeroSectionProps): React.ReactElement {
                     {props.content.subtitleSuffix}
                 </h2>
                 <p>{props.content.description}</p>
+                <motion.div initial={{ opacity: 0, x: 20 }} animate={socialProfileControls}>
+                    <SocialProfiles shownProfiles={props.content.socialProfiles} />
+                </motion.div>
             </motion.div>
         </Section>
     );

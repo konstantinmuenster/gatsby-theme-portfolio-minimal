@@ -10,16 +10,10 @@ module.exports = (options) => ({
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
-            resolve: `gatsby-transformer-json`,
-            options: {
-                typeName: `Settings`,
-            },
-        },
-        {
             resolve: `gatsby-source-filesystem`,
             options: {
-                name: `settings`,
-                path: path.join('.', 'content', 'settings.json'),
+                name: `json`,
+                path: path.join('.', 'content'),
             },
         },
         {
@@ -27,6 +21,12 @@ module.exports = (options) => ({
             options: {
                 name: `images`,
                 path: path.join('.', 'content', 'images'),
+            },
+        },
+        {
+            resolve: `gatsby-transformer-json`,
+            options: {
+                typeName: ({ node }) => node.name,
             },
         },
         options.siteUrl ? `gatsby-plugin-sitemap` : null,

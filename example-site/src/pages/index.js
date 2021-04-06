@@ -16,7 +16,7 @@ export default function IndexPage() {
                         subtitleHighlight: 'awesome',
                         subtitleSuffix: '.',
                         description: 'A modern portfolio with a minimalistic design.',
-                        socialProfiles: ['LinkedIn', 'Medium', 'Mail'],
+                        socialProfiles: ['LinkedIn', 'Medium', 'Github', 'Mail'],
                     }}
                 />
             </Page>
