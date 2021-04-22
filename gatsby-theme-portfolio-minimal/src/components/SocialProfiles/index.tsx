@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Icon } from '../Icon';
+import { Slider } from '../Slider';
 import * as classes from './style.module.css';
 
 export enum SocialProfile {
@@ -11,7 +12,7 @@ export enum SocialProfile {
     LinkedIn = 'linkedin',
 }
 
-interface AllSocialProfilesQueryResult {
+export interface AllSocialProfilesQueryResult {
     allSocialProfiles: {
         nodes: {
             id: string;
@@ -37,7 +38,7 @@ export function SocialProfiles(props: SocialProfilesProps): React.ReactElement {
     });
 
     return (
-        <div className={classes.SlideContainer}>
+        <Slider>
             {shownProfiles.map((profile, key) => {
                 const completeProfileData = profile.displayName && profile.url;
                 return !completeProfileData ? null : (
@@ -53,11 +54,11 @@ export function SocialProfiles(props: SocialProfilesProps): React.ReactElement {
                     </a>
                 );
             })}
-        </div>
+        </Slider>
     );
 }
 
-const query = graphql`
+export const query = graphql`
     query SocialProfiles {
         allSocialProfiles {
             nodes {

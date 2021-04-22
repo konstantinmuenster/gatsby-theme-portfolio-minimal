@@ -1,0 +1,36 @@
+.SlideContainer {
+    white-space: nowrap;
+    margin: 0 -2.5rem;
+    padding: var(--page-padding);
+    padding-bottom: 0.5rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.SlideContainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* Show scrollbar if desktop and wrapper width > viewport width */
+@media (hover: hover) {
+    .SlideContainer {
+        scrollbar-color: var(--scroll-bar-color); /* Firefox only */
+    }
+    .SlideContainer::-webkit-scrollbar {
+        display: block;
+        -webkit-appearance: none;
+    }
+    .SlideContainer::-webkit-scrollbar:horizontal {
+        height: 0.8rem;
+    }
+    .SlideContainer::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        border: 0.2rem solid var(--background-color);
+        background-color: var(--scroll-bar-color);
+    }
+    .SlideContainer::-webkit-scrollbar-track {
+        background-color: var(--background-color);
+        border-radius: 8px;
+    }
+}

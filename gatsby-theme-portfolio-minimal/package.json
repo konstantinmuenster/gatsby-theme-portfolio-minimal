@@ -54,6 +54,7 @@
         "gatsby-transformer-sharp": "^3.2.0",
         "normalize.css": "^8.0.1",
         "react-cookie-consent": "^6.2.3",
-        "react-helmet": "^6.1.0"
+        "react-helmet": "^6.1.0",
+        "tiny-skeleton-loader-react": "^1.1.4"
     }
 }

@@ -49,7 +49,7 @@ export function HeroSection(props: HeroSectionProps): React.ReactElement {
     }
 
     return (
-        <Section anchor="hero">
+        <Section anchor={props.anchor}>
             <motion.div className={classes.Hero} initial={{ opacity: 0, y: 20 }} animate={textControls}>
                 <div>
                     <span className={classes.IconPrefix}>{props.content.iconPrefixText}</span>

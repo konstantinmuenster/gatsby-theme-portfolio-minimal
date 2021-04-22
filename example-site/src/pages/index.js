@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeroSection, Page, Seo } from 'gatsby-theme-portfolio-minimal';
+import { ArticlesSection, HeroSection, Page, Seo } from 'gatsby-theme-portfolio-minimal';
 
 export default function IndexPage() {
     return (
@@ -19,6 +19,7 @@ export default function IndexPage() {
                         socialProfiles: ['LinkedIn', 'Medium', 'Github', 'Mail'],
                     }}
                 />
+                <ArticlesSection anchor="articles" sources={["Medium"]} maxArticles={3} />
             </Page>
         </>
     );

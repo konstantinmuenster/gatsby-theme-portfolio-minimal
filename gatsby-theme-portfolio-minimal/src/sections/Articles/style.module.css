@@ -1,0 +1,36 @@
+.Card {
+    width: 16.25rem;
+    height: 12rem;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    margin: 1rem 3rem 2rem 0;
+    box-shadow: 0 5px 15px var(--box-shadow-color);
+    border-radius: var(--border-radius);
+    background: var(--card-color);
+    white-space: normal;
+    transition: box-shadow 0.3s ease-out;
+}
+
+.Card:hover {
+    box-shadow: 0 5px 15px var(--box-shadow-hover-color);
+}
+
+.Card .Category {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: +1px;
+    font-weight: 700;
+}
+
+.Card .Title {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.Card .Date {
+    font-size: 0.75rem;
+    color: var(--subtext-color);
+    letter-spacing: +0.5px;
+}
