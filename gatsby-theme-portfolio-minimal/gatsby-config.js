@@ -13,8 +13,15 @@ module.exports = (options) => ({
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                name: `json`,
+                name: `settings`,
                 path: path.join('.', 'content'),
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `json`,
+                path: path.join('.', 'content', 'json'),
             },
         },
         {
