@@ -4,7 +4,7 @@ import * as classes from './style.module.css';
 interface SectionProps {
     anchor: string;
     heading?: string;
-    children: React.ReactElement[] | React.ReactElement;
+    children: React.ReactNode;
 }
 
 export const Section = React.forwardRef<HTMLElement, SectionProps>((props: SectionProps, ref) => {

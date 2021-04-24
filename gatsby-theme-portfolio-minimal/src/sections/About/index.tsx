@@ -18,9 +18,6 @@ interface AboutSectionProps {
 export function AboutSection(props: AboutSectionProps): React.ReactElement {
     const images: GatsbyImageQueryResultList = useStaticQuery(query); // Returns all images from the image directory
 
-    // Filter for the referenced image by using the file name prop
-    const image = getGatsbyImageByFileName(images, props.imageFileName);
-
     // Reveal section when at least 100px of the section is in viewport
     const AnimatedSection = motion(Section);
     const sectionControls = useAnimation();
@@ -43,7 +40,7 @@ export function AboutSection(props: AboutSectionProps): React.ReactElement {
                     <div className={classes.ImageWrapper}>
                         <GatsbyImage
                             className={classes.Image}
-                            image={image.childImageSharp.gatsbyImageData}
+                            image={getGatsbyImageByFileName(images, props.imageFileName)}
                             alt={`About Image ${props.imageFileName}`}
                         />
                     </div>

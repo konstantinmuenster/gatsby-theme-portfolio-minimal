@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { AboutSection, ArticlesSection, HeroSection, Page, Seo } from 'gatsby-theme-portfolio-minimal';
+import { AboutSection, ArticlesSection, HeroSection, Page, ProjectsSection, Seo } from 'gatsby-theme-portfolio-minimal';
 
 export default function IndexPage({ data }) {
     return (
@@ -27,13 +27,22 @@ export default function IndexPage({ data }) {
                     htmlDescription={data.aboutSection.edges[0].node.html}
                     imageFileName="charles-deluvio-DgoyKNgPiFQ-unsplash.jpg"
                 />
+                <ProjectsSection
+                    anchor="projects"
+                    heading="Built-in Features"
+                    maxProjects={3}
+                    button={{
+                        label: 'Visit on GitHub',
+                        url: 'https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal',
+                    }}
+                />
             </Page>
         </>
     );
 }
 
 // This example uses Markdown as a source for the text content. But you can use any other source if you like,
-// e.g. you could also write the text you would like to use directly as a prop to the component like 
+// e.g. you could also write the text you would like to use directly as a prop to the component like
 // htmlDescription="This can be another example of providing the text content without Markdown"
 export const pageQuery = graphql`
     query AboutSection {

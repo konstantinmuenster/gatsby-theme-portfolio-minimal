@@ -1,6 +1,7 @@
-import { GatsbyImageQueryResultList, GatsbyImageData } from '../types/graphql';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { GatsbyImageQueryResultList } from '../types/graphql';
 
-export function getGatsbyImageByFileName(imageList: GatsbyImageQueryResultList, fileName: string): GatsbyImageData {
+export function getGatsbyImageByFileName(imageList: GatsbyImageQueryResultList, fileName: string): IGatsbyImageData {
     const filterResult = imageList.allFile.images.filter((image) => {
         return image.name + image.ext === fileName;
     });
@@ -9,6 +10,6 @@ export function getGatsbyImageByFileName(imageList: GatsbyImageQueryResultList, 
     } else if (filterResult.length > 1) {
         throw new Error('Multiple images with the same file name found. File names has to be unique.');
     } else {
-        return filterResult[0];
+        return filterResult[0].childImageSharp.gatsbyImageData;
     }
 }

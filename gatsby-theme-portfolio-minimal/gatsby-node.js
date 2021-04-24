@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const settingsExample = require('./content/settings.example.json');
 const socialProfileExample = require('./content/json/socialProfiles.example.json');
+const projectsExample = require('./content/json/projects.example.json');
 
 exports.onPreBootstrap = ({ reporter }) => {
     const contentDirectory = 'content';
@@ -9,6 +10,7 @@ exports.onPreBootstrap = ({ reporter }) => {
     const jsonDirectory = path.join(contentDirectory, 'json');
     const settingsFile = path.join(contentDirectory, 'settings.json');
     const socialProfilesFile = path.join(jsonDirectory, 'socialProfiles.json');
+    const projectsFile = path.join(jsonDirectory, 'projects.json');
 
     if (!fs.existsSync(contentDirectory)) {
         reporter.info(`creating ${contentDirectory} directory`);
@@ -28,6 +30,11 @@ exports.onPreBootstrap = ({ reporter }) => {
     if (!fs.existsSync(socialProfilesFile)) {
         reporter.info(`creating ${socialProfilesFile}`);
         fs.writeFileSync(socialProfilesFile, JSON.stringify(socialProfileExample));
+    }
+
+    if (!fs.existsSync(projectsFile)) {
+        reporter.info(`creating ${projectsFile}`);
+        fs.writeFileSync(projectsFile, JSON.stringify(projectsExample));
     }
 
     if (!fs.existsSync(settingsFile)) {

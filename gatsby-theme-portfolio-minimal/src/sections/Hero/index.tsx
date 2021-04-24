@@ -27,9 +27,6 @@ export function HeroSection(props: HeroSectionProps): React.ReactElement {
     const { globalState } = useGlobalState();
     const images: GatsbyImageQueryResultList = useStaticQuery(query); // Returns all images from the image directory
 
-    // Filter for the referenced image by using the file name prop
-    const icon = getGatsbyImageByFileName(images, props.content.iconFileName);
-
     const textControls = useAnimation();
     const iconControls = useAnimation();
     const socialProfileControls = useAnimation();
@@ -54,8 +51,9 @@ export function HeroSection(props: HeroSectionProps): React.ReactElement {
                     <span className={classes.IconPrefix}>{props.content.iconPrefixText}</span>
                     <motion.div className={classes.Icon} animate={iconControls} style={{ originX: 0.7, originY: 0.7 }}>
                         <GatsbyImage
-                            image={icon.childImageSharp.gatsbyImageData}
+                            image={getGatsbyImageByFileName(images, props.content.iconFileName)}
                             alt={`Icon ${props.content.iconFileName}`}
+                            loading="eager"
                         />
                     </motion.div>
                 </div>
