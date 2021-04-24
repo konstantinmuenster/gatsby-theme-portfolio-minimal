@@ -33,6 +33,7 @@ interface MediumFeedData {
 
 interface ArticlesSectionProps {
     anchor: string;
+    heading?: string;
     sources: ArticleSource[];
     maxArticles?: number;
 }
@@ -100,7 +101,7 @@ export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement
     });
 
     return (
-        <Section anchor={props.anchor} heading="Latest Articles">
+        <Section anchor={props.anchor} heading={props.heading}>
             <Slider>
                 {articles.length === 0
                     ? ArticleSkeletonList

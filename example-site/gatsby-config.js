@@ -20,5 +20,13 @@ module.exports = {
             //     }
             // },
         },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `${__dirname}/content/markdown`,
+                name: `markdown`,
+            },
+        },
+        `gatsby-transformer-remark`,
     ],
 };

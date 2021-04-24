@@ -7,13 +7,15 @@ interface SectionProps {
     children: React.ReactElement[] | React.ReactElement;
 }
 
-export function Section(props: SectionProps): React.ReactElement {
+export const Section = React.forwardRef<HTMLElement, SectionProps>((props: SectionProps, ref) => {
     return (
-        <section id={`#${props.anchor}`} className={classes.Section}>
+        <section id={`#${props.anchor}`} className={classes.Section} ref={ref}>
             <div className={classes.ContentWrapper}>
                 {props.heading && <h3>{props.heading}</h3>}
                 {props.children}
             </div>
         </section>
     );
-}
+});
+
+Section.displayName = 'Section';

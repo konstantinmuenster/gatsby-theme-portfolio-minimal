@@ -4,9 +4,10 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Section } from '../../components/Section';
 import { useGlobalState } from '../../context';
 import { motion, useAnimation } from 'framer-motion';
-import { ImagesInIconFormatQueryResult } from '../../types/graphql';
+import { GatsbyImageQueryResultList } from '../../types/graphql';
 import { SocialProfiles, SocialProfile } from '../../components/SocialProfiles';
 import * as classes from './style.module.css';
+import { getGatsbyImageByFileName } from '../../utils/getGatsbyImageByFileName';
 
 interface HeroSectionProps {
     anchor: string;
@@ -24,12 +25,10 @@ interface HeroSectionProps {
 
 export function HeroSection(props: HeroSectionProps): React.ReactElement {
     const { globalState } = useGlobalState();
-    const images: ImagesInIconFormatQueryResult = useStaticQuery(query); // Returns all images from the image directory
+    const images: GatsbyImageQueryResultList = useStaticQuery(query); // Returns all images from the image directory
 
     // Filter for the referenced image by using the file name prop
-    const icon = images.allFile.images.filter((image) => {
-        return image.name + image.ext === props.content.iconFileName;
-    })[0];
+    const icon = getGatsbyImageByFileName(images, props.content.iconFileName);
 
     const textControls = useAnimation();
     const iconControls = useAnimation();
