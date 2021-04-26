@@ -1,0 +1,29 @@
+.Interests {
+    --interest-width: 15.625rem;
+    display: grid;
+    grid-template-columns: repeat(3, var(--interest-width));
+    grid-auto-flow: row;
+    column-gap: 1rem;
+    row-gap: 1rem;
+}
+
+.Interests::after {
+    content: '';
+    width: 2rem;
+}
+
+.Interest {
+    width: var(--interest-width);
+    height: 3rem;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    border: 0.125rem solid var(--primary-color);
+    border-radius: var(--border-radius);
+    background: var(--card-background-color);
+}
+
+.Interest .Icon {
+    margin-right: 0.5rem;
+}

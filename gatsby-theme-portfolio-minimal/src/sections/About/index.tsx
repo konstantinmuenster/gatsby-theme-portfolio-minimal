@@ -18,12 +18,15 @@ interface AboutSectionProps {
 export function AboutSection(props: AboutSectionProps): React.ReactElement {
     const images: GatsbyImageQueryResultList = useStaticQuery(query); // Returns all images from the image directory
 
+    const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
+
     // Reveal section when at least 100px of the section is in viewport
     const AnimatedSection = motion(Section);
     const sectionControls = useAnimation();
     async function animateSection(isVisible: boolean): Promise<void> {
         if (isVisible) {
             await sectionControls.start({ opacity: 1, y: 0 });
+            setSectionRevealed(true);
         }
     }
 
@@ -32,7 +35,7 @@ export function AboutSection(props: AboutSectionProps): React.ReactElement {
             <AnimatedSection
                 anchor={props.anchor}
                 heading={props.heading}
-                initial={{ opacity: 0, y: 20 }}
+                initial={!sectionRevealed ? { opacity: 0, y: 20 } : undefined}
                 animate={sectionControls}
             >
                 <div className={classes.About}>

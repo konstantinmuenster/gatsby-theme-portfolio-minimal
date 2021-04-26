@@ -1,0 +1,23 @@
+.Button {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    max-width: 15.625rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 0.8rem 1.5rem;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    text-align: center;
+}
+
+.Button:hover,
+.Button:active,
+.Button:focus {
+    cursor: pointer;
+    outline: none;
+}

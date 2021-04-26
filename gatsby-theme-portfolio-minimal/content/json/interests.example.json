@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Quick and Easy Setup",
+        "iconFileName": "joystick.png"
+    },
+    {
+        "name": "Content via Markdown",
+        "iconFileName": "notebook.png"
+    },
+    {
+        "name": "Responsive Design",
+        "iconFileName": "nail-polish.png"
+    },
+    {
+        "name": "Medium Integration",
+        "iconFileName": "medium.png"
+    },
+    {
+        "name": "Animations",
+        "iconFileName": "gem-stone.png"
+    },
+    {
+        "name": "PWA (Offline Support)",
+        "iconFileName": "mobile-phone.png"
+    },
+    {
+        "name": "Modern Tech-Stack",
+        "iconFileName": "gatsby.png"
+    },
+    {
+        "name": "Blazing Fast",
+        "iconFileName": "high-voltage.png"
+    }
+]

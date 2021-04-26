@@ -1,6 +1,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { AboutSection, ArticlesSection, HeroSection, Page, ProjectsSection, Seo } from 'gatsby-theme-portfolio-minimal';
+import {
+    AboutSection,
+    ArticlesSection,
+    HeroSection,
+    InterestsSection,
+    Page,
+    ProjectsSection,
+    Seo,
+} from 'gatsby-theme-portfolio-minimal';
 
 export default function IndexPage({ data }) {
     return (
@@ -27,6 +35,7 @@ export default function IndexPage({ data }) {
                     htmlDescription={data.aboutSection.edges[0].node.html}
                     imageFileName="charles-deluvio-DgoyKNgPiFQ-unsplash.jpg"
                 />
+                <InterestsSection anchor="interests" heading="Details" initiallyShown={5} />
                 <ProjectsSection
                     anchor="projects"
                     heading="Built-in Features"

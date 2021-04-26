@@ -3,7 +3,8 @@ import * as classes from './style.module.css';
 
 interface SliderProps {
     additionalClasses?: string[];
-    children: (React.ReactElement | null)[];
+    style?: React.CSSProperties;
+    children: (React.ReactNode | null)[];
 }
 
 export function Slider(props: SliderProps): React.ReactElement {
@@ -13,5 +14,9 @@ export function Slider(props: SliderProps): React.ReactElement {
     } else {
         classList = classes.SlideContainer;
     }
-    return <div className={classList}>{props.children}</div>;
+    return (
+        <div className={classList} style={props.style}>
+            {props.children}
+        </div>
+    );
 }

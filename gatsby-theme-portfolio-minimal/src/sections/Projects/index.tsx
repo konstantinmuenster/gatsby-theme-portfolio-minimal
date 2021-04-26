@@ -9,6 +9,7 @@ import { getGatsbyImageByFileName } from '../../utils/getGatsbyImageByFileName';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { Icon } from '../../components/Icon';
 import { Slider } from '../../components/Slider';
+import { Button, ButtonType } from '../../components/Button';
 import * as classes from './style.module.css';
 
 interface Project {
@@ -46,6 +47,7 @@ export function ProjectsSection(props: ProjectsSectionProps): React.ReactElement
     const data: AllProjectsWithImagesQueryResultList = useStaticQuery(query);
 
     const isDesktopBreakpoint = useMediaQuery('(min-width: 992px)');
+    const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
 
     // Reveal section when at least 100px of the section is in viewport
     const AnimatedSection = motion(Section);
@@ -53,6 +55,7 @@ export function ProjectsSection(props: ProjectsSectionProps): React.ReactElement
     async function animateSection(isVisible: boolean): Promise<void> {
         if (isVisible) {
             await sectionControls.start({ opacity: 1, y: 0 });
+            setSectionRevealed(true);
         }
     }
 
@@ -61,7 +64,7 @@ export function ProjectsSection(props: ProjectsSectionProps): React.ReactElement
             <AnimatedSection
                 anchor={props.anchor}
                 heading={props.heading}
-                initial={{ opacity: 0, y: 20 }}
+                initial={!sectionRevealed ? { opacity: 0, y: 20 } : undefined}
                 animate={sectionControls}
             >
                 <Slider additionalClasses={[classes.Projects]}>
@@ -116,14 +119,12 @@ export function ProjectsSection(props: ProjectsSectionProps): React.ReactElement
                 </Slider>
                 {props.button !== undefined && (
                     <div className={classes.MoreProjects}>
-                        <a
-                            href={props.button.url}
-                            target="_blank"
-                            rel="nofollow noopener noreferrer"
-                            aria-label="External Link"
-                        >
-                            {props.button.label}
-                        </a>
+                        <Button
+                            type={ButtonType.LINK}
+                            externalLink={true}
+                            url={props.button.url}
+                            label={props.button.label}
+                        />
                     </div>
                 )}
             </AnimatedSection>

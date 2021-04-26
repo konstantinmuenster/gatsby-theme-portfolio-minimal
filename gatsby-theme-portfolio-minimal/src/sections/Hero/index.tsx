@@ -79,7 +79,7 @@ const query = graphql`
                 name
                 ext
                 childImageSharp {
-                    gatsbyImageData(width: 48, aspectRatio: 1)
+                    gatsbyImageData(width: 48, aspectRatio: 1, placeholder: BLURRED)
                 }
             }
         }
