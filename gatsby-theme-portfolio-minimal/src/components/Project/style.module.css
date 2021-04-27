@@ -1,0 +1,108 @@
+.Project {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    white-space: normal;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+    padding-right: 2.5rem;
+    max-width: 20rem;
+}
+
+.Project .Details {
+    width: 100%;
+    max-width: 25rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+
+.Project .Details .Category {
+    font-size: 0.875rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    letter-spacing: +1px;
+}
+
+.Project .Details .Title {
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
+    font-size: 1.375rem;
+    line-height: 1.625rem;
+    font-weight: 700;
+}
+
+.Project .Details .Tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    line-height: 1.2rem;
+}
+
+.Project .Details .Tags span {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.Project .Details .Links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.Project .Details .Links a {
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.Project .Details .Links svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    transition: all 0.3s ease-out;
+}
+
+.Project .Details .Links svg:hover {
+    fill: var(--primary-color);
+}
+
+.Project .ProjectImage {
+    width: 100%;
+    max-width: 25rem;
+    height: 15rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 2.5rem var(--box-shadow-color);
+    transition: all 0.3s ease-out;
+}
+
+.Project .ProjectImage:hover {
+    transform: translate3d(0px, -0.125rem, 0px);
+    box-shadow: 0 0 2.5rem var(--box-shadow-hover-color);
+}
+
+@media (min-width: 480px) {
+    .Project {
+        max-width: 25rem;
+        padding-right: 5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .Project {
+        justify-content: space-between;
+        flex-shrink: 1;
+        max-width: 62.5rem;
+        margin-bottom: 8rem;
+        padding-right: 0;
+        flex-direction: row;
+    }
+    .Project .Details {
+        margin-top: 0;
+    }
+    .Project .ProjectImage {
+        height: 18.75rem;
+    }
+}

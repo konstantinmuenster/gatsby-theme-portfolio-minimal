@@ -66,7 +66,7 @@ export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement
                                 title: item.title,
                                 publishedAt: new Date(item.pubDate),
                                 link: item.link,
-                            };
+                            } as Article;
                         })
                         .slice(0, MAX_ARTICLES);
                     setArticles(articleList);

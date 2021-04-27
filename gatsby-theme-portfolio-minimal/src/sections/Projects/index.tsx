@@ -3,34 +3,16 @@ import VisibilitySensor from 'react-visibility-sensor';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Section } from '../../components/Section';
 import { motion, useAnimation } from 'framer-motion';
-import { GatsbyImageQueryResultList } from '../../types/graphql';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { getGatsbyImageByFileName } from '../../utils/getGatsbyImageByFileName';
-import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { Icon } from '../../components/Icon';
 import { Slider } from '../../components/Slider';
 import { Button, ButtonType } from '../../components/Button';
+import { Project } from '../../components/Project';
 import * as classes from './style.module.css';
-
-interface Project {
-    category: string;
-    title: string;
-    description: string;
-    tags: string[];
-    imageFileName: string;
-    links: {
-        type: string;
-        url: string;
-    }[];
-}
 
 interface AllProjectsQueryResultList {
     allProjects: {
         projects: Project[];
     };
 }
-
-type AllProjectsWithImagesQueryResultList = AllProjectsQueryResultList & GatsbyImageQueryResultList;
 
 interface ProjectsSectionProps {
     anchor: string;
@@ -43,10 +25,9 @@ interface ProjectsSectionProps {
 }
 
 export function ProjectsSection(props: ProjectsSectionProps): React.ReactElement {
-    const MAX_PROJECTS = props.maxProjects || 4;
-    const data: AllProjectsWithImagesQueryResultList = useStaticQuery(query);
+    const projectCount = props.maxProjects || 4;
+    const data: AllProjectsQueryResultList = useStaticQuery(query);
 
-    const isDesktopBreakpoint = useMediaQuery('(min-width: 992px)');
     const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
 
     // Reveal section when at least 100px of the section is in viewport
@@ -68,53 +49,8 @@ export function ProjectsSection(props: ProjectsSectionProps): React.ReactElement
                 animate={sectionControls}
             >
                 <Slider additionalClasses={[classes.Projects]}>
-                    {data.allProjects.projects.slice(0, MAX_PROJECTS).map((project, key) => {
-                        return (
-                            <div
-                                key={key}
-                                className={classes.Project}
-                                style={{
-                                    flexDirection: isDesktopBreakpoint && key % 2 === 0 ? 'row-reverse' : undefined,
-                                }}
-                            >
-                                <div className={classes.Details}>
-                                    <span className={classes.Category}>{project.category}</span>
-                                    <h4 className={classes.Title}>{project.title}</h4>
-                                    <p>{project.description}</p>
-                                    <div className={classes.Tags}>
-                                        {project.tags.length !== 0 &&
-                                            project.tags.map((tag, key) => {
-                                                return (
-                                                    <span key={key}>
-                                                        <u>{tag}</u>
-                                                    </span>
-                                                );
-                                            })}
-                                    </div>
-                                    <div className={classes.Links}>
-                                        {project.links.length !== 0 &&
-                                            project.links.map((link, key) => {
-                                                return (
-                                                    <a
-                                                        key={key}
-                                                        href={link.url}
-                                                        target="_blank"
-                                                        rel="nofollow noopener noreferrer"
-                                                        aria-label="External Link"
-                                                    >
-                                                        <Icon name={link.type} color="var(--subtext-color)" />
-                                                    </a>
-                                                );
-                                            })}
-                                    </div>
-                                </div>
-                                <GatsbyImage
-                                    className={classes.ProjectImage}
-                                    image={getGatsbyImageByFileName(data, project.imageFileName)}
-                                    alt={`Project ${project.title}`}
-                                />
-                            </div>
-                        );
+                    {data.allProjects.projects.slice(0, projectCount).map((project, key) => {
+                        return <Project key={key} index={key} data={project} />;
                     })}
                 </Slider>
                 {props.button !== undefined && (
@@ -133,7 +69,7 @@ export function ProjectsSection(props: ProjectsSectionProps): React.ReactElement
 }
 
 const query = graphql`
-    query AllVisibleProjectsWithImages {
+    query AllVisibleProjects {
         allProjects(filter: { visible: { eq: true } }) {
             projects: nodes {
                 category
@@ -144,15 +80,6 @@ const query = graphql`
                 links {
                     type
                     url
-                }
-            }
-        }
-        allFile(filter: { absolutePath: { regex: "/images/" } }) {
-            images: nodes {
-                name
-                ext
-                childImageSharp {
-                    gatsbyImageData(width: 400, quality: 80, placeholder: BLURRED)
                 }
             }
         }
