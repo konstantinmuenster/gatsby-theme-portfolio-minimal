@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import {
     AboutSection,
     ArticlesSection,
+    ContactSection,
     HeroSection,
     InterestsSection,
     Page,
@@ -44,6 +45,15 @@ export default function IndexPage({ data }) {
                         label: 'Visit on GitHub',
                         url: 'https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal',
                     }}
+                />
+                <ContactSection
+                    anchor="contact"
+                    heading="Issues?"
+                    description="If you have any problems with this theme, create an issue in the GitHub repository."
+                    imageFileName="favicon.png"
+                    name="Gatsby Theme Portfolio Minimal"
+                    email="mail@example.com"
+                    socialProfiles={['LinkedIn', 'Medium', 'Github', 'Mail']}
                 />
             </Page>
         </>

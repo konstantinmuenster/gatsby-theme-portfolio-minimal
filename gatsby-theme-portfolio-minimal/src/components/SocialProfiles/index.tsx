@@ -49,6 +49,7 @@ export function SocialProfiles(props: SocialProfilesProps): React.ReactElement {
                         target="_blank"
                         rel="nofollow noopener noreferrer"
                         aria-label={profile.displayName}
+                        style={props.withIcon ? { padding: '0.5rem 1.25rem' } : undefined}
                     >
                         {(props.withIcon || false) && <Icon name={profile.id} />} {profile.displayName}
                     </a>

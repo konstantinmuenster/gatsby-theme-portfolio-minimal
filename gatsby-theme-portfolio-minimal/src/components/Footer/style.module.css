@@ -4,7 +4,7 @@
     min-height: var(--footer-height);
     background: var(--primary-color);
     border-top: none;
-    margin-top: 10rem;
+    margin-top: 2rem;
 }
 
 .ContentWrapper {

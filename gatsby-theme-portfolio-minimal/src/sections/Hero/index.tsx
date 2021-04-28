@@ -19,7 +19,7 @@ interface HeroSectionProps {
         subtitleHighlight: string;
         subtitleSuffix: string;
         description: string;
-        socialProfiles: SocialProfile[];
+        socialProfiles?: SocialProfile[];
     };
 }
 
@@ -65,7 +65,7 @@ export function HeroSection(props: HeroSectionProps): React.ReactElement {
                 </h2>
                 <p>{props.content.description}</p>
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={socialProfileControls}>
-                    <SocialProfiles shownProfiles={props.content.socialProfiles} />
+                    {props.content.socialProfiles && <SocialProfiles shownProfiles={props.content.socialProfiles} />}
                 </motion.div>
             </motion.div>
         </Section>

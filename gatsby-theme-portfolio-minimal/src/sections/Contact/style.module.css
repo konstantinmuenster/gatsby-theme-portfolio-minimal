@@ -1,0 +1,44 @@
+.Contact {
+    width: 100%;
+    max-width: 45rem;
+}
+
+.Contact .Description {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.Contact .Profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.Contact .Profile .Avatar {
+    width: 100%;
+    max-width: 8.75rem;
+    border-radius: 50%;
+    margin-right: 4rem;
+    margin-bottom: 2rem;
+}
+
+.Contact .Profile .ContactDetails {
+    font-size: 1.125rem;
+    line-height: 2rem;
+}
+
+.Contact .Profile .ContactDetails .Name {
+    font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    .Contact .Profile {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+    .Contact .Profile .Avatar {
+        margin-bottom: 0;
+    }
+}

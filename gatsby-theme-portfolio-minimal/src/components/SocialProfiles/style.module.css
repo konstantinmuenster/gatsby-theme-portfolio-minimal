@@ -29,3 +29,9 @@
 .Profile:hover svg {
     filter: invert(1);
 }
+
+@media (min-width: 768px) {
+    .Profile {
+        margin-right: 1rem;
+    }
+}
