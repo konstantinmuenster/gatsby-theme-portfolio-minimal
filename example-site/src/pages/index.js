@@ -36,9 +36,9 @@ export default function IndexPage({ data }) {
                     htmlDescription={data.aboutSection.edges[0].node.html}
                     imageFileName="charles-deluvio-DgoyKNgPiFQ-unsplash.jpg"
                 />
-                <InterestsSection anchor="interests" heading="Details" initiallyShown={5} />
+                <InterestsSection anchor="details" heading="Details" initiallyShown={5} />
                 <ProjectsSection
-                    anchor="projects"
+                    anchor="features"
                     heading="Built-in Features"
                     maxProjects={3}
                     button={{
@@ -47,7 +47,7 @@ export default function IndexPage({ data }) {
                     }}
                 />
                 <ContactSection
-                    anchor="contact"
+                    anchor="github"
                     heading="Issues?"
                     description="If you have any problems with this theme, create an issue in the GitHub repository."
                     imageFileName="favicon.png"

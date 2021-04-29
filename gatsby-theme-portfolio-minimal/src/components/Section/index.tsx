@@ -16,7 +16,7 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>((props: Secti
         classList = classes.ContentWrapper;
     }
     return (
-        <section id={`#${props.anchor}`} className={classes.Section} ref={ref}>
+        <section id={props.anchor} className={classes.Section} ref={ref}>
             <div className={classList}>
                 {props.heading && <h3>{props.heading}</h3>}
                 {props.children}
