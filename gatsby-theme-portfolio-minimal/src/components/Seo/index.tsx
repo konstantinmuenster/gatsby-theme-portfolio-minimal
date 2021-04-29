@@ -18,6 +18,7 @@ interface SiteMetadata {
 interface SeoProps {
     title: string;
     useTitleTemplate?: boolean;
+    noIndex?: boolean;
     description?: string;
 }
 
@@ -35,6 +36,7 @@ export function Seo(props: SeoProps): React.ReactElement {
             titleTemplate={props.useTitleTemplate === true ? siteMetadata.titleTemplate : undefined}
             htmlAttributes={{ lang: siteMetadata.language }}
         >
+            {props.noIndex && <meta name="robots" content="noindex" />}
             <meta name="description" content={siteMetadata.description} />
             <meta property="og:title" content={siteMetadata.title} />
             <meta property="og:site_name" content={siteMetadata.title} />
