@@ -15,7 +15,7 @@ export default function IndexPage({ data }) {
     return (
         <>
             <Seo title="IndexPage" />
-            <Page>
+            <Page useSplashScreenAnimation>
                 <HeroSection
                     anchor="hero"
                     content={{

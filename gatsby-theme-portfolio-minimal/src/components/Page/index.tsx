@@ -8,13 +8,13 @@ interface FeatureToggles {
     featureToggles: {
         useDarkModeAsDefault: boolean;
         useDarkModeBasedOnUsersPreference: boolean;
-        useSplashScreenAnimation: boolean;
         useCookieBar: boolean;
     };
 }
 
 interface PageProps {
     children: React.ReactElement;
+    useSplashScreenAnimation?: boolean;
 }
 
 export function Page(props: PageProps): React.ReactElement {
@@ -25,9 +25,12 @@ export function Page(props: PageProps): React.ReactElement {
         <GlobalStateProvider
             defaultTheme={toggles.useDarkModeAsDefault ? Theme.Dark : Theme.Light}
             useDarkModeBasedOnUsersPreference={toggles.useDarkModeBasedOnUsersPreference}
-            useSplashScreenAnimation={toggles.useSplashScreenAnimation}
+            useSplashScreenAnimation={props.useSplashScreenAnimation || false}
         >
-            <Layout useSplashScreenAnimation={toggles.useSplashScreenAnimation} useCookieBar={toggles.useCookieBar}>
+            <Layout
+                useSplashScreenAnimation={props.useSplashScreenAnimation || false}
+                useCookieBar={toggles.useCookieBar}
+            >
                 {props.children}
             </Layout>
         </GlobalStateProvider>
@@ -42,7 +45,6 @@ const query = graphql`
                     featureToggles {
                         useDarkModeAsDefault
                         useDarkModeBasedOnUsersPreference
-                        useSplashScreenAnimation
                         useCookieBar
                     }
                 }
