@@ -52,13 +52,11 @@ If the user's OS is set to using dark mode, the Gatsby Starter will automaticall
 
 [Gatsby Themes](https://www.gatsbyjs.com/docs/themes/) are regular Node packages that can be installed like any other package via npm or yarn.
 
-To install Gatsby Theme Portfolio Minimal, you need to have an existing Gatsby project. 
+To install Gatsby Theme Portfolio Minimal, you need to have an existing Gatsby project. If you have one, you can skip the next part and follow the instructions in the part for existing projects.
 
-If you have one, you can skip the next part and follow the instructions in the part for existing projects.
+### For A New Project
 
-#### For A New Project
-
-If you are creating a new site and want to use the Gatsby Theme Portfolio Minimal, you can use the Gatsby Theme Portfolio Minimal Starter. This will generate a new site that pre-configures use of the theme.
+If you are creating a new site and want to use the Gatsby Theme Portfolio Minimal, you can use the Gatsby Theme Portfolio Minimal Starter. This will generate a new site that already has the theme pre-configured.
 
 1. Install the Gatsby CLI
 
@@ -66,18 +64,17 @@ If you are creating a new site and want to use the Gatsby Theme Portfolio Minima
    npm install -g gatsby-cli
    ```
 
-
 2. Create a new Gatsby site with the Portfolio Minimal Theme Starter.
 
    ```sh
    gatsby new portfolio-minimal https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme
    ```
 
-#### For An Existing Project
+### For An Existing Project
 
-If you already have a site you’d like to add the theme to, you can manually configure it.
+If you already have a site you’d like to add the theme to, you can install it and manually configure it.
 
-1. Install the Gatsby Theme Portfolio Minimal as a package.
+1. Install the Gatsby Theme Portfolio Minimal via npm or yarn.
 
     ```sh
     npm install gatsby-theme-portfolio-minimal
@@ -118,7 +115,7 @@ If you already have a site you’d like to add the theme to, you can manually co
     }
     ```
 
-#### Example Project on GitHub
+### Example Project on GitHub
 
 This repository also contains an [example-site](https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/tree/main/example-site), so that you can see how the theme integrates in an existing Gatsby site.
 
@@ -128,7 +125,7 @@ This repository also contains an [example-site](https://github.com/konstantinmue
 
 I tried to leave as much configuration as possible to you as a developer. This allows the theme to be highly flexible and adjustable to your needs.
 
-#### Configuring `settings.json`
+### Configuring `settings.json`
 
 ```json
 {
@@ -165,7 +162,7 @@ I tried to leave as much configuration as possible to you as a developer. This a
 }
 ```
 
-#### Configuring `gatsby-config.js`
+### Configuring `gatsby-config.js`
 
 ```js
 module.exports = {
@@ -194,21 +191,13 @@ module.exports = {
 };
 ```
 
-#### Using Your Own Color Theme
+### Using Your Own Color Theme
 
-Internally, the Portfolio Minimal theme uses CSS variables to ensure a consistent color scheme.
+Internally, the Portfolio Minimal theme uses CSS variables to ensure a consistent color scheme. You can override these colors by using the [concept of shadowing](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/) Gatsby offers. To do this, follow the instructions:
 
-You can override these colors by using the [concept of shadowing](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/) Gatsby offers.
+1. Create a file called `theme.css` in the following path: `{GatsbyProjectRoot}/src/gatsby-theme-portfolio-minimal/src/globalStyles`.
 
-To make it work:
-
-1. In your `src` directory, recreate the exact same folder structure: `gatsby-theme-portfolio-minimal`/`src`/`globalStyles`. 
-
-2. In the newly created `globalStyles` directory, create a file called `theme.css`.
-
-The path to the file should look like this: `src/gatsby-theme-portfolio-minimal/src/globalStyles/theme.css`
-
-3. Add the following contents to the file and adjust it to your needs.
+2. Add the following contents to the file and adjust the colors as you like. Do not change the names of the variables!
 
     ```css
     body[data-theme='lightTheme'] {
