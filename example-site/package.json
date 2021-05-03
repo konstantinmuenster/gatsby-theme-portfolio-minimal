@@ -7,6 +7,7 @@
         "build": "gatsby build",
         "develop": "gatsby develop",
         "clean": "gatsby clean",
+        "test": "echo \"Nothing to test here\"",
         "lint": "echo \"Nothing to do here\""
     },
     "dependencies": {
