@@ -34,7 +34,7 @@ jobs:
                   path: '**/node_modules'
                   key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
             - run: yarn install
-            - run: yarn workspace gatsby-theme-portfolio-minimal semantic-release --dry-run
+            - run: yarn workspace gatsby-theme-portfolio-minimal semantic-release --branches main --dry-run --debug
               env:
                   NPM_TOKEN: ${{secrets.NPM_TOKEN}}
                   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
