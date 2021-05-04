@@ -1,34 +1,34 @@
 [
     {
-        "name": "Quick and Easy Setup",
+        "label": "Quick and Easy Setup",
         "iconFileName": "joystick.png"
     },
     {
-        "name": "Content via Markdown",
+        "label": "Content via Markdown",
         "iconFileName": "notebook.png"
     },
     {
-        "name": "Responsive Design",
+        "label": "Responsive Design",
         "iconFileName": "nail-polish.png"
     },
     {
-        "name": "Medium Integration",
+        "label": "Medium Integration",
         "iconFileName": "medium.png"
     },
     {
-        "name": "Animations",
+        "label": "Animations",
         "iconFileName": "gem-stone.png"
     },
     {
-        "name": "PWA (Offline Support)",
+        "label": "PWA (Offline Support)",
         "iconFileName": "mobile-phone.png"
     },
     {
-        "name": "Modern Tech-Stack",
+        "label": "Modern Tech-Stack",
         "iconFileName": "gatsby.png"
     },
     {
-        "name": "Blazing Fast",
+        "label": "Blazing Fast",
         "iconFileName": "high-voltage.png"
     }
 ]
