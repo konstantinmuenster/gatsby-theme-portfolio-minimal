@@ -6,7 +6,6 @@ module.exports = (options) => ({
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
-        `gatsby-plugin-robots-txt`,
         `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
@@ -37,6 +36,7 @@ module.exports = (options) => ({
                 typeName: ({ node }) => node.name,
             },
         },
+        options.siteUrl ? `gatsby-plugin-robots-txt` : null,
         options.siteUrl ? `gatsby-plugin-sitemap` : null,
         options.favicon
             ? {
