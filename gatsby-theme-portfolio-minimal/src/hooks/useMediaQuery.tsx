@@ -1,7 +1,7 @@
 import React from 'react';
 
 export function useMediaQuery(query: string): boolean {
-    if (!window || !window.matchMedia) {
+    if (typeof window === 'undefined' || typeof window.matchMedia === 'undefined') {
         return false;
     }
 
