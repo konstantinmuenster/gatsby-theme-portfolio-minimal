@@ -30,9 +30,11 @@ export function Layout(props: LayoutProps): React.ReactElement {
     // the splashScreen is done and then scroll to the section manually. To avoid subsequent scrollToAnchor
     // calls, we introduced a boolean initialRoutingCompleted so that we only use this workaround on
     // the initial page load. Not optimal... but it works :/
-    if (!showSplashScreen && location.hash.length !== 0 && !initialRoutingCompleted) {
-        setTimeout(() => scrollToAnchor(location.hash.substr(1)), 500);
-        setInitialRoutingCompleted(true);
+    if (typeof location !== 'undefined') {
+        if (!showSplashScreen && location.hash.length !== 0 && !initialRoutingCompleted) {
+            setTimeout(() => scrollToAnchor(location.hash.substr(1)), 500);
+            setInitialRoutingCompleted(true);
+        }
     }
 
     const splashScreenView = (
