@@ -2,6 +2,7 @@
     "name": "gatsby-theme-portfolio-minimal",
     "version": "0.1.0",
     "license": "MIT",
+    "author": "Konstantin Münster <mail@konstantin.digital>",
     "main": "index.js",
     "scripts": {
         "build": "gatsby build",
@@ -59,5 +60,24 @@
         "react-helmet": "^6.1.0",
         "react-visibility-sensor": "^5.1.1",
         "tiny-skeleton-loader-react": "^1.1.4"
-    }
+    },
+    "homepage": "https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal.git"
+    },
+    "bugs": {
+        "url": "https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/issues"
+    },
+    "keywords": [
+        "gatsby",
+        "gatsby-theme",
+        "mdx",
+        "PWA",
+        "netlify",
+        "portfolio",
+        "minimal",
+        "animations",
+        "dark-mode"
+    ]
 }

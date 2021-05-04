@@ -11,6 +11,10 @@
         "gatsby-theme-portfolio-minimal",
         "example-site"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal.git"
+    },
     "devDependencies": {
         "husky": "4",
         "lint-staged": "^10.5.4",

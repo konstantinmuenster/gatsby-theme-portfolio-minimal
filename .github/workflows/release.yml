@@ -13,10 +13,14 @@ jobs:
             - uses: actions/setup-node@v1
               with:
                   node-version: 12
+            - uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
             - run: yarn install
             - run: yarn test
 
-    publish:
+    publish-to-npm:
         needs: build-and-test
         runs-on: ubuntu-latest
         steps:
@@ -25,8 +29,12 @@ jobs:
               with:
                   node-version: 12
                   registry-url: https://registry.npmjs.org/
+            - uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
             - run: yarn install
-            - run: yarn workspace gatsby-theme-portfolio-minimal semantic-release --branches main --dry-run --debug
+            - run: yarn workspace gatsby-theme-portfolio-minimal semantic-release --branches main
               env:
                   NPM_TOKEN: ${{secrets.NPM_TOKEN}}
                   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
