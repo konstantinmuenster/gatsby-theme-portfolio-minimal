@@ -1,3 +1,9 @@
+<img src="screenshot.png" alt="Gatsby Theme Portfolio Minimal Screenshot" width="600" />
+
+---
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ca0e691f-4d6f-4a70-8d91-e94a0843c7e2/deploy-status)](https://app.netlify.com/sites/gatsby-theme-portfolio-minimal/deploys)
+
 # Gatsby Theme Portfolio Minimal
 
 #### A modern one-page portfolio with a clean yet expressive design.
@@ -12,11 +18,7 @@ Just install the theme, add the content. That's it!
 
 **[🧐 Example GitHub Project](https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/tree/main/example-site) that uses the theme.**
 
-**[🦸 Live Demo](##) how it looks.**
-
----
-
-<img src="screenshot.png" alt="Gatsby Theme Portfolio Minimal Screenshot" width="600" />
+**[🦸 Live Demo](https://gatsby-theme-portfolio-minimal.netlify.app/) how it looks.**
 
 ---
 

@@ -12,7 +12,7 @@ Just install the theme, add the content. That's it!
 
 **[🧐 Example GitHub Project](https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/tree/main/example-site) that uses the theme.**
 
-**[🦸 Live Demo](##) how it looks.**
+**[🦸 Live Demo](https://gatsby-theme-portfolio-minimal.netlify.app/) how it looks.**
 
 ---
 
