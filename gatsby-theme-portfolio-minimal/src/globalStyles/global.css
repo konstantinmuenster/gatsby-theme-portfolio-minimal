@@ -96,12 +96,12 @@ hr {
 
 u {
     text-decoration: none;
-    box-shadow: inset 0 -1rem 0 var(--secondary-color);
+    box-shadow: inset 0 -0.5em 0 var(--secondary-color);
     transition: box-shadow 0.3s ease-out;
 }
 
 u:hover {
-    box-shadow: inset 0 -2rem 0 var(--secondary-color);
+    box-shadow: inset 0 -1em 0 var(--secondary-color);
 }
 
 #___gatsby,
