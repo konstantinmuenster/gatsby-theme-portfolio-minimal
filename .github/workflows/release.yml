@@ -1,4 +1,4 @@
-name: Release
+name: Release Theme
 
 on:
     push:
@@ -6,7 +6,8 @@ on:
             - main
 
 jobs:
-    build-and-test:
+    test:
+        name: Build and Test
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
@@ -18,10 +19,34 @@ jobs:
                   path: '**/node_modules'
                   key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
             - run: yarn install
+            - run: yarn build
             - run: yarn test
 
-    publish-to-npm:
-        needs: build-and-test
+    deploy:
+        name: Deploy to Netlify
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+            - uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            - run: yarn install
+            - run: yarn build
+            - uses: netlify/actions/cli@master
+              with:
+                  args: deploy --dir=example-site/public --prod
+              env:
+                  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+                  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+    publish:
+        name: Publish to npm
+        needs: test
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
