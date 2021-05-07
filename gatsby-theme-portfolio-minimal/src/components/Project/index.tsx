@@ -8,12 +8,12 @@ import { GatsbyImageQueryResultList } from '../../types/graphql';
 import * as classes from './style.module.css';
 
 export interface Project {
-    category: string;
+    category?: string;
     title: string;
     description: string;
-    tags: string[];
     imageFileName: string;
-    links: {
+    tags?: string[];
+    links?: {
         type: string;
         url: string;
     }[];
@@ -40,7 +40,8 @@ export function Project(props: ProjectProps): React.ReactElement {
                 <h4 className={classes.Title}>{props.data.title}</h4>
                 <p>{props.data.description}</p>
                 <div className={classes.Tags}>
-                    {props.data.tags.length !== 0 &&
+                    {props.data.tags &&
+                        props.data.tags.length !== 0 &&
                         props.data.tags.map((tag, key) => {
                             return (
                                 <span key={key}>
@@ -50,7 +51,8 @@ export function Project(props: ProjectProps): React.ReactElement {
                         })}
                 </div>
                 <div className={classes.Links}>
-                    {props.data.links.length !== 0 &&
+                    {props.data.links &&
+                        props.data.links.length !== 0 &&
                         props.data.links.map((link, key) => {
                             return (
                                 <a

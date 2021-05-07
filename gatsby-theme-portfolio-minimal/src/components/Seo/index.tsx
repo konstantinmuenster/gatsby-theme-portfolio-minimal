@@ -33,7 +33,7 @@ export function Seo(props: SeoProps): React.ReactElement {
     return (
         <Helmet
             title={siteMetadata.title}
-            titleTemplate={props.useTitleTemplate === true ? siteMetadata.titleTemplate : undefined}
+            titleTemplate={props.useTitleTemplate ? siteMetadata.titleTemplate : undefined}
             htmlAttributes={{ lang: siteMetadata.language }}
         >
             {props.noIndex && <meta name="robots" content="noindex" />}

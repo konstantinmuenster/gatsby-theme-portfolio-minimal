@@ -12,13 +12,13 @@ import { getGatsbyImageByFileName } from '../../utils/getGatsbyImageByFileName';
 interface HeroSectionProps {
     anchor: string;
     content: {
-        iconPrefixText: string;
-        iconFileName: string;
+        iconPrefixText?: string;
+        iconFileName?: string;
         title: string;
         subtitlePrefix: string;
         subtitleHighlight: string;
         subtitleSuffix: string;
-        description: string;
+        description?: string;
         socialProfiles?: SocialProfile[];
     };
 }
@@ -48,14 +48,22 @@ export function HeroSection(props: HeroSectionProps): React.ReactElement {
         <Section anchor={props.anchor}>
             <motion.div className={classes.Hero} initial={{ opacity: 0, y: 20 }} animate={textControls}>
                 <div>
-                    <span className={classes.IconPrefix}>{props.content.iconPrefixText}</span>
-                    <motion.div className={classes.Icon} animate={iconControls} style={{ originX: 0.7, originY: 0.7 }}>
-                        <GatsbyImage
-                            image={getGatsbyImageByFileName(images, props.content.iconFileName)}
-                            alt={`Icon ${props.content.iconFileName}`}
-                            loading="eager"
-                        />
-                    </motion.div>
+                    {props.content.iconPrefixText && (
+                        <span className={classes.IconPrefix}>{props.content.iconPrefixText}</span>
+                    )}
+                    {props.content.iconFileName && (
+                        <motion.div
+                            className={classes.Icon}
+                            animate={iconControls}
+                            style={{ originX: 0.7, originY: 0.7 }}
+                        >
+                            <GatsbyImage
+                                image={getGatsbyImageByFileName(images, props.content.iconFileName)}
+                                alt={`Icon ${props.content.iconFileName}`}
+                                loading="eager"
+                            />
+                        </motion.div>
+                    )}
                 </div>
                 <h1>{props.content.title}</h1>
                 <h2>
