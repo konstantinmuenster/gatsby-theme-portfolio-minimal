@@ -1,0 +1,45 @@
+name: Deploy Develop
+
+on:
+    push:
+        branches:
+            - dev
+
+jobs:
+    test:
+        name: Build and Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+            - uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            - run: yarn install
+            - run: yarn build
+            - run: yarn test
+
+    deploy:
+        name: Deploy to Netlify
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+            - uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+            - run: yarn install
+            - run: yarn build
+            - uses: netlify/actions/cli@master
+              with:
+                  args: deploy --dir=example-site/public
+              env:
+                  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+                  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
