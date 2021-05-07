@@ -31,9 +31,6 @@
 .Icon {
     display: inline-block;
     margin-left: 1rem;
-}
-
-.Icon img {
     width: 36px;
     height: 36px;
 }
@@ -49,7 +46,7 @@
         font-size: 2.625rem;
         line-height: 4rem;
     }
-    .Icon img {
+    .Icon {
         width: 48px;
         height: 48px;
     }
