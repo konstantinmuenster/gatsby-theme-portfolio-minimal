@@ -70,14 +70,15 @@
         "url": "https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/issues"
     },
     "keywords": [
+        "react",
         "gatsby",
         "gatsby-theme",
-        "mdx",
         "PWA",
-        "netlify",
         "portfolio",
+        "showcase",
         "minimal",
         "animations",
-        "dark-mode"
+        "dark-mode",
+        "gdpr-compliant"
     ]
 }
