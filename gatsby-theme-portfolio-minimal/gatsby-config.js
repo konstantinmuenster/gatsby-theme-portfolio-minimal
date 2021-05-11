@@ -38,7 +38,7 @@ module.exports = (options) => ({
         },
         options.siteUrl ? `gatsby-plugin-robots-txt` : null,
         options.siteUrl ? `gatsby-plugin-sitemap` : null,
-        options.favicon
+        options.manifestSettings
             ? {
                   resolve: `gatsby-plugin-manifest`,
                   options: {
@@ -48,7 +48,7 @@ module.exports = (options) => ({
                       background_color: options.manifestSettings.backgroundColor,
                       theme_color: options.manifestSettings.themeColor,
                       display: options.manifestSettings.display,
-                      icon: options.favicon,
+                      icon: options.manifestSettings.favicon || options.favicon,
                   },
               }
             : null,
