@@ -14,7 +14,7 @@ import {
 export default function IndexPage({ data }) {
     return (
         <>
-            <Seo title="IndexPage" />
+            <Seo title="Gatsby Theme Portfolio Minimal" />
             <Page useSplashScreenAnimation>
                 <HeroSection
                     anchor="hero"
