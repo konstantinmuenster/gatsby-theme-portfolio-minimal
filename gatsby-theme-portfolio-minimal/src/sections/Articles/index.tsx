@@ -1,34 +1,21 @@
 import React from 'react';
 import { useStaticQuery } from 'gatsby';
+import { motion, useAnimation } from 'framer-motion';
 import { Section } from '../../components/Section';
 import { Slider } from '../../components/Slider';
 import { AllSocialProfilesQueryResult, query } from '../../components/SocialProfiles';
-import SkeletonLoader from 'tiny-skeleton-loader-react';
-import * as classes from './style.module.css';
+import { Article, ArticleSkeleton } from '../../components/Article';
+import { useGlobalState } from '../../context';
+import { fetchMediumFeed } from '../../utils/fetchMediumFeed';
 
 enum ArticleSource {
     Medium = 'medium',
 }
 
-interface Article {
-    category: string;
-    title: string;
-    publishedAt: Date;
-    link: string;
-}
-
-interface MediumFeedData {
-    feed: Record<string, unknown>;
-    items: {
-        author: string;
-        categories: string[];
-        content: string;
-        description: string;
-        link: string;
-        pubDate: string;
-        thumbnail: string;
-        title: string;
-    }[];
+interface ArticleSourceConfiguration {
+    [ArticleSource.Medium]?: {
+        profileUrl: string;
+    };
 }
 
 interface ArticlesSectionProps {
@@ -39,113 +26,94 @@ interface ArticlesSectionProps {
 }
 
 export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement {
+    const { globalState } = useGlobalState();
+
     const MAX_ARTICLES = props.maxArticles || 3;
     const [articles, setArticles] = React.useState<Article[]>([]);
+    const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
 
-    // MEDIUM FEED INTEGRATION
-    // If "Medium" is set as source in the list of sources, we do the following:
-    // 1. Construct a Medium RSS feed link with the given Medium profile from socialProfiles.json
-    // 2. Fetch all articles, comments, etc. from the RSS feed
-    // 3. Filter for all feed items that have at least 1 category, i.e. is an actual article, not a comment
-    // 4. Map all articles to the Article data structure
-    // 5. Take the x latest articles based on MAX_ARTICLES setting
-    // 6. Display them :)
-    if (props.sources.map((i) => i.toLowerCase()).includes(ArticleSource.Medium)) {
-        const data: AllSocialProfilesQueryResult = useStaticQuery(query);
-        const encodedMediumFeedUrl = constructMediumFeedUrl(data);
-        React.useEffect(() => {
-            (async function fetchMediumArticles() {
-                try {
-                    const res = await fetch(encodedMediumFeedUrl, { headers: { Accept: 'application/json' } });
-                    const data = (await res.json()) as MediumFeedData;
-                    const articleList = data.items
-                        .filter((item) => item.categories.length !== 0)
-                        .map((item) => {
-                            return {
-                                category: item.categories[0],
-                                title: item.title,
-                                publishedAt: new Date(item.pubDate),
-                                link: item.link,
-                            } as Article;
-                        })
-                        .slice(0, MAX_ARTICLES);
-                    setArticles(articleList);
-                } catch (error) {
-                    console.warn('Fetching Medium RSS Feed failed', error);
-                }
-            })();
-        }, [encodedMediumFeedUrl, data]);
+    const configuration = validateAndConfigureSources(props.sources);
+
+    async function collectArticlesFromSources(configuration: ArticleSourceConfiguration): Promise<Article[]> {
+        const mediumConfig = configuration[ArticleSource.Medium];
+        const articleList: Article[] = [];
+
+        if (mediumConfig !== undefined) {
+            const mediumArticles = await fetchMediumFeed(mediumConfig.profileUrl);
+            if (mediumArticles.length > 0) {
+                mediumArticles.forEach((article) => {
+                    articleList.push({
+                        category: article.categories[0],
+                        title: article.title,
+                        publishedAt: new Date(article.pubDate),
+                        link: article.link,
+                    });
+                });
+            }
+        }
+
+        return articleList;
     }
 
-    const ArticleSkeletonList = [...Array(MAX_ARTICLES)].map((card, key) => {
-        return (
-            <div key={key} className={classes.Card}>
-                <SkeletonLoader
-                    style={{
-                        height: '1.5rem',
-                        marginBottom: '.5rem',
-                        background: 'var(--tertiary-color)',
-                    }}
-                />
-                <SkeletonLoader style={{ height: '4rem', background: 'var(--tertiary-color)' }} />
-                <SkeletonLoader
-                    style={{
-                        height: '.75rem',
-                        width: '50%',
-                        marginTop: '.5rem',
-                        background: 'var(--tertiary-color)',
-                    }}
-                />
-            </div>
-        );
-    });
+    const AnimatedSection = motion(Section);
+    const sectionControls = useAnimation();
+    async function animateSection(): Promise<void> {
+        await sectionControls.start({ opacity: 1, y: 0, transition: { delay: 1 } });
+        setSectionRevealed(true);
+    }
+
+    React.useEffect(() => {
+        if (globalState.splashScreenDone) {
+            (async function () {
+                await animateSection();
+                setArticles(await collectArticlesFromSources(configuration));
+            })();
+        }
+    }, [globalState.splashScreenDone]);
 
     return (
-        <Section anchor={props.anchor} heading={props.heading}>
+        <AnimatedSection
+            anchor={props.anchor}
+            heading={props.heading}
+            initial={!sectionRevealed ? { opacity: 0, y: 20 } : undefined}
+            animate={sectionControls}
+        >
             <Slider>
-                {articles.length === 0
-                    ? ArticleSkeletonList
-                    : articles.map((article, key) => {
-                          return (
-                              <a
-                                  key={key}
-                                  href={article.link}
-                                  target="_blank"
-                                  rel="nofollow noopener noreferrer"
-                                  title={article.title}
-                                  aria-label={article.title}
-                              >
-                                  <article className={classes.Card}>
-                                      <span className={classes.Category}>
-                                          <u>{article.category}</u>
-                                      </span>
-                                      <h4 className={classes.Title}>{article.title}</h4>
-                                      <span className={classes.Date}>{formatDate(article.publishedAt)}</span>
-                                  </article>
-                              </a>
-                          );
+                {articles.length > 0
+                    ? articles.slice(0, MAX_ARTICLES).map((article, key) => {
+                          return <Article key={key} data={article} />;
+                      })
+                    : [...Array(MAX_ARTICLES)].map((skeleton, key) => {
+                          return <ArticleSkeleton key={key} />;
                       })}
             </Slider>
-        </Section>
+        </AnimatedSection>
     );
 }
 
-function constructMediumFeedUrl(queryData: AllSocialProfilesQueryResult): string {
-    const RSS_2_JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
+// validateAndConfigureSources: Sources for articles can be defined as props (e.g. sources=["Medium"])
+// Currently, only Medium can be used as a source but it is thinkable to extend this approach to other
+// sources (e.g. an integrated Markdown blog). To collect all articles from the source, there is a
+// specific configuration needed for each source type. For example, to collect articles from Medium,
+// we need the profile URL. This function is responsible for validating that at least one source is
+// defined. It than adds the needed configuration properties to each source and returns the config.
 
-    // Extract Medium Profiles from socialProfiles.json
-    const mediumProfileList = queryData.allSocialProfiles.nodes.filter((item) => item.id === ArticleSource.Medium);
-    if (mediumProfileList.length > 1) {
-        console.warn('Multiple Medium Profiles defined in socialProfiles.json. Please check if correct one is used.');
-    } else if (mediumProfileList.length === 0) {
-        throw new Error('No Medium Profile is defined in socialProfiles.json');
+function validateAndConfigureSources(sources: ArticleSource[]): ArticleSourceConfiguration {
+    const configuration: ArticleSourceConfiguration = {};
+
+    if (sources.length > 0) {
+        if (sources.map((i) => i.toLowerCase()).includes(ArticleSource.Medium)) {
+            const data: AllSocialProfilesQueryResult = useStaticQuery(query);
+            const mediumProfileList = data.allSocialProfiles.nodes.filter((item) => item.id === ArticleSource.Medium);
+            if (mediumProfileList.length === 0) {
+                throw new Error('No Medium Profile is defined in socialProfiles.json');
+            } else {
+                configuration[ArticleSource.Medium] = { profileUrl: mediumProfileList[0].url };
+            }
+        }
+    } else {
+        throw new Error('No Source for Articles defined.');
     }
 
-    // Remove trailing slashes from mediumProfile, append /feed, and make it URL friendly
-    return RSS_2_JSON_API + encodeURIComponent(mediumProfileList[0].url.replace(/\/+$/, '') + '/feed');
-}
-
-function formatDate(date: Date): string {
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+    return configuration;
 }
