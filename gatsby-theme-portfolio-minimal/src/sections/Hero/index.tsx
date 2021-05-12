@@ -39,10 +39,13 @@ export function HeroSection(props: HeroSectionProps): React.ReactElement {
         });
     }
 
-    // Start the animation after the splash screen sequence is done
-    if (globalState.splashScreenDone) {
-        animationSequence();
-    }
+    React.useEffect(() => {
+        if (globalState.splashScreenDone) {
+            (async function () {
+                await animationSequence();
+            })();
+        }
+    }, [globalState.splashScreenDone]);
 
     return (
         <Section anchor={props.anchor}>
