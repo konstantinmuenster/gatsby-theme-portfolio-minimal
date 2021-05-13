@@ -69,7 +69,8 @@ export function Project(props: ProjectProps): React.ReactElement {
                 </div>
             </div>
             <GatsbyImage
-                className={classes.ProjectImage}
+                className={classes.ProjectImageWrapper}
+                imgClassName={classes.ProjectImage}
                 image={getGatsbyImageByFileName(images, props.data.imageFileName)}
                 alt={`Project ${props.data.title}`}
             />
