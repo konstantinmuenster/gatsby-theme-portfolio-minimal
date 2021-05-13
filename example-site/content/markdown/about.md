@@ -1,4 +1,3 @@
-Portfolio Minimal is a Gatsby Starter that creates your one-page portfolio within minutes!
 Portfolio Minimal is a Gatsby Theme that creates outstanding one-pages portfolio within minutes!
 
 It has predefined sections for your bio, skills, projects, and contact details. If you are a writer on Medium, you can integrate your latest articles in a distinct section as well. While building the theme, I tried to keep the setup as simple as possible while keeping everything configurable if you like to.
