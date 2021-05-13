@@ -45,7 +45,7 @@ export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement
                     articleList.push({
                         category: article.categories[0],
                         title: article.title,
-                        publishedAt: new Date(article.pubDate),
+                        publishedAt: new Date(article.pubDate.replace(/-/g, '/')), // https://stackoverflow.com/a/5646753
                         link: article.link,
                     });
                 });
