@@ -1,5 +1,6 @@
 import React from 'react';
 import SkeletonLoader from 'tiny-skeleton-loader-react';
+import { Theme, useGlobalState } from '../../context';
 import { formatDate } from '../../utils/formatDate';
 import * as classes from './style.module.css';
 
@@ -15,6 +16,9 @@ interface ArticleProps {
 }
 
 export function Article(props: ArticleProps): React.ReactElement {
+    const { globalState } = useGlobalState();
+    const darkModeEnabled = globalState.theme === Theme.Dark;
+
     return (
         <a
             href={props.data.link}
@@ -23,7 +27,10 @@ export function Article(props: ArticleProps): React.ReactElement {
             title={props.data.title}
             aria-label={props.data.title}
         >
-            <article className={classes.Card}>
+            <article
+                className={classes.Card}
+                style={darkModeEnabled ? { border: '0.125rem solid var(--primary-color)' } : undefined}
+            >
                 <span className={classes.Category}>
                     <u>{props.data.category}</u>
                 </span>

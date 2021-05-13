@@ -14,7 +14,7 @@ body[data-theme='lightTheme'] {
 
 body[data-theme='darkTheme'] {
     --primary-color: #fafafa;
-    --secondary-color: #2a2926;
+    --secondary-color: #341677;
     --tertiary-color: #252525;
     --text-color: rgba(255, 255, 255, 0.87);
     --subtext-color: #aaaaaa;

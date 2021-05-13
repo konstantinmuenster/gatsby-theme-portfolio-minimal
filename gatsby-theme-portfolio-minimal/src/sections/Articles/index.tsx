@@ -7,6 +7,7 @@ import { AllSocialProfilesQueryResult, query } from '../../components/SocialProf
 import { Article, ArticleSkeleton } from '../../components/Article';
 import { useGlobalState } from '../../context';
 import { fetchMediumFeed } from '../../utils/fetchMediumFeed';
+import * as classes from './style.module.css';
 
 enum ArticleSource {
     Medium = 'medium',
@@ -78,7 +79,7 @@ export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement
             initial={!sectionRevealed ? { opacity: 0, y: 20 } : undefined}
             animate={sectionControls}
         >
-            <Slider>
+            <Slider additionalClasses={[classes.Articles]}>
                 {articles.length > 0
                     ? articles.slice(0, MAX_ARTICLES).map((article, key) => {
                           return <Article key={key} data={article} />;
