@@ -1,22 +1,26 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { getGatsbyImageByFileName } from '../../utils/getGatsbyImageByFileName';
 import { Icon } from '../Icon';
-import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImageQueryResultList } from '../../types/graphql';
+import { ImageObject } from '../../types';
 import * as classes from './style.module.css';
+
+enum LinkType {
+    External = 'external',
+    Github = 'github',
+}
 
 export interface Project {
     category?: string;
     title: string;
     description: string;
-    imageFileName: string;
+    image: ImageObject;
     tags?: string[];
     links?: {
-        type: string;
+        type: LinkType;
         url: string;
     }[];
+    visible: boolean;
 }
 
 interface ProjectProps {
@@ -25,7 +29,6 @@ interface ProjectProps {
 }
 
 export function Project(props: ProjectProps): React.ReactElement {
-    const images: GatsbyImageQueryResultList = useStaticQuery(query);
     const isDesktopBreakpoint = useMediaQuery('(min-width: 992px)');
 
     return (
@@ -71,23 +74,9 @@ export function Project(props: ProjectProps): React.ReactElement {
             <GatsbyImage
                 className={classes.ProjectImageWrapper}
                 imgClassName={classes.ProjectImage}
-                image={getGatsbyImageByFileName(images, props.data.imageFileName)}
-                alt={`Project ${props.data.title}`}
+                image={props.data.image.src.childImageSharp.gatsbyImageData}
+                alt={props.data.image.alt || `Project ${props.data.title}`}
             />
         </div>
     );
 }
-
-const query = graphql`
-    query ImagesProjectFormat {
-        allFile(filter: { absolutePath: { regex: "/images/" } }) {
-            images: nodes {
-                name
-                ext
-                childImageSharp {
-                    gatsbyImageData(width: 400, quality: 80, placeholder: BLURRED)
-                }
-            }
-        }
-    }
-`;

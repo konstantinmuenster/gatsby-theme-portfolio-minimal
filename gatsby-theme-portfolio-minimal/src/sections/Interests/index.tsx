@@ -2,42 +2,22 @@ import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 import { motion, useAnimation } from 'framer-motion';
 import { Section } from '../../components/Section';
-import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImageQueryResultList } from '../../types/graphql';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { getGatsbyImageByFileName } from '../../utils/getGatsbyImageByFileName';
 import { Slider } from '../../components/Slider';
-import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { Button, ButtonType } from '../../components/Button';
+import { PageSection } from '../../types';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { useLocalDataSource } from './data';
 import * as classes from './style.module.css';
 
-interface Interest {
-    label: string;
-    iconFileName: string;
-}
+export function InterestsSection(props: PageSection): React.ReactElement {
+    const response = useLocalDataSource();
+    const data = response.allInterestsJson.sections[0];
+    const [shownInterests, setShownInterests] = React.useState<number>(5);
 
-interface AllInterestsQueryResultList {
-    allInterests: {
-        interests: Interest[];
-    };
-}
-
-type AllInterestsWithIconsQueryResultList = AllInterestsQueryResultList & GatsbyImageQueryResultList;
-
-interface InterestsSectionProps {
-    anchor: string;
-    heading?: string;
-    initiallyShown?: number;
-}
-
-export function InterestsSection(props: InterestsSectionProps): React.ReactElement {
     const isDesktopBreakpoint = useMediaQuery('(min-width: 992px)');
-    const data: AllInterestsWithIconsQueryResultList = useStaticQuery(query);
-    const interests = data.allInterests.interests;
-    const initiallyShown = !isDesktopBreakpoint ? interests.length : props.initiallyShown || 5;
 
     const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
-    const [shownInterests, setShownInterests] = React.useState<number>(initiallyShown);
 
     // Reveal section when at least 100px of the section is in viewport
     // Then, reveal interests sequentially
@@ -63,13 +43,13 @@ export function InterestsSection(props: InterestsSectionProps): React.ReactEleme
     }
 
     function loadMoreHandler() {
-        setShownInterests(interests.length);
+        setShownInterests(data.interests.length);
     }
 
     return (
         <VisibilitySensor onChange={animateSection} partialVisibility={true} minTopValue={100}>
             <AnimatedSection
-                anchor={props.anchor}
+                anchor={props.sectionId}
                 heading={props.heading}
                 initial={!sectionRevealed ? { opacity: 0, y: 20 } : undefined}
                 animate={sectionControls}
@@ -79,10 +59,10 @@ export function InterestsSection(props: InterestsSectionProps): React.ReactEleme
                     style={
                         isDesktopBreakpoint
                             ? { gridTemplateColumns: `repeat(3, var(--interest-width))` }
-                            : { gridTemplateColumns: `repeat(${interests.length + 1}, var(--interest-width))` }
+                            : { gridTemplateColumns: `repeat(${data.interests.length + 1}, var(--interest-width))` }
                     }
                 >
-                    {interests.slice(0, shownInterests).map((interest, key) => {
+                    {data.interests.slice(0, shownInterests).map((interest, key) => {
                         return (
                             <motion.div
                                 key={key}
@@ -92,15 +72,15 @@ export function InterestsSection(props: InterestsSectionProps): React.ReactEleme
                                 animate={interestControls}
                             >
                                 <GatsbyImage
-                                    image={getGatsbyImageByFileName(data, interest.iconFileName)}
+                                    image={interest.image.src.childImageSharp.gatsbyImageData}
                                     className={classes.Icon}
-                                    alt={`Interest ${interest.label}`}
+                                    alt={interest.image.alt || `Interest ${interest.label}`}
                                 />{' '}
                                 {interest.label}
                             </motion.div>
                         );
                     })}
-                    {shownInterests < interests.length && (
+                    {shownInterests < data.interests.length && (
                         <motion.div
                             initial={!sectionRevealed ? { opacity: 0, scaleY: 0 } : undefined}
                             animate={buttonControls}
@@ -113,23 +93,3 @@ export function InterestsSection(props: InterestsSectionProps): React.ReactEleme
         </VisibilitySensor>
     );
 }
-
-const query = graphql`
-    query allInterestsWithIcons {
-        allInterests {
-            interests: nodes {
-                iconFileName
-                label
-            }
-        }
-        allFile(filter: { absolutePath: { regex: "/images/" } }) {
-            images: nodes {
-                name
-                ext
-                childImageSharp {
-                    gatsbyImageData(width: 20, height: 20, quality: 90, placeholder: BLURRED)
-                }
-            }
-        }
-    }
-`;

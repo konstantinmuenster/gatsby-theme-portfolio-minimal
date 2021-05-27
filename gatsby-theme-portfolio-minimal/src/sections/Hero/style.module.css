@@ -20,7 +20,7 @@
     margin-bottom: 2rem;
 }
 
-.IconPrefix {
+.ImagePrefix {
     display: inline-block;
     font-weight: 700;
     font-size: 2rem;
@@ -28,7 +28,7 @@
     color: var(--primary-color);
 }
 
-.Icon {
+.Image {
     display: inline-block;
     margin-left: 1rem;
     width: 36px;
@@ -42,11 +42,11 @@
     .Hero h1 {
         margin-bottom: 0;
     }
-    .IconPrefix {
+    .ImagePrefix {
         font-size: 2.625rem;
         line-height: 4rem;
     }
-    .Icon {
+    .Image {
         width: 48px;
         height: 48px;
     }

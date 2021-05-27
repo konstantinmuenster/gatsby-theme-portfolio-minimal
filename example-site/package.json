@@ -6,6 +6,7 @@
     "scripts": {
         "build": "gatsby build",
         "develop": "gatsby develop",
+        "serve": "gatsby serve",
         "clean": "gatsby clean",
         "test": "echo \"Nothing to test here\"",
         "lint": "echo \"Nothing to do here\""
@@ -13,7 +14,6 @@
     "dependencies": {
         "gatsby": "^3.1.1",
         "gatsby-theme-portfolio-minimal": "*",
-        "gatsby-transformer-remark": "^4.0.0",
         "react": "^17.0.1",
         "react-dom": "^17.0.1"
     }

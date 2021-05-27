@@ -1,17 +1,16 @@
 import React from 'react';
 import { Section } from '../../components/Section';
+import { PageSection } from '../../types';
+import { getSectionBySectionId, useLocalDataSource } from './data';
 import * as classes from './style.module.css';
 
-interface LegalSectionProps {
-    anchor: string;
-    heading?: string;
-    htmlContent: string;
-}
+export function LegalSection(props: PageSection): React.ReactElement {
+    const response = useLocalDataSource();
+    const data = getSectionBySectionId(response, props.sectionId);
 
-export function LegalSection(props: LegalSectionProps): React.ReactElement {
     return (
-        <Section anchor={props.anchor} heading={props.heading}>
-            <div className={classes.Legal} dangerouslySetInnerHTML={{ __html: props.htmlContent }} />
+        <Section anchor={props.sectionId} heading={props.heading}>
+            <div className={classes.Legal} dangerouslySetInnerHTML={{ __html: data.html }} />
         </Section>
     );
 }

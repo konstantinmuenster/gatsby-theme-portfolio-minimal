@@ -1,0 +1,18 @@
+{
+    "intro": "",
+    "image": {
+        "src": "",
+        "alt": ""
+    },
+    "title": "",
+    "subtitle": {
+        "prefix": "",
+        "highlight": "",
+        "suffix": ""
+    },
+    "description": "",
+    "socialProfiles": {
+        "from": [""],
+        "showIcons": false
+    }
+}

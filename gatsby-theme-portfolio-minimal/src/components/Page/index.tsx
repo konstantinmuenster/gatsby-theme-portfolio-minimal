@@ -1,16 +1,7 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import { AllSettingsQueryResult } from '../../types/graphql';
 import { GlobalStateProvider, Theme } from '../../context';
+import { useSiteConfiguration } from '../../hooks/useSiteConfiguration';
 import { Layout } from '../Layout';
-
-interface FeatureToggles {
-    featureToggles: {
-        useDarkModeAsDefault: boolean;
-        useDarkModeBasedOnUsersPreference: boolean;
-        useCookieBar: boolean;
-    };
-}
 
 interface PageProps {
     children: React.ReactElement;
@@ -18,37 +9,19 @@ interface PageProps {
 }
 
 export function Page(props: PageProps): React.ReactElement {
-    const data: AllSettingsQueryResult<FeatureToggles> = useStaticQuery(query);
-    const toggles = data.allSettings.edges[0].node.featureToggles;
-
+    const siteConfiguration = useSiteConfiguration();
     return (
         <GlobalStateProvider
-            defaultTheme={toggles.useDarkModeAsDefault ? Theme.Dark : Theme.Light}
-            useDarkModeBasedOnUsersPreference={toggles.useDarkModeBasedOnUsersPreference}
+            defaultTheme={siteConfiguration.featureToggles.useDarkModeAsDefault ? Theme.Dark : Theme.Light}
+            useDarkModeBasedOnUsersPreference={siteConfiguration.featureToggles.useDarkModeBasedOnUsersPreference}
             useSplashScreenAnimation={props.useSplashScreenAnimation || false}
         >
             <Layout
                 useSplashScreenAnimation={props.useSplashScreenAnimation || false}
-                useCookieBar={toggles.useCookieBar}
+                useCookieBar={siteConfiguration.featureToggles.useCookieBar}
             >
                 {props.children}
             </Layout>
         </GlobalStateProvider>
     );
 }
-
-const query = graphql`
-    query FeatureToggles {
-        allSettings {
-            edges {
-                node {
-                    featureToggles {
-                        useDarkModeAsDefault
-                        useDarkModeBasedOnUsersPreference
-                        useCookieBar
-                    }
-                }
-            }
-        }
-    }
-`;

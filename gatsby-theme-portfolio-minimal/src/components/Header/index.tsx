@@ -1,38 +1,22 @@
 import React from 'react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import { Logo } from '../Logo';
-import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { AllSettingsQueryResultList } from '../../types/graphql';
 import { Helmet } from 'react-helmet';
 import { motion, useAnimation } from 'framer-motion';
 import { useGlobalState } from '../../context';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { useSiteConfiguration } from '../../hooks/useSiteConfiguration';
 import * as classes from './style.module.css';
-
-interface HeaderNavigation {
-    navigation: {
-        header: {
-            displayName: string;
-            url: string;
-        }[];
-        ctaButton: {
-            openNewTab: boolean;
-            displayName: string;
-            url: string;
-        };
-    };
-}
 
 export function Header(): React.ReactElement {
     const [open, setOpen] = React.useState<boolean>(false);
     const { globalState } = useGlobalState();
-    const data: AllSettingsQueryResultList<HeaderNavigation> = useStaticQuery(query);
-
+    const siteConfiguration = useSiteConfiguration();
     const isDesktopBreakpoint = useMediaQuery('(min-width: 992px)');
-    const navigationData = data.allSettings.nodes[0].navigation;
 
     const navigationItems = (
         <>
-            {navigationData.header.map((linkObject, key) => {
+            {siteConfiguration.navigation.header.map((linkObject, key) => {
                 return (
                     <Link
                         key={key}
@@ -40,18 +24,18 @@ export function Header(): React.ReactElement {
                         className={classes.NavLink}
                         onClick={open ? () => setOpen(!open) : undefined}
                     >
-                        {linkObject.displayName}
+                        {linkObject.label}
                     </Link>
                 );
             })}
             <a
-                href={navigationData.ctaButton.url}
-                target={navigationData.ctaButton.openNewTab ? '_blank' : undefined}
+                href={siteConfiguration.navigation.ctaButton.url}
+                target={siteConfiguration.navigation.ctaButton.openNewTab ? '_blank' : undefined}
                 rel="noopener noreferrer"
                 className={classes.CtaButton}
                 onClick={open ? () => setOpen(!open) : undefined}
             >
-                {navigationData.ctaButton.displayName}
+                {siteConfiguration.navigation.ctaButton.label}
             </a>
         </>
     );
@@ -95,23 +79,3 @@ export function Header(): React.ReactElement {
         </motion.header>
     );
 }
-
-const query = graphql`
-    query HeaderNavigation {
-        allSettings {
-            nodes {
-                navigation {
-                    header {
-                        displayName
-                        url
-                    }
-                    ctaButton {
-                        openNewTab
-                        displayName
-                        url
-                    }
-                }
-            }
-        }
-    }
-`;

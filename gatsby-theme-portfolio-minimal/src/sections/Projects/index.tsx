@@ -1,32 +1,17 @@
 import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
-import { graphql, useStaticQuery } from 'gatsby';
 import { Section } from '../../components/Section';
 import { motion, useAnimation } from 'framer-motion';
 import { Slider } from '../../components/Slider';
 import { Button, ButtonType } from '../../components/Button';
 import { Project } from '../../components/Project';
+import { PageSection } from '../../types';
+import { useLocalDataSource } from './data';
 import * as classes from './style.module.css';
 
-interface AllProjectsQueryResultList {
-    allProjects: {
-        projects: Project[];
-    };
-}
-
-interface ProjectsSectionProps {
-    anchor: string;
-    heading?: string;
-    maxProjects?: number;
-    button?: {
-        label: string;
-        url: string;
-    };
-}
-
-export function ProjectsSection(props: ProjectsSectionProps): React.ReactElement {
-    const projectCount = props.maxProjects || 4;
-    const data: AllProjectsQueryResultList = useStaticQuery(query);
+export function ProjectsSection(props: PageSection): React.ReactElement {
+    const response = useLocalDataSource();
+    const data = response.allProjectsJson.sections[0];
 
     const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
 
@@ -43,23 +28,23 @@ export function ProjectsSection(props: ProjectsSectionProps): React.ReactElement
     return (
         <VisibilitySensor onChange={animateSection} partialVisibility={true} minTopValue={100}>
             <AnimatedSection
-                anchor={props.anchor}
+                anchor={props.sectionId}
                 heading={props.heading}
                 initial={!sectionRevealed ? { opacity: 0, y: 20 } : undefined}
                 animate={sectionControls}
             >
                 <Slider additionalClasses={[classes.Projects]}>
-                    {data.allProjects.projects.slice(0, projectCount).map((project, key) => {
-                        return <Project key={key} index={key} data={project} />;
+                    {data.projects.map((project, key) => {
+                        return project.visible ? <Project key={key} index={key} data={project} /> : null;
                     })}
                 </Slider>
-                {props.button !== undefined && (
+                {data.button !== undefined && data.button.visible !== false && (
                     <div className={classes.MoreProjects}>
                         <Button
                             type={ButtonType.LINK}
                             externalLink={true}
-                            url={props.button.url}
-                            label={props.button.label}
+                            url={data.button.url}
+                            label={data.button.label}
                         />
                     </div>
                 )}
@@ -67,21 +52,3 @@ export function ProjectsSection(props: ProjectsSectionProps): React.ReactElement
         </VisibilitySensor>
     );
 }
-
-const query = graphql`
-    query AllVisibleProjects {
-        allProjects(filter: { visible: { eq: true } }) {
-            projects: nodes {
-                category
-                description
-                imageFileName
-                tags
-                title
-                links {
-                    type
-                    url
-                }
-            }
-        }
-    }
-`;

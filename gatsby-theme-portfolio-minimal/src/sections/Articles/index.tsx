@@ -1,12 +1,12 @@
 import React from 'react';
-import { useStaticQuery } from 'gatsby';
 import { motion, useAnimation } from 'framer-motion';
 import { Section } from '../../components/Section';
 import { Slider } from '../../components/Slider';
-import { AllSocialProfilesQueryResult, query } from '../../components/SocialProfiles';
 import { Article, ArticleSkeleton } from '../../components/Article';
 import { useGlobalState } from '../../context';
-import { fetchMediumFeed } from '../../utils/fetchMediumFeed';
+import { useSiteMetadata } from '../../hooks/useSiteMetadata';
+import { useMediumFeed } from './data';
+import { PageSection } from '../../types';
 import * as classes from './style.module.css';
 
 enum ArticleSource {
@@ -19,17 +19,12 @@ interface ArticleSourceConfiguration {
     };
 }
 
-interface ArticlesSectionProps {
-    anchor: string;
-    heading?: string;
+interface ArticlesSectionProps extends PageSection {
     sources: ArticleSource[];
-    maxArticles?: number;
 }
 
 export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement {
     const { globalState } = useGlobalState();
-
-    const MAX_ARTICLES = props.maxArticles || 3;
     const [articles, setArticles] = React.useState<Article[]>([]);
     const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
 
@@ -40,7 +35,7 @@ export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement
         const articleList: Article[] = [];
 
         if (mediumConfig !== undefined) {
-            const mediumArticles = await fetchMediumFeed(mediumConfig.profileUrl);
+            const mediumArticles = await useMediumFeed(mediumConfig.profileUrl);
             if (mediumArticles.length > 0) {
                 mediumArticles.forEach((article) => {
                     articleList.push({
@@ -74,17 +69,17 @@ export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement
 
     return (
         <AnimatedSection
-            anchor={props.anchor}
+            anchor={props.sectionId}
             heading={props.heading}
             initial={!sectionRevealed ? { opacity: 0, y: 20 } : undefined}
             animate={sectionControls}
         >
             <Slider additionalClasses={[classes.Articles]}>
                 {articles.length > 0
-                    ? articles.slice(0, MAX_ARTICLES).map((article, key) => {
+                    ? articles.slice(0, 3).map((article, key) => {
                           return <Article key={key} data={article} />;
                       })
-                    : [...Array(MAX_ARTICLES)].map((skeleton, key) => {
+                    : [...Array(3)].map((skeleton, key) => {
                           return <ArticleSkeleton key={key} />;
                       })}
             </Slider>
@@ -104,16 +99,11 @@ function validateAndConfigureSources(sources: ArticleSource[]): ArticleSourceCon
 
     if (sources.length > 0) {
         if (sources.map((i) => i.toLowerCase()).includes(ArticleSource.Medium)) {
-            const data: AllSocialProfilesQueryResult = useStaticQuery(query);
-            const mediumProfileList = data.allSocialProfiles.nodes.filter((item) => item.id === ArticleSource.Medium);
-            if (mediumProfileList.length === 0) {
-                throw new Error('No Medium Profile is defined in socialProfiles.json');
-            } else {
-                configuration[ArticleSource.Medium] = { profileUrl: mediumProfileList[0].url };
-            }
+            const siteMetadata = useSiteMetadata();
+            configuration[ArticleSource.Medium] = { profileUrl: siteMetadata.social.medium };
+        } else {
+            throw new Error('No Source for Articles defined.');
         }
-    } else {
-        throw new Error('No Source for Articles defined.');
     }
 
     return configuration;

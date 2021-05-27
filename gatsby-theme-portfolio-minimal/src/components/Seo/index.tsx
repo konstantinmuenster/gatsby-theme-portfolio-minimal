@@ -1,19 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { graphql, useStaticQuery } from 'gatsby';
 import { useLocation } from '@reach/router';
-import { AllSettingsQueryResult } from '../../types/graphql';
-
-interface SiteMetadata {
-    siteMetadata: {
-        title: string;
-        titleTemplate: string;
-        description: string;
-        author: string;
-        siteUrl: string;
-        language: string;
-    };
-}
+import { useSiteMetadata } from '../../hooks/useSiteMetadata';
 
 interface SeoProps {
     title: string;
@@ -24,11 +12,7 @@ interface SeoProps {
 
 export function Seo(props: SeoProps): React.ReactElement {
     const location = useLocation();
-    const data: AllSettingsQueryResult<SiteMetadata> = useStaticQuery(query);
-    const siteMetadata = {
-        ...data.allSettings.edges[0].node.siteMetadata,
-        ...props,
-    };
+    const siteMetadata = { ...useSiteMetadata(), ...props };
 
     return (
         <Helmet
@@ -50,22 +34,3 @@ export function Seo(props: SeoProps): React.ReactElement {
         </Helmet>
     );
 }
-
-const query = graphql`
-    query SiteMetadata {
-        allSettings {
-            edges {
-                node {
-                    siteMetadata {
-                        title
-                        description
-                        titleTemplate
-                        author
-                        siteUrl
-                        language
-                    }
-                }
-            }
-        }
-    }
-`;

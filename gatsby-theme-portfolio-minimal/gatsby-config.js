@@ -1,69 +1,12 @@
 const path = require('path');
+const { generateConfig } = require('gatsby-plugin-ts-config');
 
-module.exports = (options) => ({
-    siteMetadata: {
-        siteUrl: options.siteUrl,
-    },
-    plugins: [
-        `gatsby-plugin-react-helmet`,
-        `gatsby-plugin-image`,
-        `gatsby-plugin-sharp`,
-        `gatsby-transformer-sharp`,
+module.exports = (options) =>
+    generateConfig(
         {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                name: `settings`,
-                path: path.join('.', 'content'),
-            },
+            projectRoot: __dirname,
+            configDir: path.join('src', 'gatsby'),
+            ...options, // Used in gatsby-node.ts
         },
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                name: `json`,
-                path: path.join('.', 'content', 'json'),
-            },
-        },
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                name: `images`,
-                path: path.join('.', 'content', 'images'),
-            },
-        },
-        {
-            resolve: `gatsby-transformer-json`,
-            options: {
-                typeName: ({ node }) => node.name,
-            },
-        },
-        options.siteUrl ? `gatsby-plugin-robots-txt` : null,
-        options.siteUrl ? `gatsby-plugin-sitemap` : null,
-        options.manifestSettings
-            ? {
-                  resolve: `gatsby-plugin-manifest`,
-                  options: {
-                      name: options.manifestSettings.siteName,
-                      short_name: options.manifestSettings.shortName,
-                      start_url: options.manifestSettings.startUrl,
-                      background_color: options.manifestSettings.backgroundColor,
-                      theme_color: options.manifestSettings.themeColor,
-                      display: options.manifestSettings.display,
-                      icon: options.manifestSettings.favicon || options.favicon,
-                  },
-              }
-            : null,
-        options.googleAnalytics
-            ? {
-                  resolve: `gatsby-plugin-gdpr-cookies`,
-                  options: {
-                      googleAnalytics: {
-                          trackingId: options.googleAnalytics.trackingId,
-                          cookieName: 'gatsby-gdpr-google-analytics',
-                          anonymize: options.googleAnalytics.anonymize || true,
-                      },
-                      environments: options.googleAnalytics.environments || ['production'],
-                  },
-              }
-            : null,
-    ].filter((plugin) => plugin !== null),
-});
+        { ...options }, // Used in gatsby-config.ts
+    );

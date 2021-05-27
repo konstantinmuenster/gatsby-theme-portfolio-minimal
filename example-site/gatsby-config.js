@@ -3,7 +3,6 @@ module.exports = {
         {
             resolve: 'gatsby-theme-portfolio-minimal',
             options: {
-                // siteUrl: "https://example.com", // Used for sitemap generation
                 manifestSettings: {
                     favicon: './content/images/favicon.png', // Path is relative to the root
                     siteName: 'My Minimal Portfolio', // Used in manifest.json
@@ -13,6 +12,8 @@ module.exports = {
                     themeColor: '#000000', // Used in manifest.json
                     display: 'minimal-ui', // Used in manifest.json
                 },
+                // contentDirectory: './content',
+                // siteUrl: "https://example.com", // Used for sitemap generation
                 // googleAnalytics: {
                 //     trackingId: "UA-XXXXXX-X",
                 //     anonymize: true, // Default true
@@ -20,13 +21,5 @@ module.exports = {
                 // }
             },
         },
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                path: `${__dirname}/content/markdown`,
-                name: `markdown`,
-            },
-        },
-        `gatsby-transformer-remark`,
     ],
 };

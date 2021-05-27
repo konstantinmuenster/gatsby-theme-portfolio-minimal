@@ -1,26 +1,16 @@
 import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
-import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Section } from '../../components/Section';
-import { GatsbyImageQueryResultList } from '../../types/graphql';
-import { getGatsbyImageByFileName } from '../../utils/getGatsbyImageByFileName';
-import { SocialProfile, SocialProfiles } from '../../components/SocialProfiles';
-import * as classes from './style.module.css';
+import { SocialProfiles } from '../../components/SocialProfiles';
 import { motion, useAnimation } from 'framer-motion';
+import { useLocalDataSource } from './data';
+import { PageSection } from '../../types';
+import * as classes from './style.module.css';
 
-interface ContactSectionProps {
-    anchor: string;
-    heading?: string;
-    description?: string;
-    imageFileName: string;
-    name: string;
-    email: string;
-    socialProfiles?: SocialProfile[];
-}
-
-export function ContactSection(props: ContactSectionProps): React.ReactElement {
-    const images: GatsbyImageQueryResultList = useStaticQuery(query);
+export function ContactSection(props: PageSection): React.ReactElement {
+    const response = useLocalDataSource();
+    const data = response.allContactJson.sections[0];
 
     const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
 
@@ -37,42 +27,30 @@ export function ContactSection(props: ContactSectionProps): React.ReactElement {
     return (
         <VisibilitySensor onChange={animateSection} partialVisibility={true} minTopValue={100}>
             <AnimatedSection
-                anchor={props.anchor}
+                anchor={props.sectionId}
                 heading={props.heading}
                 initial={!sectionRevealed ? { opacity: 0, y: 20 } : undefined}
                 animate={sectionControls}
                 additionalClasses={[classes.Contact]}
             >
-                {props.description && <p className={classes.Description}>{props.description}</p>}
+                {data.description && <p className={classes.Description}>{data.description}</p>}
                 <div className={classes.Profile}>
                     <GatsbyImage
                         className={classes.Avatar}
-                        image={getGatsbyImageByFileName(images, props.imageFileName)}
-                        alt={`Profile ${props.name}`}
+                        image={data.image.src.childImageSharp.gatsbyImageData}
+                        alt={data.image.alt || `Profile ${data.name}`}
                     />
                     <div className={classes.ContactDetails}>
-                        <div className={classes.Name}>{props.name}</div>
+                        <div className={classes.Name}>{data.name}</div>
                         <u>
-                            <a href={`mailto:${props.email}`}>{props.email}</a>
+                            <a href={`mailto:${data.email}`}>{data.email}</a>
                         </u>
                     </div>
                 </div>
-                {props.socialProfiles && <SocialProfiles shownProfiles={props.socialProfiles} withIcon={true} />}
+                {data.socialProfiles && (
+                    <SocialProfiles from={data.socialProfiles.from} showIcon={data.socialProfiles.showIcons} />
+                )}
             </AnimatedSection>
         </VisibilitySensor>
     );
 }
-
-const query = graphql`
-    query ImagesContactSectionFormat {
-        allFile(filter: { absolutePath: { regex: "/images/" } }) {
-            images: nodes {
-                name
-                ext
-                childImageSharp {
-                    gatsbyImageData(width: 140, quality: 80, placeholder: BLURRED)
-                }
-            }
-        }
-    }
-`;

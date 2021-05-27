@@ -1,24 +1,15 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { Link } from 'gatsby';
 import { Logo } from '../Logo';
 import { Theme, useGlobalState } from '../../context';
+import { useSiteConfiguration } from '../../hooks/useSiteConfiguration';
 import * as classes from './style.module.css';
-import { useStaticQuery } from 'gatsby';
-import { AllSettingsQueryResultList } from '../../types/graphql';
-
-interface FooterNavigation {
-    navigation: {
-        footer: {
-            displayName: string;
-            url: string;
-        }[];
-    };
-}
 
 export function Footer(): React.ReactElement {
-    const data: AllSettingsQueryResultList<FooterNavigation> = useStaticQuery(query);
     const { globalState } = useGlobalState();
+    const siteConfiguration = useSiteConfiguration();
     const darkModeEnabled = globalState.theme === Theme.Dark;
+
     return (
         <footer
             className={classes.Footer}
@@ -35,15 +26,15 @@ export function Footer(): React.ReactElement {
                     />
                 </Link>
                 <div className={classes.Links}>
-                    {data.allSettings.nodes[0].navigation.footer.map((linkObject, key) => {
+                    {siteConfiguration.navigation.footer.map((linkObject, key) => {
                         return (
                             <Link
                                 key={key}
                                 to={linkObject.url}
-                                aria-label={linkObject.displayName}
+                                aria-label={linkObject.label}
                                 style={{ color: darkModeEnabled ? 'var(--primary-color)' : 'var(--background-color)' }}
                             >
-                                {linkObject.displayName}
+                                {linkObject.label}
                             </Link>
                         );
                     })}
@@ -52,18 +43,3 @@ export function Footer(): React.ReactElement {
         </footer>
     );
 }
-
-const query = graphql`
-    query FooterNavigation {
-        allSettings {
-            nodes {
-                navigation {
-                    footer {
-                        displayName
-                        url
-                    }
-                }
-            }
-        }
-    }
-`;

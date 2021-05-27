@@ -14,7 +14,7 @@ interface MediumFeedData {
     items: MediumArticle[];
 }
 
-export async function fetchMediumFeed(profileUrl: string): Promise<MediumArticle[]> {
+export async function useMediumFeed(profileUrl: string): Promise<MediumArticle[]> {
     let mediumArticleList: MediumArticle[] = [];
     const feedUrl = constructMediumFeedUrl(profileUrl);
 

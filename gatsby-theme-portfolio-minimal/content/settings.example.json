@@ -1,32 +1,37 @@
 {
     "siteMetadata": {
-        "title": "Gatsby Theme Portfolio Minimal",
-        "titleTemplate": "%s · A Gatsby Theme",
-        "description": "A Gatsby Theme to create a clean one-page portfolio with Markdown content.",
-        "author": "Konstantin Münster",
-        "siteUrl": "https://example.com",
-        "language": "en"
+        "language": "en",
+        "siteUrl": "",
+        "title": "",
+        "titleTemplate": "%s · Portfolio",
+        "description": "",
+        "author": "",
+        "social": {
+            "behance": "https://behance.com",
+            "github": "",
+            "medium": "",
+            "linkedin": "",
+            "mail": "mailto:mail@konstantin.digital"
+        }
     },
-    "logo": { "text": "Gatsby" },
-    "navigation": {
-        "header": [
-            { "displayName": "About", "url": "/#about" },
-            { "displayName": "Features", "url": "/#features" },
-            { "displayName": "Github", "url": "/#github" }
-        ],
-        "ctaButton": {
-            "openNewTab": true,
-            "displayName": "Resume",
-            "url": "/resume.pdf"
+    "siteConfiguration": {
+        "logo": { "text": "" },
+        "navigation": {
+            "header": [
+                { "label": "About", "url": "/#about" },
+                { "label": "Features", "url": "/#features" },
+                { "label": "Github", "url": "/#github" }
+            ],
+            "ctaButton": { "openNewTab": true, "label": "Resume", "url": "/resume.pdf" },
+            "footer": [
+                { "label": "Privacy", "url": "/privacy" },
+                { "label": "Imprint", "url": "/imprint" }
+            ]
         },
-        "footer": [
-            { "displayName": "Privacy", "url": "/privacy" },
-            { "displayName": "Imprint", "url": "/imprint" }
-        ]
-    },
-    "featureToggles": {
-        "useDarkModeAsDefault": false,
-        "useDarkModeBasedOnUsersPreference": true,
-        "useCookieBar": false
+        "featureToggles": {
+            "useDarkModeAsDefault": false,
+            "useDarkModeBasedOnUsersPreference": true,
+            "useCookieBar": false
+        }
     }
 }

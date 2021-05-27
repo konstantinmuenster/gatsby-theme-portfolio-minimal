@@ -1,0 +1,18 @@
+{
+    "intro": "Hello",
+    "image": {
+        "src": "../../images/waving-hand.png",
+        "alt": "Waving Hand Emoji"
+    },
+    "title": "I'm a Gatsby Theme",
+    "subtitle": {
+        "prefix": "I make portfolios ",
+        "highlight": "awesome",
+        "suffix": "."
+    },
+    "description": "A modern portfolio with a minimalistic design.",
+    "socialProfiles": {
+        "from": ["LinkedIn", "Medium", "Github", "Mail"],
+        "showIcons": false
+    }
+}

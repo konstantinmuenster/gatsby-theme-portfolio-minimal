@@ -16,4 +16,5 @@ module.exports = {
             version: '17.0.1',
         },
     },
+    ignorePatterns: ['gatsby-config.js'],
 };
