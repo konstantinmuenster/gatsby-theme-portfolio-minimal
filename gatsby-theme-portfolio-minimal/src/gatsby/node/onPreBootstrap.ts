@@ -1,4 +1,4 @@
-import { Reporter } from 'gatsby';
+import { GatsbyNodeHelpers } from '../../types';
 import { ThemeOptions } from '../gatsby-config';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -31,10 +31,6 @@ interface ExampleFileConfiguration {
         destination: string;
         example: string;
     };
-}
-
-interface GatsbyNodeHelpers {
-    reporter: Reporter;
 }
 
 export function onPreBootstrap({ reporter }: GatsbyNodeHelpers, options: ThemeOptions): void {

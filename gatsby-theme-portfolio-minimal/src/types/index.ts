@@ -1,3 +1,4 @@
+import { Reporter, Actions, Node } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 export interface AllSettingsQueryResult<T> {
@@ -18,4 +19,14 @@ export interface ImageObject {
 export interface PageSection {
     sectionId: string;
     heading?: string;
+}
+
+export interface GatsbyNodeHelpers {
+    actions: Actions;
+    createContentDigest: (input: unknown) => string;
+    createNodeId: (input: string) => string;
+    createResolvers: (resolvers: unknown) => void;
+    getNode: (id: string) => Node;
+    node: Node;
+    reporter: Reporter;
 }

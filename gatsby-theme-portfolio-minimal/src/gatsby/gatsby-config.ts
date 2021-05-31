@@ -7,7 +7,7 @@ enum Environments {
 }
 
 export interface ThemeOptions extends TSConfigSetupOptions {
-    contentDirectory?: string;
+    siteUrl?: string;
     manifestSettings?: {
         favicon?: string;
         siteName?: string;
@@ -17,7 +17,11 @@ export interface ThemeOptions extends TSConfigSetupOptions {
         themeColor?: string;
         display?: string;
     };
-    siteUrl?: string;
+    contentDirectory?: string;
+    blogSettings?: {
+        path: string;
+        usePathPrefixForArticles: boolean;
+    };
     googleAnalytics?: {
         trackingId?: string;
         anonymize?: string;
@@ -46,9 +50,6 @@ export default function (TSConfig: TSConfigSetupOptions, options: ThemeOptions):
                     },
                 },
             },
-            `gatsby-transformer-remark`,
-            `gatsby-transformer-sharp`,
-            `gatsby-transformer-json`,
             {
                 resolve: `gatsby-source-filesystem`,
                 options: {
@@ -56,6 +57,9 @@ export default function (TSConfig: TSConfigSetupOptions, options: ThemeOptions):
                     path: options.contentDirectory || path.join('.', 'content'),
                 },
             },
+            `gatsby-transformer-remark`,
+            `gatsby-transformer-sharp`,
+            `gatsby-transformer-json`,
             options.siteUrl ? `gatsby-plugin-robots-txt` : null,
             options.siteUrl ? `gatsby-plugin-sitemap` : null,
             options.manifestSettings

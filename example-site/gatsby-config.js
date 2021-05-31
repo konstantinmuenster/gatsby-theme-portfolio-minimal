@@ -3,6 +3,7 @@ module.exports = {
         {
             resolve: 'gatsby-theme-portfolio-minimal',
             options: {
+                // siteUrl: "https://example.com", // Used for sitemap generation
                 manifestSettings: {
                     favicon: './content/images/favicon.png', // Path is relative to the root
                     siteName: 'My Minimal Portfolio', // Used in manifest.json
@@ -13,7 +14,10 @@ module.exports = {
                     display: 'minimal-ui', // Used in manifest.json
                 },
                 // contentDirectory: './content',
-                // siteUrl: "https://example.com", // Used for sitemap generation
+                blogSettings: {
+                    path: '/blog', // Defines the slug for the blog listing page
+                    usePathPrefixForArticles: true, // Default true (i.e. path will be /blog/first-article)
+                },
                 // googleAnalytics: {
                 //     trackingId: "UA-XXXXXX-X",
                 //     anonymize: true, // Default true
