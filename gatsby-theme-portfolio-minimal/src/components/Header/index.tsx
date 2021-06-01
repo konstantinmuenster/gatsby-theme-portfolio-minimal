@@ -22,7 +22,7 @@ export function Header(): React.ReactElement {
                         key={key}
                         to={linkObject.url}
                         className={classes.NavLink}
-                        onClick={open ? () => setOpen(!open) : undefined}
+                        onClick={!isDesktopBreakpoint ? () => setOpen(!open) : undefined}
                     >
                         {linkObject.label}
                     </Link>
@@ -33,7 +33,7 @@ export function Header(): React.ReactElement {
                 target={siteConfiguration.navigation.ctaButton.openNewTab ? '_blank' : undefined}
                 rel="noopener noreferrer"
                 className={classes.CtaButton}
-                onClick={open ? () => setOpen(!open) : undefined}
+                onClick={!isDesktopBreakpoint ? () => setOpen(!open) : undefined}
             >
                 {siteConfiguration.navigation.ctaButton.label}
             </a>
