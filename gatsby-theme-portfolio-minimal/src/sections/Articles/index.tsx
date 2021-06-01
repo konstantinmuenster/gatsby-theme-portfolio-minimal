@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { Section } from '../../components/Section';
 import { Slider } from '../../components/Slider';
-import { Article, ArticleSkeleton } from '../../components/Article';
+import { ArticleCard, ArticleCardSkeleton } from '../../components/ArticleCard';
 import { useGlobalState } from '../../context';
 import { useSiteMetadata } from '../../hooks/useSiteMetadata';
 import { useMediumFeed } from './data';
@@ -25,14 +25,14 @@ interface ArticlesSectionProps extends PageSection {
 
 export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement {
     const { globalState } = useGlobalState();
-    const [articles, setArticles] = React.useState<Article[]>([]);
+    const [articles, setArticles] = React.useState<ArticleCard[]>([]);
     const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
 
     const configuration = validateAndConfigureSources(props.sources);
 
-    async function collectArticlesFromSources(configuration: ArticleSourceConfiguration): Promise<Article[]> {
+    async function collectArticlesFromSources(configuration: ArticleSourceConfiguration): Promise<ArticleCard[]> {
         const mediumConfig = configuration[ArticleSource.Medium];
-        const articleList: Article[] = [];
+        const articleList: ArticleCard[] = [];
 
         if (mediumConfig !== undefined) {
             const mediumArticles = await useMediumFeed(mediumConfig.profileUrl);
@@ -77,10 +77,10 @@ export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement
             <Slider additionalClasses={[classes.Articles]}>
                 {articles.length > 0
                     ? articles.slice(0, 3).map((article, key) => {
-                          return <Article key={key} data={article} />;
+                          return <ArticleCard key={key} data={article} />;
                       })
                     : [...Array(3)].map((skeleton, key) => {
-                          return <ArticleSkeleton key={key} />;
+                          return <ArticleCardSkeleton key={key} />;
                       })}
             </Slider>
         </AnimatedSection>

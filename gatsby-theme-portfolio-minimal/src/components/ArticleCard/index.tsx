@@ -4,18 +4,18 @@ import { Theme, useGlobalState } from '../../context';
 import { formatDate } from '../../utils/formatDate';
 import * as classes from './style.module.css';
 
-export interface Article {
+export interface ArticleCard {
     category: string;
     title: string;
     publishedAt: Date;
     link: string;
 }
 
-interface ArticleProps {
-    data: Article;
+interface ArticleCardProps {
+    data: ArticleCard;
 }
 
-export function Article(props: ArticleProps): React.ReactElement {
+export function ArticleCard(props: ArticleCardProps): React.ReactElement {
     const { globalState } = useGlobalState();
     const darkModeEnabled = globalState.theme === Theme.Dark;
 
@@ -41,7 +41,7 @@ export function Article(props: ArticleProps): React.ReactElement {
     );
 }
 
-export function ArticleSkeleton(): React.ReactElement {
+export function ArticleCardSkeleton(): React.ReactElement {
     return (
         <div className={classes.Card}>
             <SkeletonLoader
