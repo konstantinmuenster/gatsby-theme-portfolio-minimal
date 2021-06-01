@@ -13,9 +13,7 @@ export function createSchemaCustomization({ actions }: GatsbyNodeHelpers): void 
         title: String!
         description: String
         date: Date! @dateformat
-        author: String!
         body: String!
-        excerpt: String
         banner: BannerImage
         categories: [String!]!
         keywords: [String!]
@@ -26,9 +24,7 @@ export function createSchemaCustomization({ actions }: GatsbyNodeHelpers): void 
         title: String!
         description: String
         date: Date! @dateformat
-        author: String!
         body: String!
-        excerpt: String
         banner: BannerImage
         categories: [String!]!
         keywords: [String!]

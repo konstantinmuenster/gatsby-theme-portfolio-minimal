@@ -6,6 +6,8 @@
         "titleTemplate": "%s · A Gatsby Theme",
         "description": "A Gatsby Theme to create a clean one-page portfolio with Markdown content.",
         "author": "Konstantin Münster",
+        "avatar": "../content/images/gatsby.png",
+        "bio": "This biography will be used in the footer area of an article and can contain some more details about the author.",
         "social": {
             "behance": "https://behance.com",
             "github": "https://github.com/konstantinmuenster",

@@ -6,6 +6,7 @@ import * as fs from 'fs';
 enum ContentFolder {
     Images = 'images',
     Sections = 'sections',
+    Articles = 'articles',
     AboutSection = 'about',
     ContactSection = 'contact',
     HeroSection = 'hero',
@@ -18,6 +19,7 @@ interface ContentDirectoryTree {
     root: string;
     images: string;
     sections: string;
+    articles: string;
     aboutSection: string;
     contactSection: string;
     heroSection: string;
@@ -63,6 +65,7 @@ function getContentDirectoryTree(root: string): ContentDirectoryTree {
         root: root,
         images: path.join(root, ContentFolder.Images),
         sections: path.join(root, ContentFolder.Sections),
+        articles: path.join(root, ContentFolder.Articles),
         aboutSection: path.join(root, ContentFolder.Sections, ContentFolder.AboutSection),
         contactSection: path.join(root, ContentFolder.Sections, ContentFolder.ContactSection),
         heroSection: path.join(root, ContentFolder.Sections, ContentFolder.HeroSection),

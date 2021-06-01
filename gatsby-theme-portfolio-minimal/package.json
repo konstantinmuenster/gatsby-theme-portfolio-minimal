@@ -64,6 +64,7 @@
         "react-cookie-consent": "^6.2.3",
         "react-helmet": "^6.1.0",
         "react-visibility-sensor": "^5.1.1",
+        "slugify": "^1.5.3",
         "tiny-skeleton-loader-react": "^1.1.4"
     },
     "homepage": "https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal#readme",

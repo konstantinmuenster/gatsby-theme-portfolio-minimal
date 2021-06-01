@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { SocialProfile } from '../components/SocialProfiles';
 import { AllSettingsQueryResult } from '../types';
 
@@ -9,6 +10,8 @@ export interface SiteMetadata {
     titleTemplate: string;
     description: string;
     author: string;
+    avatar: { childImageSharp: { gatsbyImageData: IGatsbyImageData } };
+    bio: string;
     social: {
         [profile in SocialProfile]: string;
     };
@@ -25,6 +28,12 @@ export const query = graphql`
             settings: nodes {
                 siteMetadata {
                     author
+                    avatar {
+                        childImageSharp {
+                            gatsbyImageData(height: 100, width: 100)
+                        }
+                    }
+                    bio
                     description
                     language
                     siteUrl
