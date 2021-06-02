@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: center;
     min-height: 50vh;
-    margin-bottom: 6rem;
 }
 
 .Hero h1 {
@@ -36,9 +35,6 @@
 }
 
 @media (min-width: 768px) {
-    .Hero {
-        margin-bottom: 4rem;
-    }
     .Hero h1 {
         margin-bottom: 0;
     }
