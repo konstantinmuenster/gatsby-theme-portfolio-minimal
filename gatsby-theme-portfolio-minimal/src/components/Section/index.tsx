@@ -18,7 +18,7 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>((props: Secti
     return (
         <section id={props.anchor} className={classes.Section} ref={ref}>
             <div className={classList}>
-                {props.heading && <h3>{props.heading}</h3>}
+                {props.heading && <h3 className={classes.Heading}>{props.heading}</h3>}
                 {props.children}
             </div>
         </section>

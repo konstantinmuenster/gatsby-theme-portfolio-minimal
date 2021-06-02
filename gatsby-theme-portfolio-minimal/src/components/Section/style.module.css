@@ -5,6 +5,12 @@
     scroll-margin-top: 60px;
 }
 
+.Section .Heading {
+    margin: 0 0 2rem 0;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+}
+
 .ContentWrapper  {
     width: 100%;
     height: 100%;

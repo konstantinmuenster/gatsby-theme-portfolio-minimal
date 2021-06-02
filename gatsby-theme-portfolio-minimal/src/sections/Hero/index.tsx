@@ -52,8 +52,8 @@ export function HeroSection(props: PageSection): React.ReactElement {
                         </motion.div>
                     )}
                 </div>
-                <h1>{data.title}</h1>
-                <h2>
+                <h1 className={classes.Title}>{data.title}</h1>
+                <h2 className={classes.Subtitle}>
                     {data.subtitle.prefix}
                     <u>{data.subtitle.highlight}</u>
                     {data.subtitle.suffix}

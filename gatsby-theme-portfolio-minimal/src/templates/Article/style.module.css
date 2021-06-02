@@ -22,34 +22,6 @@
     color: var(--subtext-color);
 }
 
-.Article h1.Title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    line-height: 2rem;
-    margin: 1rem 0;
-}
-
-.Article h2 {
-    font-size: 1.625rem;
-    font-weight: 700;
-    line-height: 2rem;
-    margin: 2rem 0 1rem 0;
-}
-
-.Article h3 {
-    font-size: 1.375rem;
-    font-weight: 700;
-    line-height: 2rem;
-    margin: 2rem 0 1rem 0;
-}
-
-.Article h4 {
-    font-size: 1.125rem;
-    font-weight: 700;
-    line-height: 2rem;
-    margin: 2rem 0 1rem 0;
-}
-
 .Article .Date {
     display: inline;
     font-size: 0.875rem;

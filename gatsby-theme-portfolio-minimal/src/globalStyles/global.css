@@ -56,35 +56,34 @@ a:focus {
 
 h1 {
     font-weight: 700;
-    font-size: 2rem;
-    line-height: 2.375rem;
+    font-size: 1.75rem;
+    line-height: 2rem;
     color: var(--primary-color);
-    margin-top: 0;
+    margin: 1rem 0;
 }
 
 h2 {
     font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
+    font-size: 1.625rem;
+    line-height: 2rem;
     color: var(--primary-color);
-    margin-top: 0;
+    margin: 2rem 0 1rem 0;
 }
 
 h3 {
     font-weight: 700;
-    font-size: 1.75rem;
-    line-height: 2.25rem;
+    font-size: 1.375rem;
+    line-height: 2rem;
     color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 2rem;
+    margin: 2rem 0 1rem 0;
 }
 
 h4 {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 400;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 2rem;
     color: var(--primary-color);
-    margin-top: 0;
+    margin: 2rem 0 1rem 0;
 }
 
 hr {

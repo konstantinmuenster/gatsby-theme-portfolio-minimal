@@ -5,13 +5,18 @@
     min-height: 50vh;
 }
 
-.Hero h1 {
-    margin-bottom: 1.5rem;
+.Hero h1.Title {
+    margin: 0 0 1.5rem 0;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.375rem;
 }
 
-.Hero h2 {
-    margin-top: -0.5rem;
-    margin-bottom: 0;
+.Hero h2.Subtitle {
+    margin: -0.5rem 0 0 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
 }
 
 .Hero p {
