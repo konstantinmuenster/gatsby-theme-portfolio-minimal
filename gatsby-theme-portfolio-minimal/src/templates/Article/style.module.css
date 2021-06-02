@@ -57,7 +57,7 @@
 }
 
 .Article .BannerImage {
-    border-radius: 1rem;
+    border-radius: var(--border-radius);
     margin-bottom: 0;
 }
 

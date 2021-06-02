@@ -29,7 +29,7 @@ export default function ArticleTemplate(props: ArticleTemplateProps): React.Reac
                             <GatsbyImage
                                 image={article.banner.src.childImageSharp.gatsbyImageData}
                                 alt={article.banner.alt || `Image for ${article.title}`}
-                                className={classes.BannerImage}
+                                imgClassName={classes.BannerImage}
                             />
                             {article.banner.caption && (
                                 <span
