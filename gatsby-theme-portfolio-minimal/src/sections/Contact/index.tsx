@@ -35,11 +35,13 @@ export function ContactSection(props: PageSection): React.ReactElement {
             >
                 {data.description && <p className={classes.Description}>{data.description}</p>}
                 <div className={classes.Profile}>
-                    <GatsbyImage
-                        className={classes.Avatar}
-                        image={data.image.src.childImageSharp.gatsbyImageData}
-                        alt={data.image.alt || `Profile ${data.name}`}
-                    />
+                    {data.image.src && (
+                        <GatsbyImage
+                            className={classes.Avatar}
+                            image={data.image.src.childImageSharp.gatsbyImageData}
+                            alt={data.image.alt || `Profile ${data.name}`}
+                        />
+                    )}
                     <div className={classes.ContactDetails}>
                         <div className={classes.Name}>{data.name}</div>
                         <u>

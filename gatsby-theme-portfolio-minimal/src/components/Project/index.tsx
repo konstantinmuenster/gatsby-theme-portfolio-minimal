@@ -71,12 +71,14 @@ export function Project(props: ProjectProps): React.ReactElement {
                         })}
                 </div>
             </div>
-            <GatsbyImage
-                className={classes.ProjectImageWrapper}
-                imgClassName={classes.ProjectImage}
-                image={props.data.image.src.childImageSharp.gatsbyImageData}
-                alt={props.data.image.alt || `Project ${props.data.title}`}
-            />
+            {props.data.image.src && (
+                <GatsbyImage
+                    className={classes.ProjectImageWrapper}
+                    imgClassName={classes.ProjectImage}
+                    image={props.data.image.src.childImageSharp.gatsbyImageData}
+                    alt={props.data.image.alt || `Project ${props.data.title}`}
+                />
+            )}
         </div>
     );
 }

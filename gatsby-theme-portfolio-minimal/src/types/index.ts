@@ -8,12 +8,12 @@ export interface AllSettingsQueryResult<T> {
 }
 
 export interface ImageObject {
-    alt: string;
+    alt: string | null;
     src: {
         childImageSharp: {
             gatsbyImageData: IGatsbyImageData;
         };
-    };
+    } | null;
 }
 
 export interface PageSection {

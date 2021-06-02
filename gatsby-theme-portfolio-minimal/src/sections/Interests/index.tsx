@@ -71,11 +71,13 @@ export function InterestsSection(props: PageSection): React.ReactElement {
                                 initial={!sectionRevealed ? { opacity: 0, scaleY: 0 } : undefined}
                                 animate={interestControls}
                             >
-                                <GatsbyImage
-                                    image={interest.image.src.childImageSharp.gatsbyImageData}
-                                    className={classes.Icon}
-                                    alt={interest.image.alt || `Interest ${interest.label}`}
-                                />{' '}
+                                {interest.image.src && (
+                                    <GatsbyImage
+                                        image={interest.image.src.childImageSharp.gatsbyImageData}
+                                        className={classes.Icon}
+                                        alt={interest.image.alt || `Interest ${interest.label}`}
+                                    />
+                                )}{' '}
                                 {interest.label}
                             </motion.div>
                         );
