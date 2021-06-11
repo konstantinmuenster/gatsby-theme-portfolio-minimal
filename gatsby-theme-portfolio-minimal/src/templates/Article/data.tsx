@@ -1,10 +1,10 @@
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 export interface ArticleTemplateData {
+    id: string;
     slug: string;
     title: string;
     description: string | null;
-    author: string;
     date: string;
     banner: {
         alt: string | null;
@@ -28,7 +28,7 @@ export interface ArticleTemplateQueryResult {
 
 export const ArticleTemplateQuery = `
     query ArticleTemplateQuery {
-        allArticle {
+        allArticle(sort: {fields: date, order: DESC}) {
             articles: nodes {
                 banner {
                     alt
@@ -43,6 +43,7 @@ export const ArticleTemplateQuery = `
                 categories
                 date(formatString: "MMMM DD, YYYY")
                 description
+                id
                 keywords
                 slug
                 title

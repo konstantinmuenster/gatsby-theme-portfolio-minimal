@@ -1,0 +1,50 @@
+.Listing {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.Filter {
+    margin-bottom: 3rem;
+}
+
+.Filter .Options {
+    margin-top: 1rem;
+}
+
+.Filter .Option {
+    display: inline-block;
+    width: auto;
+    height: 2.3125rem;
+    padding: 0 1.5rem;
+    margin-right: 1rem;
+    border: 2px solid var(--subtext-color);
+    border-radius: var(--border-radius);
+    color: var(--subtext-color);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 2.2rem;
+    cursor: pointer;
+}
+
+.Filter .Option.Selected {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.LoadMore {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+@media (hover: hover) {
+    .Filter .Option:hover,
+    .Filter .Option:active {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+}

@@ -1,10 +1,10 @@
 .Card {
     width: 16.25rem;
-    height: 12rem;
+    height: auto;
+    min-height: 12rem;
     display: inline-flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
+    justify-content: space-around;
     margin: 1rem 2.5rem 2rem 0;
     box-shadow: 0 5px 15px var(--box-shadow-color);
     border-radius: var(--border-radius);
@@ -15,6 +15,31 @@
 
 .Card:hover {
     box-shadow: 0 5px 15px var(--box-shadow-hover-color);
+}
+
+.Card .Banner {
+    height: 5rem;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    background: var(--tertiary-color);
+}
+
+.Card .ImageWrapper {
+    height: 100%;
+    max-height: 5rem;
+}
+
+.Card .Image {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.Card .DescriptionWrapper {
+    height: auto;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .Card .Category {

@@ -8,12 +8,12 @@ import * as classes from './style.module.css';
 
 interface ArticleTemplateProps {
     pageContext: {
-        data: ArticleTemplateData;
+        article: ArticleTemplateData;
     };
 }
 
 export default function ArticleTemplate(props: ArticleTemplateProps): React.ReactElement {
-    const article = props.pageContext.data;
+    const article = props.pageContext.article;
     return (
         <>
             <Seo title={article.title} description={article.description || undefined} useTitleTemplate={true} />
@@ -21,7 +21,7 @@ export default function ArticleTemplate(props: ArticleTemplateProps): React.Reac
                 <article className={classes.Article}>
                     <section className={classes.Header}>
                         <span className={classes.Category}>{article.categories.join(' / ')}</span>
-                        <h1 className={classes.Title}>{article.title}</h1>
+                        <h1>{article.title}</h1>
                         <span className={classes.Date}>Published at {article.date}</span>
                     </section>
                     {article.banner && article.banner.src && (
