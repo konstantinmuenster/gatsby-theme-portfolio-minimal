@@ -5,14 +5,14 @@
     min-height: 50vh;
 }
 
-.Hero h1.Title {
+.Hero .Title {
     margin: 0 0 1.5rem 0;
     font-weight: 700;
     font-size: 2rem;
     line-height: 2.375rem;
 }
 
-.Hero h2.Subtitle {
+.Hero .Subtitle {
     margin: -0.5rem 0 0 0;
     font-weight: 700;
     font-size: 1.25rem;
@@ -40,8 +40,14 @@
 }
 
 @media (min-width: 768px) {
-    .Hero h1 {
+    .Hero .Title {
+        font-size: 2.625rem;
+        line-height: 4rem;
         margin-bottom: 0;
+    }
+    .Hero .Subtitle {
+        font-size: 2rem;
+        line-height: 3rem;
     }
     .ImagePrefix {
         font-size: 2.625rem;

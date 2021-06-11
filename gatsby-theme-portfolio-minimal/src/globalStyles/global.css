@@ -109,18 +109,6 @@ u:hover {
     height: 100%;
 }
 
-/* BREAKPOINT ADJUSTMENTS */
-@media (min-width: 768px) {
-    h1 {
-        font-size: 2.625rem;
-        line-height: 4rem;
-    }
-    h2 {
-        font-size: 2rem;
-        line-height: 3rem;
-    }
-}
-
 /* Disable smooth scrolling when users have prefers-reduced-motion enabled */
 @media screen and (prefers-reduced-motion: reduce) {
     html {
