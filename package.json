@@ -2,8 +2,9 @@
     "private": true,
     "scripts": {
         "test": "yarn workspace gatsby-theme-portfolio-minimal test",
-        "develop": "yarn workspace example-site develop",
+        "clean": "yarn workspace example-site clean",
         "build": "yarn workspace example-site build",
+        "develop": "yarn workspace example-site develop",
         "serve": "yarn workspace example-site serve",
         "format": "prettier --write --ignore-path .gitignore \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|graphql|md|mdx)\"",
         "lint": "yarn workspaces run lint"
