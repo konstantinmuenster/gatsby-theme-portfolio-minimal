@@ -9,7 +9,7 @@ module.exports = async ({ graphql, actions, reporter }, options) => {
 
     if (!data && response.errors) {
         throw new Error(`Error while fetching article data, ${response.errors}`);
-    } else if (data && (!options.blogSettings || !options.blogSettings.path)) {
+    } else if (data.allArticle.articles.length !== 0 && (!options.blogSettings || !options.blogSettings.path)) {
         throw new Error(`No path for ArticleListing page in gatsby-config specified`);
     }
 
