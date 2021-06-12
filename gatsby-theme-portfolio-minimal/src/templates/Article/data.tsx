@@ -1,4 +1,5 @@
 import { IGatsbyImageData } from 'gatsby-plugin-image';
+import * as query from './query';
 
 export interface ArticleTemplateData {
     id: string;
@@ -20,34 +21,7 @@ export interface ArticleTemplateData {
     body: string;
 }
 
-export interface ArticleTemplateQueryResult {
-    allArticle: {
-        articles: ArticleTemplateData[];
-    };
-}
-
-export const ArticleTemplateQuery = `
-    query ArticleTemplateQuery {
-        allArticle(sort: {fields: date, order: DESC}) {
-            articles: nodes {
-                banner {
-                    alt
-                    caption
-                    src {
-                        childImageSharp {
-                            gatsbyImageData(width: 660, height: 400, placeholder: TRACED_SVG)
-                        }
-                    }
-                }
-                body
-                categories
-                date(formatString: "MMMM DD, YYYY")
-                description
-                id
-                keywords
-                slug
-                title
-            }
-        }
-    }  
-`;
+// Since we use the query in gatsby-node files we have to store it
+// in a separate JavaScript file - otherwise we run into errors
+// due to missing transpilation
+export const ArticleTemplateQuery = query.ArticleTemplateQuery;

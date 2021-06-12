@@ -1,41 +1,7 @@
-import { GatsbyNodeHelpers } from '../../types';
-import { ThemeOptions } from '../gatsby-config';
-import * as path from 'path';
-import * as fs from 'fs';
+const path = require('path');
+const fs = require('fs');
 
-enum ContentFolder {
-    Images = 'images',
-    Sections = 'sections',
-    Articles = 'articles',
-    AboutSection = 'about',
-    ContactSection = 'contact',
-    HeroSection = 'hero',
-    InterestsSection = 'interests',
-    LegalSection = 'legal',
-    ProjectsSection = 'projects',
-}
-
-interface ContentDirectoryTree {
-    root: string;
-    images: string;
-    sections: string;
-    articles: string;
-    aboutSection: string;
-    contactSection: string;
-    heroSection: string;
-    interestsSection: string;
-    legalSection: string;
-    projectsSection: string;
-}
-
-interface ExampleFileConfiguration {
-    [file: string]: {
-        destination: string;
-        example: string;
-    };
-}
-
-export function onPreBootstrap({ reporter }: GatsbyNodeHelpers, options: ThemeOptions): void {
+module.exports = ({ reporter }, options) => {
     const contentDirectory = options.contentDirectory || path.join('.', 'content');
 
     const contentDirectoryTree = getContentDirectoryTree(contentDirectory);
@@ -58,9 +24,21 @@ export function onPreBootstrap({ reporter }: GatsbyNodeHelpers, options: ThemeOp
             });
         }
     });
-}
+};
 
-function getContentDirectoryTree(root: string): ContentDirectoryTree {
+const ContentFolder = {
+    Images: 'images',
+    Sections: 'sections',
+    Articles: 'articles',
+    AboutSection: 'about',
+    ContactSection: 'contact',
+    HeroSection: 'hero',
+    InterestsSection: 'interests',
+    LegalSection: 'legal',
+    ProjectsSection: 'projects',
+};
+
+function getContentDirectoryTree(root) {
     return {
         root: root,
         images: path.join(root, ContentFolder.Images),
@@ -75,7 +53,7 @@ function getContentDirectoryTree(root: string): ContentDirectoryTree {
     };
 }
 
-function getExampleFiles(directory: ContentDirectoryTree): ExampleFileConfiguration {
+function getExampleFiles(directory) {
     const exampleFilesRoot = path.join(__dirname, '../', '../', '../', 'content');
     const exampleDirectory = getContentDirectoryTree(exampleFilesRoot);
     return {

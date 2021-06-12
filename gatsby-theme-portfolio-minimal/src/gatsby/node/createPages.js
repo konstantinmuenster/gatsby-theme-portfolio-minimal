@@ -1,15 +1,10 @@
-import path from 'path';
-import { CreatePagesArgs } from 'gatsby';
-import { ArticleTemplateQueryResult, ArticleTemplateQuery } from '../../templates/Article/data';
-import { ThemeOptions } from '../gatsby-config';
+const path = require('path');
+const query = require('../../templates/Article/query');
 
-export async function createPages(
-    { graphql, actions, reporter }: CreatePagesArgs,
-    options: ThemeOptions,
-): Promise<void> {
+module.exports = async ({ graphql, actions, reporter }, options) => {
     const templateDir = path.join(__dirname, '../', '../', '../', 'src', 'templates');
 
-    const response = await graphql(ArticleTemplateQuery);
+    const response = await graphql(query.ArticleTemplateQuery);
     const data = response.data;
 
     if (!data && response.errors) {
@@ -18,8 +13,6 @@ export async function createPages(
         throw new Error(`No path for ArticleListing page in gatsby-config specified`);
     }
 
-    const articlesQueryResult = data as ArticleTemplateQueryResult;
-
     // Create ArticleListing page
     const articleListingPageSlug = options.blogSettings.path.replace(/\/\/+/g, '/'); // remove duplicate slashes
     reporter.info(`Creating ArticleListing page under ${articleListingPageSlug}`);
@@ -27,12 +20,12 @@ export async function createPages(
         path: articleListingPageSlug,
         component: path.resolve(templateDir, 'ArticleListing', 'index.tsx'),
         context: {
-            articles: articlesQueryResult.allArticle.articles,
+            articles: data.allArticle.articles,
         },
     });
 
     // Create pages for each individual Article
-    articlesQueryResult.allArticle.articles.forEach((article) => {
+    data.allArticle.articles.forEach((article) => {
         reporter.info(`Creating Article page under ${article.slug}`);
         actions.createPage({
             path: article.slug,
@@ -42,4 +35,4 @@ export async function createPages(
             },
         });
     });
-}
+};

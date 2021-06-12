@@ -1,6 +1,4 @@
-import { GatsbyNodeHelpers } from '../../types';
-
-export function createSchemaCustomization({ actions }: GatsbyNodeHelpers): void {
+module.exports = ({ actions }) => {
     actions.createTypes(`
     type BannerImage {
         src: File @fileByRelativePath
@@ -30,4 +28,4 @@ export function createSchemaCustomization({ actions }: GatsbyNodeHelpers): void 
         keywords: [String!]
     }
   `);
-}
+};

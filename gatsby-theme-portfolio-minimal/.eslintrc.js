@@ -16,5 +16,12 @@ module.exports = {
             version: '17.0.1',
         },
     },
-    ignorePatterns: ['gatsby-config.js'],
+    overrides: [
+        {
+            files: ['*.js'],
+            rules: {
+                '@typescript-eslint/no-var-requires': 'off',
+            },
+        },
+    ],
 };

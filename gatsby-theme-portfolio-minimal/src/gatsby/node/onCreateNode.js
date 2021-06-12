@@ -1,35 +1,13 @@
-import path from 'path';
-import slugify from 'slugify';
-import { createFilePath } from 'gatsby-source-filesystem';
-import { GatsbyNodeHelpers } from '../../types';
-import { ThemeOptions } from '../gatsby-config';
-import { Node } from 'gatsby';
+const path = require('path');
+const slugify = require('slugify');
+const { createFilePath } = require('gatsby-source-filesystem');
 
-interface ArticleNode extends Node {
-    frontmatter: {
-        title: string;
-        description: string;
-        date: string;
-        author: string;
-        banner: {
-            src: string;
-            alt: string;
-            caption: string;
-        };
-        categories: string[];
-        keywords: string[];
-    };
-}
-
-export function onCreateNode(
-    { node, getNode, actions, createNodeId, reporter }: GatsbyNodeHelpers,
-    options: ThemeOptions,
-): void {
+module.exports = ({ node, getNode, actions, createNodeId, reporter }, options) => {
     // Check if the processed node is a Markdown file
     if (node.internal.type === 'MarkdownRemark' && node.parent) {
         // Check if the processed Markdown file is stored in the articles directory
-        if (/^articles[\/\\]/.test(getNode(node.parent).relativeDirectory as string)) {
-            const articleNode = node as ArticleNode;
+        if (/^articles[\/\\]/.test(getNode(node.parent).relativeDirectory)) {
+            const articleNode = node;
 
             if (!options.blogSettings || !options.blogSettings.path) {
                 reporter.error(
@@ -71,12 +49,9 @@ export function onCreateNode(
             });
         }
     }
-}
+};
 
-function createSlugForFolder(
-    { node, getNode }: { node: Node; getNode: (id: string) => Node },
-    options: ThemeOptions,
-): string {
+function createSlugForFolder({ node, getNode }, options) {
     // By default, we use the path prefix option so that we get paths like ../blog/first-article
     const shouldNotUsePathPrefix = options.blogSettings && options.blogSettings.usePathPrefixForArticles === false;
     // Only if the user opts out or the blogSettings are not correctly specified, we switch to no path prefix
