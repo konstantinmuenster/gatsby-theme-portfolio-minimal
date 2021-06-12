@@ -36,7 +36,7 @@ export function HeroSection(props: PageSection): React.ReactElement {
     return (
         <Section anchor={props.sectionId}>
             <motion.div className={classes.Hero} initial={{ opacity: 0, y: 20 }} animate={textControls}>
-                <div>
+                <div className={classes.Intro}>
                     {data.intro && <span className={classes.ImagePrefix}>{data.intro}</span>}
                     {data.image.src && (
                         <motion.div

@@ -24,6 +24,12 @@
     margin-bottom: 2rem;
 }
 
+.Intro {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .ImagePrefix {
     display: inline-block;
     font-weight: 700;
