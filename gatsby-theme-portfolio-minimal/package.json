@@ -77,13 +77,17 @@
     "keywords": [
         "react",
         "gatsby",
+        "gatsby-plugin",
         "gatsby-theme",
         "PWA",
         "portfolio",
+        "portfolio-minimal",
+        "one-page site",
         "showcase",
         "minimal",
         "animations",
         "dark-mode",
+        "blog",
         "gdpr-compliant"
     ]
 }
