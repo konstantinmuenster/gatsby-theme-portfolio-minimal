@@ -6,21 +6,20 @@ Portfolio Minimal is a Gatsby Theme. You can install it as a dependency in your 
 
 **Example Project on GitHub**
 
-This repository also contains an [example-site](https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/tree/main/example-site), so that you can see how the theme integrates in an existing Gatsby site.
+This repository also contains an [example-site](https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/tree/main/example-site) that shows how the theme integrates into a Gatsby site.
 
 ---
 
 ## Table of Contents
 
 -   [Installation](#installation)
-    -   [Setup A New Gatsby Site With Portfolio Minimal](#setup-a-new-gatsby-site-with-portfolio-minimal)
+    -   [Set Up A New Gatsby Site With Portfolio Minimal](#set-up-a-new-gatsby-site-with-portfolio-minimal)
     -   [Add Portfolio Minimal To An Existing Gatsby Site](#add-portfolio-minimal-to-an-existing-gatsby-site)
 -   [Getting Started](#getting-started)
-    -   [Create Your First Page](#create-your-first-page)
+    -   [Creating Your First Page](#creating-your-first-page)
     -   [Using The Content Directory](#using-the-content-directory)
-    -   [Using Images](#using-images)
-    -   [Using Markdown Content](#using-markdown-content)
-    -   [Theme Components](#theme-components)
+    -   [Using The Blog Integration Feature](#using-the-blog-integration-feature)
+    -   [Using Sections And Other Theme Components](#using-sections-and-other-theme-components)
 -   [Customization](#customization)
     -   [Configuring the Theme Settings](#configuring-the-theme-settings)
     -   [Changing the Color Scheme](#changing-the-color-scheme)
@@ -34,9 +33,9 @@ In general, [Gatsby Themes](https://www.gatsbyjs.com/docs/themes/) are regular N
 
 To use Gatsby Theme Portfolio Minimal, you need to have a Gatsby project. If you have an existing one, you can skip the next part and follow the instructions for adding Portfolio Minimal to an existing Gatsby site.
 
-### Setup A New Gatsby Site With Portfolio Minimal
+### Set up A New Gatsby Site With Portfolio Minimal
 
-If you are creating a new site and want to use the Gatsby Theme Portfolio Minimal, you can use the Gatsby Theme Portfolio Minimal Starter. This will generate a new site that already has the theme pre-configured.
+If you are creating a new site and want to use the Gatsby Theme Portfolio Minimal, you can use the Gatsby Starter Portfolio Minimal Theme. This will generate a new site that already has the theme pre-configured.
 
 1. Install the Gatsby CLI
 
@@ -53,10 +52,11 @@ If you are creating a new site and want to use the Gatsby Theme Portfolio Minima
 3. Once installed, you can begin developing your site.
 
     ```sh
+    cd portfolio-minimal
     gatsby develop
     ```
 
-4. By default, the Portfolio Minimal Starter has a `content` directory at the root of your Gatsby site. There, you can edit the theme settings as well as add content for your sections (e.g. images). To learn more about it, see this section: [Using The Content Directory](#using-the-content-directory)
+4. By default, the Portfolio Minimal Starter has a `content` directory at the root of your Gatsby site. There, you can edit the theme settings as well as add content for your sections. To learn more about it, see this section: [Using The Content Directory](#using-the-content-directory)
 
 ### Add Portfolio Minimal To An Existing Gatsby Site
 
@@ -82,7 +82,7 @@ If you already have a site you’d like to add the theme to, you can install it 
     gatsby develop
     ```
 
-4. By default, this creates a `content` directory at the root of your Gatsby site. There, you can edit the theme settings as well as add content for your sections (e.g. images). To learn more about it, see this section: [Using The Content Directory](#using-the-content-directory)
+4. By default, this creates a `content` directory at the root of your Gatsby site. There, you can edit the theme settings as well as add content for your sections. To learn more about it, see this section: [Using The Content Directory](#using-the-content-directory)
 
 ---
 
@@ -105,7 +105,7 @@ The concept behind themes is easy. You have the theme installed as a npm package
 
     **Note** that the file name will be used as a URL route. So in our example, the page can be requested on the `/first-page` route.
 
-2. Inside `first-page.js`, we create a React component which will be exported by default. The component uses the `Page` and `Seo` elements which are being imported from the `gatsby-theme-portfolio-minimal` package. While the `Page` component is mandatory to construct a page with Portfolio Minimal, `Seo` isn't (but recommended).
+2. Inside `first-page.js`, we create a React component which will be exported by default. The `FirstPage` component uses the `Page` and `Seo` components which are being imported from the `gatsby-theme-portfolio-minimal` package. While the `Page` component is mandatory to construct a page with Portfolio Minimal, `Seo` isn't (but recommended).
 
     ```js
     import { Page, Seo } from 'gatsby-theme-portfolio-minimal';
@@ -125,14 +125,14 @@ The concept behind themes is easy. You have the theme installed as a npm package
 3. Now that we have our basic page layout set up, we can start adding sections to the page. It basically works the same as before: You import components from the `gatsby-theme-portfolio-minimal` package which then can be configured and used in your page.
 
     ```js
-    import { ArticlesSection, Page, Seo } from 'gatsby-theme-portfolio-minimal';
+    import { AboutSection, Page, Seo } from 'gatsby-theme-portfolio-minimal';
 
     export default function FirstPage() {
         return (
             <>
                 <Seo title="FirstPage" />
                 <Page useSplashScreenAnimation>
-                    <ArticlesSection anchor="articles" heading="Latest Articles" sources={['Medium']} />
+                    <AboutSection sectionId="about" heading="About Portfolio Minimal" />
                 </Page>
             </>
         );
@@ -143,229 +143,140 @@ The concept behind themes is easy. You have the theme installed as a npm package
 
 ### Using The Content Directory
 
-Portfolio Minimal aims to separate content from code. That's why most content should live in its own directory. This is, by default, a folder at the root of your site called `content`.
+The theme was designed with the following paradigms in mind:
 
-In the content directory, you have your `settings.json` file which is responsible for configuring global settings for your site as well as content-type-specific folders (by default: `images`, `json`).
+1. **Portfolio Minimal aims to separate content from code.** That's why almost all content should live in its own directory. This is, by default, a folder at the root of your site called `content`. A different root content directory can be specified via `gatsby-config.js`.
 
-#### The settings.json file
+2. **The theme completely capsules all data sourcing for you.** Hence, there is no need to configure any data sources. You just have to place your content files in the right directory and it just works ;)
 
-If you want to learn which settings you can configure, switch to the [Customization](#customization) part of the documentation.
+This is how the content directory is structured:
 
-#### The images Folder
+```sh
+content # can be specified in gatsby-config.js
+    ├── articles # mandatory folder, cannot be renamed
+    ├── images # mandatory folder, cannot be renamed
+    ├── sections # mandatory folder, cannot be renamed
+    └── settings.json # mandatory file, cannot be renamed
+```
 
-If you want to learn more about how to use images with Portfolio Minimal, switch to the [Using Images](#using-images) part of the documentation.
+#### `articles` Folder
 
-#### The json Folder
+This is where all your blog posts live (if you use the blog integration feature). Each blog post should have its own folder. The folder name is then used to derive a proper slug for the URL. More about how to use the blog integration feature can be found here: [Using The Blog Integration Feature](#using-the-blog-integration-feature).
 
-The `json` folder contains all the content that is best stored in a structured format. This content is used in associated section components. Have a look at the table to see which files are used for what:
+#### `images` Folder
 
-| File Name             | Used As Data Source In      | Example                                                                                                                                      |
-| --------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `interests.json`      | InterestsSection            | [Example File](https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/blob/main/example-site/content/json/interests.json)      |
-| `projects.json`       | ProjectsSection             | [Example File](https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/blob/main/example-site/content/json/projects.json)       |
-| `socialProfiles.json` | HeroSection, ContactSection | [Example File](https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/blob/main/example-site/content/json/socialProfiles.json) |
+This is where all your images are being stored. Each image can then be referenced in a content file by specifying the relative path to it. For instance, if you want to use an image inside your `contact.json` file, you can do so by referencing the image file like this: `"src": "../../images/favicon.png"`
 
-### Using Images
+#### `sections` Folder
 
-**_tba_**
+This is where all the content for your sections is primarily stored. Inside the `sections` folder, each section type has its own subfolder and an associated file type (either Markdown or JSON) that is based on the kind of data structure best suited for the section content.
 
-### Using Markdown Content
+```sh
+content
+    └── sections
+    │ └── about
+    │     └── about.md # has to be Markdown
+    │ └── contact
+    │     └── contact.json # has to be JSON
+    │ └── hero
+    │     └── hero.json # has to be JSON
+    │ └── interests
+    │     └── interests.json # has to be JSON
+    │ └── legal
+    │     └── imprint.md # has to be Markdown
+    │ └── projects
+    │     └── projects.json # has to be JSON
+```
 
-Just as we put structured JSON content in our separate content directory, we can do so with text-heavy content too. A simple solution would be to use Markdown for that.
+#### `settings.json` File
 
-To add Markdown content, follow these steps:
+This file stores your global site settings, e.g. toggles for certain features. If you want to learn which settings you can configure, switch to the [Customization](#customization) part of the documentation.
 
-1. Install the required Gatsby plugins to add Markdown as a data source.
+### Using The Blog Integration Feature
 
-    ```sh
-    npm install gatsby-source-filesystem gatsby-transformer-remark
-    ```
+If you want to extend your portfolio site with a blog, you can do so easily with Portfolio Minimal.
 
-2. Add both plugins to your `gatsby-config.js` and configure the source filesystem plugin. The path represents the directory in which your Markdown files are stored. It is recommended to use a folder right next to our other content folders like `json` and `images`.
+1. Enable the blog integration through adding the blog configuration in your `gatsby-config.js`:
 
     ```js
     module.exports = {
         plugins: [
             {
-                resolve: `gatsby-source-filesystem`,
+                resolve: 'gatsby-theme-portfolio-minimal',
                 options: {
-                    path: `${__dirname}/content/markdown`,
-                    name: `markdown`,
+                    blogSettings: {
+                        path: '/blog',
+                        usePathPrefixForArticles: false,
+                    },
                 },
             },
-            `gatsby-transformer-remark`,
         ],
     };
     ```
 
-3. Next, we can create our first Markdown file, e.g. an `about.md` file for the About Me text.
+2. Inside the `articles` folder of your content directory, create a new folder to add your first article. The folder name will be used for generating the URL slug of the article.
+
+    ```sh
+    content
+        └── articles
+        │ └── my-first-article
+    ```
+
+3. Inside the `my-first-article` folder, create a Markdown file with the following shape.
 
     ```md
-    **Portfolio Minimal** is a Gatsby Theme that creates outstanding one-pages portfolio within minutes!
+    ---
+    title: 'This is an exemplary article for the blog.'
+    description: 'This description will be used for the article listing and search results on Google.'
+    date: '2021-05-28'
+    banner:
+        src: '../../images/kelly-sikkema-Hl3LUdyKRic-unsplash.jpg'
+        alt: 'First Markdown Post'
+        caption: 'Photo by <u><a href="https://example.com">Example</a></u>'
+    categories:
+        - 'Setup'
+    keywords:
+        - 'Example'
+        - 'Gatsby'
+    ---
+
+    This will be the actual content of the article.
     ```
 
-4. To use and display the file contents, we need to write a GraphQL pageQuery that loads the content from the Markdown file and passes it as a prop called `data` to our page component. From it, we can extract the HTML we need for our AboutSection component.
+4. Start the development server and you will see that two pages are being creating during the build process.
 
-    ```js
-    import React from 'react';
-    import { graphql } from 'gatsby';
-    import { AboutSection, Page, Seo } from 'gatsby-theme-portfolio-minimal';
+    - `https://yoursite.com/blog`: This is the article listing page containing all your posts.
+    - `https://yoursite.com/my-first-article`: This is the page for the article you added through your Markdown file.
 
-    export default function IndexPage({ data }) {
-        return (
-            <>
-                <Seo title="Gatsby Theme Portfolio Minimal" />
-                <Page useSplashScreenAnimation>
-                    <AboutSection
-                        anchor="about"
-                        heading="About Portfolio Minimal"
-                        htmlDescription={data.aboutSection.edges[0].node.html}
-                        imageFileName="charles-deluvio-DgoyKNgPiFQ-unsplash.jpg"
-                    />
-                </Page>
-            </>
-        );
-    }
+### Using Sections And Other Theme Components
 
-    export const pageQuery = graphql`
-        query AboutSection {
-            aboutSection: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/about.md/" } }) {
-                edges {
-                    node {
-                        html
-                    }
-                }
-            }
-        }
-    `;
-    ```
+The theme exposes sections and other components as building blocks to construct your page easily.
 
-If you want to learn more about using Gatsby with Markdown, check out the docs: [How To Use Gatsby With Markdown](https://www.gatsbyjs.com/guides/markdown/).
+#### Section Components
 
-### Theme Components
+Most section components work the following way: You import and configure the component inside your page file and add the associated content in the correct content directory path.
 
-Portfolio Minimal provides several components which you can use to build your individual portfolio site. In general, we can differentiate between layout components, metadata components, and section components.
+The following table shows which section components are available and how they can be configured.
 
-**Layout Components**
+| Section Component  | Available Props                                       | Associated Content File                               |
+| ------------------ | ----------------------------------------------------- | ----------------------------------------------------- |
+| `AboutSection`     | `sectionId` _(required)_ <br/> `heading` _(optional)_ | `*contentRootDir*/sections/about/*yourFile*.md`       |
+| `ContactSection`   | `sectionId` _(required)_ <br/> `heading` _(optional)_ | `*contentRootDir*/sections/contact/*yourFile*.json`   |
+| `HeroSection`      | `sectionId` _(required)_                              | `*contentRootDir*/sections/hero/*yourFile*.json`      |
+| `InterestsSection` | `sectionId` _(required)_ <br/> `heading` _(optional)_ | `*contentRootDir*/sections/interests/*yourFile*.json` |
+| `LegalSection`     | `sectionId` _(required)_ <br/> `heading` _(optional)_ | `*contentRootDir*/sections/legal/*yourFile*.md`       |
+| `ProjectsSection`  | `sectionId` _(required)_ <br/> `heading` _(optional)_ | `*contentRootDir*/sections/projects/*yourFile*.json`  |
 
-1. [`<Page />`](#page-component)
+#### Utility Components
 
-**Metadata Components**
+There are other components which help you in constructing and enriching pages.
 
-1. [`<Seo />`](#seo-component)
+The following table shows which utility components are available and how they can be configured.
 
-**Section Components**
-
-1. [`<AboutSection />`](#aboutsection-component)
-2. [`<ArticlesSection />`](#articlessection-component)
-3. [`<ContactSection />`](#contactsection-component)
-4. [`<HeroSection />`](#herosection-component)
-5. [`<InterestsSection />`](#interestssection-component)
-6. [`<LegalSection />`](#legalsection-component)
-7. [`<ProjectsSection />`](#projectssection-component)
-
-#### Page Component
-
-The Page component is mandatory to construct a page. It provides the basic layout as well as header and footer. You can use it to wrap your page content within.
-
-| Available Props          | Type                 | Default | Description                                                             |
-| ------------------------ | -------------------- | ------- | ----------------------------------------------------------------------- |
-| useSplashScreenAnimation | boolean _(optional)_ | `false` | Whether or not the page should use the splash screen animation sequence |
-
-#### Seo Component
-
-The Seo component can be used to enrich your page with SEO metadata, such as title, description, etc. It is recommended to include a Seo component on each page.
-
-| Available Props  | Type                 | Default | Description                                                                                          |
-| ---------------- | -------------------- | ------- | ---------------------------------------------------------------------------------------------------- |
-| title            | string _(required)_  | -       | Defines the SEO title                                                                                |
-| useTitleTemplate | boolean _(optional)_ | `false` | Whether or not the title template defined from settings.json should be used to construct a SEO title |
-| description      | string _(optional)_  | -       | Defines the SEO description                                                                          |
-| noIndex          | boolean _(optional)_ | `false` | Whether or not the page should be indexed by search engines                                          |
-
-#### AboutSection Component
-
-The AboutSection component can be used to display a descriptive text in combination with an image.
-
-| Available Props | Type                | Default | Description                                                                                                                                                                                          |
-| --------------- | ------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| anchor          | string _(required)_ | -       | Defines the anchor tag for the section. If you want to use a link to the section in your navigation, this anchor tag should be used. **Note:** The anchor should be defined without a preceding `#`. |
-| heading         | string _(optional)_ | -       | Defines the heading of the section.                                                                                                                                                                  |
-| htmlDescription | string _(required)_ | -       | Defines the descriptive text of the section. HTML tags can be used.                                                                                                                                  |
-| imageFileName   | string _(required)_ | -       | File name for the image that should be displayed. The image must be stored in the `images` folder within your content directory.                                                                     |
-
-#### ArticlesSection Component
-
-The ArticlesSection component can be used to display your latest articles as linked cards. Currently, it is only possible to use Medium as a source for articles.
-
-| Available Props | Type                  | Default | Description                                                                                                                                                                                          |
-| --------------- | --------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| anchor          | string _(required)_   | -       | Defines the anchor tag for the section. If you want to use a link to the section in your navigation, this anchor tag should be used. **Note:** The anchor should be defined without a preceding `#`. |
-| heading         | string _(optional)_   | -       | Defines the heading of the section.                                                                                                                                                                  |
-| sources         | string[] _(required)_ | -       | Defines which sources should be used to collect your latest articles from. Available sources: `"Medium"`                                                                                             |
-| maxArticles     | number _(optional)_   | `3`     | Defines how many articles should be displayed at most.                                                                                                                                               |
-
-#### ContactSection Component
-
-The ContactSection component can be used to display your contact details in combination with a profile image.
-
-| Available Props | Type                  | Default | Description                                                                                                                                                                                                                       |
-| --------------- | --------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| anchor          | string _(required)_   | -       | Defines the anchor tag for the section. If you want to use a link to the section in your navigation, this anchor tag should be used. **Note:** The anchor should be defined without a preceding `#`.                              |
-| heading         | string _(optional)_   | -       | Defines the heading of the section.                                                                                                                                                                                               |
-| description     | string _(optional)_   | -       | Defines the descriptive text between heading and contact details.                                                                                                                                                                 |
-| imageFileName   | string _(required)_   | -       | File name for your profile image. The image must be stored in the `images` folder within your content directory.                                                                                                                  |
-| name            | string _(required)_   | -       | Defines your name that should be displayed in the contact details.                                                                                                                                                                |
-| email           | string _(required)_   | -       | Defines your email address that should be displayed in the contact details.                                                                                                                                                       |
-| socialProfiles  | string[] _(optional)_ | -       | Defines which social profiles should be displayed in the contact details. Each entry of the array must have an associated profile in socialProfiles.json. Available profiles: `"Mail", "LinkedIn", "Github", "Behance", "Medium"` |
-
-#### HeroSection Component
-
-The HeroSection component is intended to be used as the very first section of your page. It displays a short summary what your portfolio is all about.
-
-| Available Props           | Type                  | Default | Description                                                                                                                                                                                                                      |
-| ------------------------- | --------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| anchor                    | string _(required)_   | -       | Defines the anchor tag for the section. If you want to use a link to the section in your navigation, this anchor tag should be used. **Note:** The anchor should be defined without a preceding `#`.                             |
-| content.iconPrefixText    | string _(optional)_   | -       | Defines the text left to the emoji / icon (e.g. used for a greeting).                                                                                                                                                            |
-| content.iconFileName      | string _(optional)_   | -       | File name for your emoji / icon. The image file must be stored in the `images` folder within your content directory.                                                                                                             |
-| content.title             | string _(required)_   | -       | Defines the title text (e.g. who are you?)                                                                                                                                                                                       |
-| content.subtitlePrefix    | string _(required)_   | -       | Defines the first part of the subtitle.                                                                                                                                                                                          |
-| content.subtitleHighlight | string _(required)_   | -       | Defines the highlighted part of the subtitle.                                                                                                                                                                                    |
-| content.subtitleSuffix    | string _(required)_   | -       | Defines the last part of the subtitle.                                                                                                                                                                                           |
-| content.description       | string _(optional)_   | -       | Defines a descriptive text below the subtitle.                                                                                                                                                                                   |
-| content.socialProfiles    | string[] _(optional)_ | -       | Defines which social profiles should be displayed below the description. Each entry of the array must have an associated profile in socialProfiles.json. Available profiles: `"Mail", "LinkedIn", "Github", "Behance", "Medium"` |
-
-#### InterestsSection Component
-
-The InterestsSection component can be used to display several topics you are interested in or are interesting for the reader. It uses a list of interests that are stored in interests.json.
-
-| Available Props | Type                | Default | Description                                                                                                                                                                                          |
-| --------------- | ------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| anchor          | string _(required)_ | -       | Defines the anchor tag for the section. If you want to use a link to the section in your navigation, this anchor tag should be used. **Note:** The anchor should be defined without a preceding `#`. |
-| heading         | string _(optional)_ | -       | Defines the heading of the section.                                                                                                                                                                  |
-| initiallyShown  | number _(optional)_ | -       | Defines how many items should be initially visible. If there are more items than the number of initially shown, a "Show More" button is displayed.                                                   |
-
-#### LegalSection Component
-
-The LegalSection component can be used to display long texts (e.g. imprint, privacy policy) in a well formatted manner.
-
-| Available Props | Type                | Default | Description                                                                                                                                                                                          |
-| --------------- | ------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| anchor          | string _(required)_ | -       | Defines the anchor tag for the section. If you want to use a link to the section in your navigation, this anchor tag should be used. **Note:** The anchor should be defined without a preceding `#`. |
-| heading         | string _(optional)_ | -       | Defines the heading of the section.                                                                                                                                                                  |
-| htmlContent     | string _(required)_ | -       | Defines the content of the page. HTML tags can be used.                                                                                                                                              |
-
-#### ProjectsSection Component
-
-The ProjectsSection component can be used to display several projects / features with an image, a description, and external links. Each project must be defined in projects.json.
-
-| Available Props | Type                | Default | Description                                                                                                                                                                                          |
-| --------------- | ------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| anchor          | string _(required)_ | -       | Defines the anchor tag for the section. If you want to use a link to the section in your navigation, this anchor tag should be used. **Note:** The anchor should be defined without a preceding `#`. |
-| heading         | string _(optional)_ | -       | Defines the heading of the section.                                                                                                                                                                  |
-| maxProjects     | number _(optional)_ | `4`     | Defines how many projects should be displayed the most.                                                                                                                                              |
-| button.label    | string _(optional)_ | -       | Defines the label of the button that is displayed below the projects.                                                                                                                                |
-| button.url      | string _(optional)_ | -       | Defines the url of the button that is displayed below the projects.                                                                                                                                  |
+| Utility Component | Available Props                                                                                                          | Description                                                          |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `Page`            | `useSplashScreenAnimation` _(optional)_                                                                                  | Mandatory component to construct a page with a proper layout.        |
+| `Seo`             | `title` _(required)_ <br/> `useTitleTemplate` _(optional)_ <br/> `description` _(optional)_ <br/> `noIndex` _(optional)_ | Optional, yet recommended, component to enrich a page with SEO data. |
 
 ---
 
@@ -375,46 +286,58 @@ I tried to leave as much configuration as possible to you as a developer. This a
 
 ### Configuring the Theme Settings
 
-The theme settings can be divided in two parts. There is a `settings.json` file inside the content directory which is the main spot to configure your site. Also, you can set some settings for the theme inside your `gatsby-config.js`. These options are used to configure some plugins which Portfolio Minimal uses under the hood.
+The theme settings can be divided in two parts. There is a `settings.json` file inside the content directory. Also, you can set settings for the theme inside your `gatsby-config.js`.
 
 #### Configuring `settings.json`
 
-```json
+`settings.json` can be understood as your global site settings. The configuration option inside are primarily used to specify how your layout should look like and which functionality you want to use.
+
+```js
 {
     "siteMetadata": {
-        "title": "Gatsby Theme Portfolio Minimal",
-        "titleTemplate": "%s · A Gatsby Theme",
-        "description": "A Gatsby Theme to create a clean one-page portfolio with Markdown content.",
-        "author": "Konstantin Münster",
-        "siteUrl": "https://example.com",
-        "language": "en"
+        "language": "en", // Site language for SEO
+        "siteUrl": "", // Site URL for SEO
+        "title": "", // Default SEO title
+        "titleTemplate": "%s · Portfolio", // SEO Title title (%s will be replaced by title of page)
+        "description": "", // Default SEO description
+        "author": "", // Author's name for blog article footer
+        "avatar": "", // Author's avatar for blog article footer
+        "bio": "", // Author's biography for blog article footer
+        "social": { // Social Profiles for various features
+            "behance": "",
+            "github": "",
+            "medium": "",
+            "linkedin": "",
+            "mail": ""
+        }
     },
-    "logo": { "text": "Gatsby" },
-    "navigation": {
-        "header": [
-            { "displayName": "About", "url": "/#about" },
-            { "displayName": "Features", "url": "/#features" },
-            { "displayName": "Github", "url": "/#github" }
-        ],
-        "ctaButton": {
-            "openNewTab": true,
-            "displayName": "Resume",
-            "url": "/resume.pdf"
+    "siteConfiguration": {
+        "logo": { "text": "" }, // Site logo
+        "navigation": {
+            "header": [
+                { "label": "About", "url": "/#about" },
+                { "label": "Blog", "url": "/blog" },
+                { "label": "Features", "url": "/#features" },
+                { "label": "Github", "url": "/#github" }
+            ],
+            "ctaButton": { "openNewTab": true, "label": "Resume", "url": "/resume.pdf" },
+            "footer": [
+                { "label": "Privacy", "url": "/privacy" },
+                { "label": "Imprint", "url": "/imprint" }
+            ]
         },
-        "footer": [
-            { "displayName": "Privacy", "url": "/privacy" },
-            { "displayName": "Imprint", "url": "/imprint" }
-        ]
-    },
-    "featureToggles": {
-        "useDarkModeAsDefault": false,
-        "useDarkModeBasedOnUsersPreference": true,
-        "useCookieBar": false
+        "featureToggles": {
+            "useDarkModeAsDefault": false,
+            "useDarkModeBasedOnUsersPreference": true,
+            "useCookieBar": false
+        }
     }
 }
 ```
 
 #### Configuring `gatsby-config.js`
+
+When adding the `gatsby-theme-portfolio-minimal` package to the array of plugins, you can specify numerous options to adjust the functionality to your needs.
 
 ```js
 module.exports = {
@@ -422,20 +345,27 @@ module.exports = {
         {
             resolve: 'gatsby-theme-portfolio-minimal',
             options: {
-                favicon: '', // e.g. "./content/favicon.png"
-                siteUrl: 'https://example.com', // Used for sitemap generation
+                siteUrl: '', // Used for sitemap generation
                 manifestSettings: {
-                    siteName: 'My Minimal Portfolio', // Used in manifest.json
-                    shortName: 'Portfolio', // Used in manifest.json
-                    startUrl: '/', // Used in manifest.json
-                    backgroundColor: '#FFFFFF', // Used in manifest.json
-                    themeColor: '#000000', // Used in manifest.json
-                    display: 'minimal-ui', // Used in manifest.json
+                    favicon: '', // Path is relative to the root
+                    siteName: '', // Used in manifest.json
+                    shortName: '', // Used in manifest.json
+                    startUrl: '', // Used in manifest.json
+                    backgroundColor: '', // Used in manifest.json
+                    themeColor: '', // Used in manifest.json
+                    display: '', // Used in manifest.json
+                },
+                contentDirectory: '', // Specifies the root content directory path
+                blogSettings: {
+                    // If set, the blog integration is enabled
+                    path: '', // Defines the slug for the blog listing page
+                    usePathPrefixForArticles: false, // Default true (i.e. path will be /blog/first-article)
                 },
                 googleAnalytics: {
-                    trackingId: 'UA-XXXXXX-X',
-                    anonymize: true, // Default true
-                    environments: ['production', 'development'], // Default ["production"]
+                    // If set, the Google Analytics integration is enabled
+                    trackingId: '', // e.g. UA-XXXXXX-X
+                    anonymize: true, // Default is true
+                    environments: [], // Default ["production"]
                 },
             },
         },
