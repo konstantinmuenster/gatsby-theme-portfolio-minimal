@@ -40,6 +40,14 @@ module.exports = (options) => ({
                   },
               }
             : null,
+        options.plausibleAnalytics
+            ? {
+                  resolve: `gatsby-plugin-plausible`,
+                  options: {
+                      domain: options.plausibleAnalytics.domain,
+                  },
+              }
+            : null,
         options.googleAnalytics
             ? {
                   resolve: `gatsby-plugin-gdpr-cookies`,
