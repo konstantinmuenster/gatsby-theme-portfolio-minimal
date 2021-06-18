@@ -89,6 +89,9 @@
         "animations",
         "dark-mode",
         "blog",
+        "tracking",
+        "google-analytics",
+        "plausible.io",
         "gdpr-compliant"
     ]
 }

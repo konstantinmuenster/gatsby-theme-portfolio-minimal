@@ -361,6 +361,10 @@ module.exports = {
                     path: '', // Defines the slug for the blog listing page
                     usePathPrefixForArticles: false, // Default true (i.e. path will be /blog/first-article)
                 },
+                plausibleAnalytics: {
+                    // If set, the Plausible.io analytics integration is enabled
+                    domain: 'example.com',
+                },
                 googleAnalytics: {
                     // If set, the Google Analytics integration is enabled
                     trackingId: '', // e.g. UA-XXXXXX-X
