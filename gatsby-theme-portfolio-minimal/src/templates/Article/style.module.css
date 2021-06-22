@@ -1,3 +1,26 @@
+.Breadcrumb {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+    background-color: var(--subtext-color);
+    border-radius: var(--border-radius);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.Breadcrumb a {
+    letter-spacing: +1px;
+}
+
+.Breadcrumb a,
+.Breadcrumb span {
+    color: var(--background-color);
+}
+
+.Breadcrumb span {
+    margin-right: 0.25rem;
+}
+
 .Article {
     width: 100%;
     height: 100%;

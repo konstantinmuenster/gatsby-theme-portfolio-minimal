@@ -32,6 +32,7 @@ module.exports = async ({ graphql, actions, reporter }, options) => {
             component: path.resolve(templateDir, 'Article', 'index.tsx'),
             context: {
                 article: article,
+                listingPagePath: articleListingPageSlug,
             },
         });
     });

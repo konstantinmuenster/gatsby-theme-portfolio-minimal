@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Page } from '../../components/Page';
 import { Seo } from '../../components/Seo';
@@ -9,6 +10,7 @@ import * as classes from './style.module.css';
 interface ArticleTemplateProps {
     pageContext: {
         article: ArticleTemplateData;
+        listingPagePath: string;
     };
 }
 
@@ -19,6 +21,12 @@ export default function ArticleTemplate(props: ArticleTemplateProps): React.Reac
             <Seo title={article.title} description={article.description || undefined} useTitleTemplate={true} />
             <Page>
                 <article className={classes.Article}>
+                    <div className={classes.Breadcrumb}>
+                        <Link to={props.pageContext.listingPagePath} title="Back To Article Listing">
+                            <span className={classes.BackArrow}>&#10094;</span>
+                            All Articles
+                        </Link>
+                    </div>
                     <section className={classes.Header}>
                         <span className={classes.Category}>{article.categories.join(' / ')}</span>
                         <h1>{article.title}</h1>
