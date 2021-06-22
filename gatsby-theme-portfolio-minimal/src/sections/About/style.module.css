@@ -28,6 +28,7 @@
     }
     .About .Description {
         margin-bottom: 0;
+        margin-right: 3rem;
     }
     .About .ImageWrapper {
         margin-top: -2rem;
