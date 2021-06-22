@@ -13,11 +13,11 @@
 }
 
 .Breadcrumb a,
-.Breadcrumb span {
+.Breadcrumb .BackArrow {
     color: var(--background-color);
 }
 
-.Breadcrumb span {
+.Breadcrumb .BackArrow {
     margin-right: 0.25rem;
 }
 
