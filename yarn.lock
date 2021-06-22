@@ -6691,7 +6691,7 @@ gatsby-plugin-gdpr-cookies@^1.0.14:
     minimist "^1.2.5"
     universal-cookie "^4.0.4"
 
-gatsby-plugin-image@^1.5.0:
+gatsby-plugin-image@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-1.7.1.tgz#07d8f14b9c37b294a38d4151dbf80e21cfaabaff"
   integrity sha512-1wUgNNc4e1ySNaDgH3yEs6HYZ8W4s0IAFU945SQtASknrR9o69WpeWPBllQwDrlq/1jlzetMTCiMISHvc7aqqQ==
@@ -6759,7 +6759,7 @@ gatsby-plugin-robots-txt@^1.5.5:
     "@babel/runtime" "^7.11.2"
     generate-robotstxt "^8.0.3"
 
-gatsby-plugin-sharp@^3.5.0:
+gatsby-plugin-sharp@^3.7.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-3.7.1.tgz#4ed5aab484f2eeb8115923127a363e1ab56ff32e"
   integrity sha512-rwtXrGIZ/Tsf8JgxHcEa82lTYMMZL4KUgbEgQ/OMXuMWcvyTeh4pJAwTNk/rxOS8yyVlCY1TiWO0/I65W4osJA==
@@ -6962,7 +6962,7 @@ gatsby-transformer-remark@^4.2.0:
     unist-util-select "^3.0.4"
     unist-util-visit "^2.0.3"
 
-gatsby-transformer-sharp@^3.5.0:
+gatsby-transformer-sharp@^3.7.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-3.7.1.tgz#c1458a056dc9a8e27a556f29a176b8cb422e2282"
   integrity sha512-Q+/X8sbVpabJz4G+V4aMt0f7XlB5lsPfM3zYUkb9ns4c+soN+qPMqZRiaKqoLb7hXG9Bs48EV8mJXeWc4w+xOA==
