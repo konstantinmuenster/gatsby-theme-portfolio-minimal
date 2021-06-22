@@ -11,6 +11,7 @@ export interface ArticleCard {
     category: string;
     title: string;
     publishedAt: Date;
+    readingTime?: string;
     link: string;
 }
 
@@ -48,7 +49,10 @@ export function ArticleCard(props: ArticleCardProps): React.ReactElement {
                     <u>{props.data.category}</u>
                 </span>
                 <h4 className={classes.Title}>{props.data.title}</h4>
-                <span className={classes.Date}>{formatDate(props.data.publishedAt)}</span>
+                <div className={classes.Details}>
+                    {formatDate(props.data.publishedAt)}
+                    {props.data.readingTime && <span className={classes.ReadingTime}>{props.data.readingTime}</span>}
+                </div>
             </div>
         </article>
     );

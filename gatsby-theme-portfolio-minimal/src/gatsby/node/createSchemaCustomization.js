@@ -90,6 +90,12 @@ module.exports = ({ actions }) => {
         navigation: Navigation
         featureToggles: FeatureToggles
     }
+    type ReadingTimeStats {
+        text: String
+        minutes: Int
+        time: Int
+        words: Int
+    }
     interface Article implements Node {
         id: ID!
         slug: String!
@@ -100,6 +106,7 @@ module.exports = ({ actions }) => {
         banner: BannerImage
         categories: [String!]!
         keywords: [String!]
+        readingTime: ReadingTimeStats
     }
     type ArticleMarkdown implements Node & Article @dontInfer @childOf(type: "MarkdownRemark") {
         id: ID!
@@ -111,6 +118,7 @@ module.exports = ({ actions }) => {
         banner: BannerImage
         categories: [String!]!
         keywords: [String!]
+        readingTime: ReadingTimeStats
     }
     type MarkdownRemarkFrontmatter {
         imageSrc: File @fileByRelativePath

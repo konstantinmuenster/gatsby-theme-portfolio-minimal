@@ -56,8 +56,17 @@
     font-weight: 400;
 }
 
-.Card .Date {
+.Card .Details {
     font-size: 0.75rem;
     color: var(--subtext-color);
     letter-spacing: +0.5px;
+}
+
+.Card .ReadingTime {
+    margin-left: 0.25rem;
+}
+
+.Card .ReadingTime::before {
+    content: '–';
+    margin-right: 0.25rem;
 }

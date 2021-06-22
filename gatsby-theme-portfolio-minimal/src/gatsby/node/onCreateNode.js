@@ -1,5 +1,6 @@
 const path = require('path');
 const slugify = require('slugify');
+const readingTime = require('reading-time');
 const { createFilePath } = require('gatsby-source-filesystem');
 
 module.exports = ({ node, getNode, actions, createNodeId, reporter }, options) => {
@@ -25,6 +26,7 @@ module.exports = ({ node, getNode, actions, createNodeId, reporter }, options) =
                 date: articleNode.frontmatter.date,
                 categories: articleNode.frontmatter.categories,
                 keywords: articleNode.frontmatter.keywords,
+                readingTime: readingTime(articleNode.rawMarkdownBody),
                 banner:
                     articleNode.frontmatter.banner !== undefined
                         ? {

@@ -18,6 +18,9 @@ export interface ArticleTemplateData {
     };
     categories: string[];
     keywords: string[] | null;
+    readingTime: {
+        text: string;
+    };
     body: string;
 }
 

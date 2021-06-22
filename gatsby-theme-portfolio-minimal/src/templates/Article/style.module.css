@@ -45,10 +45,18 @@
     color: var(--subtext-color);
 }
 
-.Article .Date {
-    display: inline;
+.Article .Details {
     font-size: 0.875rem;
     letter-spacing: +0.5px;
+}
+
+.Article .ReadingTime {
+    margin-left: 0.5rem;
+}
+
+.Article .ReadingTime::before {
+    content: '–';
+    margin-right: 0.5rem;
 }
 
 .Article .BannerImage {

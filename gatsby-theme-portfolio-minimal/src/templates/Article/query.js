@@ -20,6 +20,9 @@ module.exports = {
                     keywords
                     slug
                     title
+                    readingTime {
+                        text
+                      }
                 }
             }
         }  

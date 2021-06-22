@@ -95,6 +95,7 @@ export default function ArticleListingTemplate(props: ArticleListingTemplateProp
                                             category: article.categories.join(' / '),
                                             publishedAt: new Date(article.date.replace(/-/g, '/')),
                                             link: article.slug,
+                                            readingTime: article.readingTime.text,
                                         }}
                                     />
                                 );

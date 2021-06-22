@@ -30,7 +30,10 @@ export default function ArticleTemplate(props: ArticleTemplateProps): React.Reac
                     <section className={classes.Header}>
                         <span className={classes.Category}>{article.categories.join(' / ')}</span>
                         <h1>{article.title}</h1>
-                        <span className={classes.Date}>Published at {article.date}</span>
+                        <div className={classes.Details}>
+                            {article.date}
+                            <span className={classes.ReadingTime}>{article.readingTime.text}</span>
+                        </div>
                     </section>
                     {article.banner && article.banner.src && (
                         <section className={classes.Banner}>
