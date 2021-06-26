@@ -1,13 +1,13 @@
 import React from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Section } from '../../components/Section';
 import { Slider } from '../../components/Slider';
 import { ArticleCard, ArticleCardSkeleton } from '../../components/ArticleCard';
-import { useGlobalState } from '../../context';
 import { useSiteMetadata } from '../../hooks/useSiteMetadata';
 import { useMediumFeed } from './data';
 import { PageSection } from '../../types';
 import * as classes from './style.module.css';
+import { RevealSensor } from '../../components/RevealSensor';
 
 enum ArticleSource {
     Medium = 'medium',
@@ -24,9 +24,7 @@ interface ArticlesSectionProps extends PageSection {
 }
 
 export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement {
-    const { globalState } = useGlobalState();
     const [articles, setArticles] = React.useState<ArticleCard[]>([]);
-    const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
 
     const configuration = validateAndConfigureSources(props.sources);
 
@@ -52,38 +50,41 @@ export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement
     }
 
     const AnimatedSection = motion(Section);
-    const sectionControls = useAnimation();
-    async function animateSection(): Promise<void> {
-        await sectionControls.start({ opacity: 1, y: 0, transition: { delay: 1 } });
-        setSectionRevealed(true);
-    }
+    const variants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { delay: 1 } },
+    };
 
     React.useEffect(() => {
-        if (globalState.splashScreenDone) {
-            (async function () {
-                await animateSection();
-                setArticles(await collectArticlesFromSources(configuration));
-            })();
-        }
-    }, [globalState.splashScreenDone]);
+        (async function () {
+            setArticles(await collectArticlesFromSources(configuration));
+        })();
+    }, []);
 
     return (
-        <AnimatedSection
-            anchor={props.sectionId}
-            heading={props.heading}
-            initial={!sectionRevealed ? { opacity: 0, y: 20 } : undefined}
-            animate={sectionControls}
-        >
-            <Slider additionalClasses={[classes.Articles]}>
-                {articles.length > 0
-                    ? articles.slice(0, 3).map((article, key) => {
-                          return <ArticleCard key={key} data={article} />;
-                      })
-                    : [...Array(3)].map((skeleton, key) => {
-                          return <ArticleCardSkeleton key={key} />;
-                      })}
-            </Slider>
-        </AnimatedSection>
+        <RevealSensor once={true}>
+            {(isVisible) => {
+                return (
+                    <AnimatedSection
+                        anchor={props.sectionId}
+                        heading={props.heading}
+                        initial={variants.hidden}
+                        animate={isVisible ? 'visible' : 'hidden'}
+                        variants={variants}
+                    >
+                        <Slider additionalClasses={[classes.Articles]}>
+                            {articles.length > 0
+                                ? articles.slice(0, 3).map((article, key) => {
+                                      return <ArticleCard key={key} data={article} />;
+                                  })
+                                : [...Array(3)].map((skeleton, key) => {
+                                      return <ArticleCardSkeleton key={key} />;
+                                  })}
+                        </Slider>
+                    </AnimatedSection>
+                );
+            }}
+        </RevealSensor>
     );
 }
 

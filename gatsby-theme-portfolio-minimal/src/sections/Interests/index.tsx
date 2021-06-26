@@ -1,10 +1,10 @@
 import React from 'react';
-import VisibilitySensor from 'react-visibility-sensor';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Section } from '../../components/Section';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Slider } from '../../components/Slider';
 import { Button, ButtonType } from '../../components/Button';
+import { RevealSensor } from '../../components/RevealSensor';
 import { PageSection } from '../../types';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useLocalDataSource } from './data';
@@ -17,81 +17,80 @@ export function InterestsSection(props: PageSection): React.ReactElement {
 
     const isDesktopBreakpoint = useMediaQuery('(min-width: 992px)');
 
-    const [sectionRevealed, setSectionRevealed] = React.useState<boolean>(false);
-
-    // Reveal section when at least 100px of the section is in viewport
-    // Then, reveal interests sequentially
-    const AnimatedSection = motion(Section);
-    const sectionControls = useAnimation();
-    const interestControls = useAnimation();
-    const buttonControls = useAnimation();
-    async function animateSection(isVisible: boolean): Promise<void> {
-        if (isVisible) {
-            await sectionControls.start({ opacity: 1, y: 0 });
-            await interestControls.start((index: number) => {
-                // We use the index of the interest to stagger
-                // the animation of each interest
-                return {
-                    opacity: 1,
-                    scaleY: 1,
-                    transition: { delay: index * 0.1 },
-                };
-            });
-            await buttonControls.start({ opacity: 1, scaleY: 1 });
-            setSectionRevealed(true);
-        }
-    }
-
     function loadMoreHandler() {
         setShownInterests(data.interests.length);
     }
 
+    const AnimatedSection = motion(Section);
+    const wrapperVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { when: 'beforeChildren', staggerChildren: 0.1 } },
+    };
+    const itemVariants = {
+        hidden: { opacity: 0, scaleY: 0 },
+        visible: { opacity: 1, scaleY: 1 },
+    };
+
     return (
-        <VisibilitySensor onChange={animateSection} partialVisibility={true} minTopValue={100}>
-            <AnimatedSection
-                anchor={props.sectionId}
-                heading={props.heading}
-                initial={!sectionRevealed ? { opacity: 0, y: 20 } : undefined}
-                animate={sectionControls}
-            >
-                <Slider
-                    additionalClasses={[classes.Interests]}
-                    style={
-                        isDesktopBreakpoint
-                            ? { gridTemplateColumns: `repeat(3, var(--interest-width))` }
-                            : { gridTemplateColumns: `repeat(${data.interests.length + 1}, var(--interest-width))` }
-                    }
-                >
-                    {data.interests.slice(0, shownInterests).map((interest, key) => {
-                        return (
-                            <motion.div
-                                key={key}
-                                className={classes.Interest}
-                                custom={key}
-                                initial={!sectionRevealed ? { opacity: 0, scaleY: 0 } : undefined}
-                                animate={interestControls}
-                            >
-                                {interest.image.src && (
-                                    <GatsbyImage
-                                        image={interest.image.src.childImageSharp.gatsbyImageData}
-                                        className={classes.Icon}
-                                        alt={interest.image.alt || `Interest ${interest.label}`}
-                                    />
-                                )}{' '}
-                                {interest.label}
-                            </motion.div>
-                        );
-                    })}
-                    {shownInterests < data.interests.length && (
-                        <motion.div
-                            initial={!sectionRevealed ? { opacity: 0, scaleY: 0 } : undefined}
-                            animate={buttonControls}
+        <RevealSensor once={true}>
+            {(isVisible) => {
+                return (
+                    <AnimatedSection
+                        anchor={props.sectionId}
+                        heading={props.heading}
+                        initial={isVisible ? wrapperVariants.visible : wrapperVariants.hidden}
+                        animate={isVisible ? 'visible' : 'hidden'}
+                        variants={wrapperVariants}
+                    >
+                        <Slider
+                            additionalClasses={[classes.Interests]}
+                            style={
+                                isDesktopBreakpoint
+                                    ? { gridTemplateColumns: `repeat(3, var(--interest-width))` }
+                                    : {
+                                          gridTemplateColumns: `repeat(${
+                                              data.interests.length + 1
+                                          }, var(--interest-width))`,
+                                      }
+                            }
                         >
-                            <Button type={ButtonType.BUTTON} onClickHandler={loadMoreHandler} label="+ Load more" />
-                        </motion.div>
-                    )}
-                </Slider>
-            </AnimatedSection>
-        </VisibilitySensor>
+                            {data.interests.slice(0, shownInterests).map((interest, key) => {
+                                return (
+                                    <motion.div
+                                        key={key}
+                                        className={classes.Interest}
+                                        custom={key}
+                                        initial={itemVariants.hidden}
+                                        variants={itemVariants}
+                                    >
+                                        {interest.image.src && (
+                                            <GatsbyImage
+                                                image={interest.image.src.childImageSharp.gatsbyImageData}
+                                                className={classes.Icon}
+                                                alt={interest.image.alt || `Interest ${interest.label}`}
+                                            />
+                                        )}{' '}
+                                        {interest.label}
+                                    </motion.div>
+                                );
+                            })}
+                            {shownInterests < data.interests.length && (
+                                <motion.div
+                                    custom={data.interests.length + 1}
+                                    initial={itemVariants.hidden}
+                                    variants={itemVariants}
+                                >
+                                    <Button
+                                        type={ButtonType.BUTTON}
+                                        onClickHandler={loadMoreHandler}
+                                        label="+ Load more"
+                                    />
+                                </motion.div>
+                            )}
+                        </Slider>
+                    </AnimatedSection>
+                );
+            }}
+        </RevealSensor>
     );
 }
