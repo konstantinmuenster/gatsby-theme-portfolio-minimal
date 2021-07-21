@@ -1,3 +1,5 @@
+import { graphql, useStaticQuery } from 'gatsby';
+
 interface MediumArticle {
     author: string;
     categories: string[];
@@ -12,6 +14,20 @@ interface MediumArticle {
 interface MediumFeedData {
     feed: Record<string, unknown>;
     items: MediumArticle[];
+}
+
+interface ArticlePreviewQueryResult {
+    allArticle: {
+        articles: {
+            categories: string[];
+            date: string;
+            slug: string;
+            title: string;
+            readingTime: {
+                text: string;
+            };
+        }[];
+    };
 }
 
 export async function useMediumFeed(profileUrl: string): Promise<MediumArticle[]> {
@@ -39,3 +55,21 @@ function constructMediumFeedUrl(profileUrl: string): string {
     // Remove trailing slashes from mediumProfile, append /feed, and make it URL friendly
     return RSS_2_JSON_API + encodeURIComponent(profileUrl.replace(/\/+$/, '') + '/feed');
 }
+
+export const useLocalDataSource = (): ArticlePreviewQueryResult => {
+    return useStaticQuery(graphql`
+        query ArticlePreviewQuery {
+            allArticle {
+                articles: nodes {
+                    categories
+                    date(formatString: "YYYY-MM-DD HH:mm:ss")
+                    slug
+                    title
+                    readingTime {
+                        text
+                    }
+                }
+            }
+        }
+    `);
+};
