@@ -1,13 +1,13 @@
 import { Reporter, Actions, Node } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-export interface AllSettingsQueryResult<T> {
+interface AllSettingsQueryResult<T> {
     allSettingsJson: {
         settings: T[];
     };
 }
 
-export interface ImageObject {
+interface ImageObject {
     alt: string | null;
     src: {
         childImageSharp: {
@@ -16,12 +16,12 @@ export interface ImageObject {
     } | null;
 }
 
-export interface PageSection {
+interface PageSection {
     sectionId: string;
     heading?: string;
 }
 
-export interface GatsbyNodeHelpers {
+interface GatsbyNodeHelpers {
     actions: Actions;
     createContentDigest: (input: unknown) => string;
     createNodeId: (input: string) => string;

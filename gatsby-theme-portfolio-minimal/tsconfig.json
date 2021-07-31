@@ -17,6 +17,6 @@
         "jsx": "react-jsx",
         "plugins": [{ "name": "typescript-plugin-css-modules" }]
     },
-    "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+    "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/types.d.ts", "src/globals.d.ts"],
     "exclude": ["node_modules", "build"]
 }
