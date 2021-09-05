@@ -11,6 +11,7 @@ import * as classes from './style.module.css';
 export function HeroSection(props: PageSection): React.ReactElement {
     const response = useLocalDataSource();
     const data = response.allHeroJson.sections[0];
+    const [isAnimationSequenceDone, setIsAnimationSequenceDone] = React.useState<boolean>(false);
 
     const AnimatedSection = motion(Section);
     const textControls = useAnimation();
@@ -19,6 +20,11 @@ export function HeroSection(props: PageSection): React.ReactElement {
     async function animationSequence() {
         await textControls.start({ opacity: 1, y: 0, transition: { delay: 0.4 } });
         await socialProfileControls.start({ opacity: 1, x: 0 });
+
+        // Set this to true here because the icon animation contains no
+        // revealing animation
+        setIsAnimationSequenceDone(true);
+
         await iconControls.start({
             rotate: [0, -10, 12, -10, 9, 0, 0, 0, 0, 0, 0],
             transition: { duration: 2.5, loop: 3, repeatDelay: 1 },
@@ -28,12 +34,12 @@ export function HeroSection(props: PageSection): React.ReactElement {
     return (
         <RevealSensor once={true}>
             {(isVisible) => {
-                if (isVisible) animationSequence();
+                if (isVisible && !isAnimationSequenceDone) animationSequence();
                 return (
                     <AnimatedSection
                         anchor={props.sectionId}
                         additionalClasses={[classes.Hero]}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={!isAnimationSequenceDone ? { opacity: 0, y: 20 } : undefined}
                         animate={textControls}
                     >
                         <div className={classes.Intro}>
@@ -59,7 +65,10 @@ export function HeroSection(props: PageSection): React.ReactElement {
                             {data.subtitle.suffix}
                         </h2>
                         <p>{data.description}</p>
-                        <motion.div initial={{ opacity: 0, x: 20 }} animate={socialProfileControls}>
+                        <motion.div
+                            initial={!isAnimationSequenceDone ? { opacity: 0, x: 20 } : undefined}
+                            animate={socialProfileControls}
+                        >
                             {data.socialProfiles && (
                                 <SocialProfiles
                                     from={data.socialProfiles.from}
