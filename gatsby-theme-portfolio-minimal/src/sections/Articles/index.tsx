@@ -1,12 +1,11 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Animation } from '../../components/Animation';
 import { Section } from '../../components/Section';
 import { Slider } from '../../components/Slider';
 import { ArticleCard, ArticleCardSkeleton } from '../../components/ArticleCard';
 import { useSiteMetadata } from '../../hooks/useSiteMetadata';
 import { useLocalDataSource, useMediumFeed } from './data';
 import { PageSection } from '../../types';
-import { RevealSensor } from '../../components/RevealSensor';
 import * as classes from './style.module.css';
 
 enum ArticleSource {
@@ -30,7 +29,6 @@ interface ArticlesSectionProps extends PageSection {
 export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement {
     const response = useLocalDataSource();
     const [articles, setArticles] = React.useState<ArticleCard[]>([]);
-
     const configuration = validateAndConfigureSources(props.sources);
 
     async function collectArticlesFromSources(configuration: ArticleSourceConfiguration): Promise<ArticleCard[]> {
@@ -70,12 +68,6 @@ export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement
         return articleList.slice().sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
     }
 
-    const AnimatedSection = motion(Section);
-    const variants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { delay: 1 } },
-    };
-
     React.useEffect(() => {
         (async function () {
             setArticles(await collectArticlesFromSources(configuration));
@@ -83,29 +75,19 @@ export function ArticlesSection(props: ArticlesSectionProps): React.ReactElement
     }, []);
 
     return (
-        <RevealSensor once={true}>
-            {(isVisible) => {
-                return (
-                    <AnimatedSection
-                        anchor={props.sectionId}
-                        heading={props.heading}
-                        initial={variants.hidden}
-                        animate={isVisible ? 'visible' : 'hidden'}
-                        variants={variants}
-                    >
-                        <Slider additionalClasses={[classes.Articles]}>
-                            {articles.length > 0
-                                ? articles.slice(0, 3).map((article, key) => {
-                                      return <ArticleCard key={key} data={article} />;
-                                  })
-                                : [...Array(3)].map((skeleton, key) => {
-                                      return <ArticleCardSkeleton key={key} />;
-                                  })}
-                        </Slider>
-                    </AnimatedSection>
-                );
-            }}
-        </RevealSensor>
+        <Animation type="fadeUp" delay={1000}>
+            <Section anchor={props.sectionId} heading={props.heading}>
+                <Slider additionalClasses={[classes.Articles]}>
+                    {articles.length > 0
+                        ? articles.slice(0, 3).map((article, key) => {
+                              return <ArticleCard key={key} data={article} />;
+                          })
+                        : [...Array(3)].map((_, key) => {
+                              return <ArticleCardSkeleton key={key} />;
+                          })}
+                </Slider>
+            </Section>
+        </Animation>
     );
 }
 

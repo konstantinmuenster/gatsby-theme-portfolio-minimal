@@ -8,7 +8,7 @@ interface SectionProps {
     children: React.ReactNode;
 }
 
-export const Section = React.forwardRef<HTMLElement, SectionProps>((props: SectionProps, ref) => {
+export function Section(props: SectionProps): React.ReactElement {
     let classList;
     if (props.additionalClasses) {
         classList = props.additionalClasses.concat(classes.ContentWrapper).join(' ');
@@ -16,13 +16,11 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>((props: Secti
         classList = classes.ContentWrapper;
     }
     return (
-        <section id={props.anchor} className={classes.Section} ref={ref}>
+        <section id={props.anchor} className={classes.Section}>
             <div className={classList}>
                 {props.heading && <h3 className={classes.Heading}>{props.heading}</h3>}
                 {props.children}
             </div>
         </section>
     );
-});
-
-Section.displayName = 'Section';
+}

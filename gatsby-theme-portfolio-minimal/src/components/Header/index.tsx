@@ -2,15 +2,13 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Logo } from '../Logo';
 import { Helmet } from 'react-helmet';
-import { motion, useAnimation } from 'framer-motion';
-import { useGlobalState } from '../../context';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useSiteConfiguration } from '../../hooks/useSiteConfiguration';
+import { Animation } from '../Animation';
 import * as classes from './style.module.css';
 
 export function Header(): React.ReactElement {
     const [open, setOpen] = React.useState<boolean>(false);
-    const { globalState } = useGlobalState();
     const siteConfiguration = useSiteConfiguration();
     const isDesktopBreakpoint = useMediaQuery('(min-width: 992px)');
 
@@ -61,21 +59,16 @@ export function Header(): React.ReactElement {
 
     const topNavigationBar = <nav className={classes.TopNavigationBar}>{navigationItems}</nav>;
 
-    const controls = useAnimation();
-    if (globalState.splashScreenDone) {
-        controls.start({ opacity: 1, y: 0, transition: { delay: 0.2 } });
-    }
-
     return (
-        <motion.header className={classes.Header} initial={{ opacity: 0, y: -10 }} animate={controls}>
+        <header className={classes.Header}>
             {/* Make background blurry when sidebar is opened */}
             <Helmet bodyAttributes={{ class: open ? classes.Blurred : undefined }} />
-            <div className={classes.ContentWrapper}>
+            <Animation className={classes.ContentWrapper} type="fadeDown">
                 <Link to="/" aria-label="home">
                     <Logo fontSize="2rem" color="var(--primary-color" />
                 </Link>
                 {isDesktopBreakpoint ? topNavigationBar : sideNavigationBar}
-            </div>
-        </motion.header>
+            </Animation>
+        </header>
     );
 }

@@ -43,6 +43,7 @@
     margin-left: 1rem;
     width: 36px;
     height: 36px;
+    transform-origin: 70% 70%;
 }
 
 @media (min-width: 768px) {
