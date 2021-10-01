@@ -47,7 +47,6 @@
     },
     "dependencies": {
         "@fontsource/roboto": "^4.2.2",
-        "framer-motion": "^4.0.3",
         "gatsby-plugin-gdpr-cookies": "^1.0.14",
         "gatsby-plugin-image": "^1.14.0",
         "gatsby-plugin-manifest": "^3.14.0",

@@ -3,12 +3,21 @@ import { useCastedRef } from '../../hooks/useCastedRef';
 import { useOnScreen } from '../../hooks/useOnScreen';
 import './style.css';
 
-type AnimationType = 'fadeIn' | 'fadeUp' | 'fadeDown' | 'fadeLeft' | 'scaleIn' | 'waving-hand';
 type AnimationTiming = 'linear' | 'ease-in' | 'ease-out' | 'ease-in-out';
 type AnimationFillMode = 'forwards' | 'backwards' | 'both' | 'none';
+type AnimationType =
+    | 'fadeIn'
+    | 'fadeOut'
+    | 'fadeInAndOut'
+    | 'fadeUp'
+    | 'fadeDown'
+    | 'fadeLeft'
+    | 'scaleIn'
+    | 'reduceHeight'
+    | 'waving-hand';
 
 interface AnimationProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     type?: AnimationType;
     timing?: AnimationTiming;
     fillMode?: AnimationFillMode;
@@ -17,6 +26,7 @@ interface AnimationProps {
     iterationCount?: number;
     className?: string;
     style?: React.CSSProperties;
+    onAnimationEnd?: () => void;
 }
 
 export function Animation(props: AnimationProps): React.ReactElement {
@@ -35,6 +45,7 @@ export function Animation(props: AnimationProps): React.ReactElement {
         <div
             ref={ref}
             className={props.className}
+            onAnimationEnd={props.onAnimationEnd}
             style={
                 onScreen
                     ? {
