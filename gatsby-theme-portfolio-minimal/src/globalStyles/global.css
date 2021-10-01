@@ -49,9 +49,14 @@ a {
     cursor: pointer;
 }
 
-a:hover,
-a:focus {
+a:hover {
     outline: 0;
+}
+
+a:focus {
+    outline-color: var(--subtext-color);
+    outline-style: dotted;
+    outline-width: 2px;
 }
 
 h1 {
