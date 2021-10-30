@@ -51,6 +51,7 @@ module.exports = ({ actions }) => {
         medium: String
         linkedin: String
         mail: String
+        twitter: String
     }
     type Logo {
         text: String

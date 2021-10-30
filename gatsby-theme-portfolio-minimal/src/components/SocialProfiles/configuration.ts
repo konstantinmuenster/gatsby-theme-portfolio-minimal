@@ -4,4 +4,5 @@ export const socialProfileLabels = {
     medium: 'Medium',
     linkedin: 'LinkedIn',
     mail: 'Mail',
+    twitter: 'Twitter',
 };

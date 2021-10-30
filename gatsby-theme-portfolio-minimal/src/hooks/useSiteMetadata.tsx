@@ -44,6 +44,7 @@ export const query = graphql`
                         linkedin
                         mail
                         medium
+                        twitter
                     }
                     titleTemplate
                 }
