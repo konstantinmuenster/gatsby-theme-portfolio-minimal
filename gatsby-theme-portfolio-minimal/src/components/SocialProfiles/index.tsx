@@ -7,7 +7,7 @@ import * as classes from './style.module.css';
 
 export enum SocialProfile {
     Behance = 'behance',
-    Github = 'github',
+    GitHub = 'github',
     Medium = 'medium',
     Mail = 'mail',
     LinkedIn = 'linkedin',
