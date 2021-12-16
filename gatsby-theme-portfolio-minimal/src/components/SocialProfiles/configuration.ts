@@ -1,6 +1,6 @@
 export const socialProfileLabels = {
     behance: 'Behance',
-    github: 'Github',
+    github: 'GitHub',
     medium: 'Medium',
     linkedin: 'LinkedIn',
     mail: 'Mail',
