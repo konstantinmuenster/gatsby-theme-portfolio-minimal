@@ -382,7 +382,7 @@ module.exports = {
 
 Internally, Portfolio Minimal uses CSS variables to ensure a consistent color scheme across the site. You can override these colors by using the [concept of shadowing](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/) Gatsby offers. To do this, follow the instructions:
 
-1. Create a file called `theme.css` in the following path: `{GatsbyProjectRoot}/src/gatsby-theme-portfolio-minimal/src/globalStyles`.
+1. Create a file called `theme.css` in the following path: `{GatsbyProjectRoot}/src/gatsby-theme-portfolio-minimal/globalStyles`.
 
 2. Add the following contents to the file and adjust the colors as you like. Do not change the names of the variables!
 
