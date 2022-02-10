@@ -9,6 +9,11 @@ module.exports = ({ actions }) => {
         src: File @fileByRelativePath
         alt: String
     }
+    type LinkedImage {
+        src: File @fileByRelativePath
+        alt: String
+        linkTo: String
+    }
     type SocialProfiles {
         from: [String!]!
         showIcons: Boolean
@@ -37,7 +42,7 @@ module.exports = ({ actions }) => {
         title: String
         description: String
         tags: [String]
-        image: Image
+        image: LinkedImage
         links: [ProjectLink]
     }
     type ProjectButton {

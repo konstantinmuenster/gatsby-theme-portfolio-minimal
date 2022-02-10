@@ -29,6 +29,7 @@ export const useLocalDataSource = (): ProjectsSectionQueryResult => {
                         description
                         image {
                             alt
+                            linkTo
                             src {
                                 childImageSharp {
                                     gatsbyImageData(width: 400)

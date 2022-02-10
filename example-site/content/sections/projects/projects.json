@@ -8,12 +8,13 @@
             "tags": ["Content Integration", "Ready-2-Deploy"],
             "image": {
                 "src": "../../images/clement-h-95YRwf6CNw8-unsplash.jpg",
-                "alt": "Quick Setup"
+                "alt": "Quick Setup",
+                "linkTo": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme"
             },
             "links": [
                 {
                     "type": "github",
-                    "url": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal"
+                    "url": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme"
                 },
                 {
                     "type": "external",
@@ -34,7 +35,7 @@
             "links": [
                 {
                     "type": "github",
-                    "url": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal"
+                    "url": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme"
                 }
             ]
         }

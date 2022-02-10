@@ -15,7 +15,7 @@ export interface Project {
     category?: string;
     title: string;
     description: string;
-    image: ImageObject;
+    image: ImageObject & { linkTo?: string };
     tags?: string[];
     links?: {
         type: LinkType;
@@ -73,7 +73,17 @@ export function Project(props: ProjectProps): React.ReactElement {
                         })}
                 </div>
             </div>
-            {props.data.image.src && (
+            {props.data.image.src && props.data.image.linkTo && (
+                <a href={props.data.image.linkTo} target="_blank" rel="noopener noreferrer" aria-label="External Link">
+                    <GatsbyImage
+                        className={classes.ProjectImageWrapper}
+                        imgClassName={classes.ProjectImage}
+                        image={props.data.image.src.childImageSharp.gatsbyImageData}
+                        alt={props.data.image.alt || `Project ${props.data.title}`}
+                    />
+                </a>
+            )}
+            {props.data.image.src && !props.data.image.linkTo && (
                 <GatsbyImage
                     className={classes.ProjectImageWrapper}
                     imgClassName={classes.ProjectImage}
