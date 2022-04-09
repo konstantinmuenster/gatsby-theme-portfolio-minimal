@@ -83,6 +83,7 @@ module.exports = ({ actions }) => {
     type SiteMetadata {
         language: String
         siteUrl: String
+        thumbnail: File @fileByRelativePath
         title: String
         titleTemplate: String
         description: String

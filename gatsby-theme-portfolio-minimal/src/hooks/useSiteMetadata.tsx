@@ -6,6 +6,7 @@ import { AllSettingsQueryResult } from '../types';
 export interface SiteMetadata {
     language: string;
     siteUrl: string;
+    thumbnail: { childImageSharp: { original: { src: string } } };
     title: string;
     titleTemplate: string;
     description: string;
@@ -37,6 +38,13 @@ export const query = graphql`
                     description
                     language
                     siteUrl
+                    thumbnail {
+                        childImageSharp {
+                            original {
+                                src
+                            }
+                        }
+                    }
                     title
                     social {
                         behance
