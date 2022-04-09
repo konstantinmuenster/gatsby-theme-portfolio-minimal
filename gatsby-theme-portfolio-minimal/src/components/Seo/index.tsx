@@ -13,10 +13,10 @@ interface SeoProps {
 export function Seo(props: SeoProps): React.ReactElement {
     const location = useLocation();
     const siteMetadata = { ...useSiteMetadata(), ...props };
-    const thumbnailUrl = (siteMetadata.siteUrl + siteMetadata.thumbnail.childImageSharp.original.src).replace(
-        /([^:]\/)\/+/g,
-        '$1',
-    );
+
+    const thumbnailUrl = siteMetadata.thumbnail
+        ? (siteMetadata.siteUrl + siteMetadata.thumbnail.childImageSharp.original.src).replace(/([^:]\/)\/+/g, '$1')
+        : undefined;
 
     return (
         <Helmet
@@ -28,8 +28,8 @@ export function Seo(props: SeoProps): React.ReactElement {
             <meta name="description" content={siteMetadata.description} />
             <meta property="og:title" content={siteMetadata.title} />
             <meta property="og:site_name" content={siteMetadata.title} />
-            <meta property="og:image" content={thumbnailUrl} />
             <meta property="og:url" content={siteMetadata.siteUrl + location.pathname} />
+            {thumbnailUrl && <meta property="og:image" content={thumbnailUrl} />}
             <meta property="og:description" content={siteMetadata.description} />
             <meta property="og:type" content="website" />
             <meta property="twitter:card" content="summary" />
