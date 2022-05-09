@@ -10,7 +10,11 @@ import * as classes from './style.module.css';
 export function InterestsSection(props: PageSection): React.ReactElement {
     const response = useLocalDataSource();
     const data = response.allInterestsJson.sections[0];
-    const [shownInterests, setShownInterests] = React.useState<number>(5);
+    const shouldShowButton = data.button.visible !== false;
+    const initiallyShownInterests = data.button.initiallyShownInterests ?? 5;
+    const [shownInterests, setShownInterests] = React.useState<number>(
+        shouldShowButton ? initiallyShownInterests : data.interests.length,
+    );
 
     function loadMoreHandler() {
         setShownInterests(data.interests.length);
@@ -34,7 +38,7 @@ export function InterestsSection(props: PageSection): React.ReactElement {
                             </Animation>
                         );
                     })}
-                    {shownInterests < data.interests.length && (
+                    {shouldShowButton && shownInterests < data.interests.length && (
                         <Animation type="scaleIn" delay={(shownInterests + 1) * 100}>
                             <Button type={ButtonType.BUTTON} onClickHandler={loadMoreHandler} label="+ Load more" />
                         </Animation>
