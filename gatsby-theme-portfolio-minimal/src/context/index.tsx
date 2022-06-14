@@ -65,3 +65,23 @@ function initializeTheme(defaultTheme: Theme, useDarkMode: boolean): Theme {
     }
     return initialTheme;
 }
+
+export function alternTheme() {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.setAttribute('data-theme', Theme.Dark);
+    } else {
+        document.body.setAttribute('data-theme', Theme.Light);
+    }
+}
+
+// 'Watchers' into the system theme preferences, so if the user change the theme of it system the pages changes too.
+if (window.matchMedia) {
+    const DarkSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const LightSchemeQuery = window.matchMedia('(prefers-color-scheme: light)');
+    DarkSchemeQuery.addEventListener('change', () => {
+        alternTheme();
+    });
+    LightSchemeQuery.addEventListener('change', () => {
+        alternTheme();
+    });
+}
