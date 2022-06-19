@@ -1,6 +1,6 @@
 {
     "intro": "Hello",
-    "heroPhoto":{
+    "heroPhoto": {
         "src": "../../images/lego-dummy.png",
         "alt": "My Photo"
     },
