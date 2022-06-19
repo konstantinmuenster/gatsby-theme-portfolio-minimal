@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function useMediaQuery(query: string): boolean {
+export function useMediaQuery(query: string, callback?: (isMatch: boolean) => void): boolean {
     if (typeof window === 'undefined' || typeof window.matchMedia === 'undefined') {
         return false;
     }
@@ -11,6 +11,7 @@ export function useMediaQuery(query: string): boolean {
     React.useEffect(() => {
         function handleMatch() {
             setMatch(mediaQuery.matches);
+            callback?.(mediaQuery.matches);
         }
         if (mediaQuery.addEventListener) {
             mediaQuery.addEventListener('change', handleMatch);
