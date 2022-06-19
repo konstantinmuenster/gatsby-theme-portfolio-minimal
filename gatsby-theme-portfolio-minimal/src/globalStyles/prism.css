@@ -1,0 +1,127 @@
+/* PrismJS 1.28.0
+/**
+*  Modified theme for gatsby-theme-portfolio-minimal
+ * based on joshwcomeau.com code blocks styling
+ * @author chrisley304
+ */
+
+/* Fira Code font import */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
+code[class*='language-'],
+pre[class*='language-'] {
+    color: var(--primary-color);
+    background: none;
+    font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1rem;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+    padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
+    border-radius: 1.2em;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+    background: var(--code-block-bg);
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+    padding: 0.3em;
+    /* font-size: 0.9rem; */
+    border-radius: 0.4em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: var(--code-block-comment);
+}
+
+.token.punctuation {
+    color: var(--primary-color);
+}
+
+.token.namespace {
+    opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: var(--code-block-var);
+}
+
+.token.boolean,
+.token.number {
+    color: var(--code-block-num);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: var(--code-block-fun);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+    color: var(--primary-color);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+    color: var(--code-block-fun);
+}
+
+.token.keyword {
+    color: var(--code-block-keyword);
+}
+
+.token.regex,
+.token.important {
+    color: var(--code-block-tkimp);
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
