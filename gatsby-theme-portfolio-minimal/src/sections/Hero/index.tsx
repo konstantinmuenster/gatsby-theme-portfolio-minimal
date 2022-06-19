@@ -14,7 +14,7 @@ export function HeroSection(props: PageSection): React.ReactElement {
     return (
         <Animation type="fadeUp" delay={400}>
             <Section anchor={props.sectionId} additionalClasses={[classes.HeroContainer]}>
-                {data.heroPhoto.src && (
+                {data.heroPhoto?.src && (
                     <div className={classes.heroImageCont}>
                         <GatsbyImage
                             className={classes.heroImage}
@@ -27,7 +27,7 @@ export function HeroSection(props: PageSection): React.ReactElement {
                 <div className={classes.Hero}>
                     <div className={classes.Intro}>
                         {data.intro && <span className={classes.ImagePrefix}>{data.intro}</span>}
-                        {data.image.src && (
+                        {data.image?.src && (
                             <Animation className={classes.Image} type="waving-hand" duration={2500} iterationCount={3}>
                                 <GatsbyImage
                                     image={data.image.src.childImageSharp.gatsbyImageData}
