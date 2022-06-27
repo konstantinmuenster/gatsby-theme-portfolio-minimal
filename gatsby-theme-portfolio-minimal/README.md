@@ -12,18 +12,28 @@ This repository also contains an [example-site](https://github.com/konstantinmue
 
 ## Table of Contents
 
--   [Installation](#installation)
-    -   [Set Up A New Gatsby Site With Portfolio Minimal](#set-up-a-new-gatsby-site-with-portfolio-minimal)
-    -   [Add Portfolio Minimal To An Existing Gatsby Site](#add-portfolio-minimal-to-an-existing-gatsby-site)
--   [Getting Started](#getting-started)
-    -   [Creating Your First Page](#creating-your-first-page)
-    -   [Using The Content Directory](#using-the-content-directory)
-    -   [Using The Blog Integration Feature](#using-the-blog-integration-feature)
-    -   [Using Sections And Other Theme Components](#using-sections-and-other-theme-components)
--   [Customization](#customization)
-    -   [Configuring the Theme Settings](#configuring-the-theme-settings)
-    -   [Changing the Color Scheme](#changing-the-color-scheme)
--   [Issues](#issues)
+-   [Gatsby Theme Portfolio Minimal](#gatsby-theme-portfolio-minimal) - [A modern one-page portfolio with a clean yet expressive design.](#a-modern-one-page-portfolio-with-a-clean-yet-expressive-design)
+    -   [Table of Contents](#table-of-contents)
+    -   [Installation](#installation)
+        -   [Set up A New Gatsby Site With Portfolio Minimal](#set-up-a-new-gatsby-site-with-portfolio-minimal)
+        -   [Add Portfolio Minimal To An Existing Gatsby Site](#add-portfolio-minimal-to-an-existing-gatsby-site)
+    -   [Getting Started](#getting-started)
+        -   [Creating Your First Page](#creating-your-first-page)
+        -   [Using The Content Directory](#using-the-content-directory)
+            -   [`articles` Folder](#articles-folder)
+            -   [`images` Folder](#images-folder)
+            -   [`sections` Folder](#sections-folder)
+            -   [`settings.json` File](#settingsjson-file)
+        -   [Using The Blog Integration Feature](#using-the-blog-integration-feature)
+        -   [Using Sections And Other Theme Components](#using-sections-and-other-theme-components)
+            -   [Section Components](#section-components)
+            -   [Utility Components](#utility-components)
+    -   [Customization](#customization)
+        -   [Configuring the Theme Settings](#configuring-the-theme-settings)
+            -   [Configuring `settings.json`](#configuring-settingsjson)
+            -   [Configuring `gatsby-config.js`](#configuring-gatsby-configjs)
+        -   [Changing the Color Scheme](#changing-the-color-scheme)
+    -   [Issues?](#issues)
 
 ---
 
@@ -400,6 +410,13 @@ Internally, Portfolio Minimal uses CSS variables to ensure a consistent color sc
         --box-shadow-color: rgba(0, 0, 0, 0.16);
         --box-shadow-hover-color: rgba(0, 0, 0, 0.32);
         --base-font: 'Roboto', Arial, sans-serif;
+        --code-block-bg: #151f28;
+        --code-block-var: #ff39a7;
+        --code-block-num: #fed703;
+        --code-block-fun: #c653ff;
+        --code-block-keyword: #2bdcff;
+        --code-block-comment: #8292a2;
+        --code-block-tkimp: #fd971f;
     }
 
     body[data-theme='darkTheme'] {
@@ -414,6 +431,13 @@ Internally, Portfolio Minimal uses CSS variables to ensure a consistent color sc
         --box-shadow-color: rgba(0, 0, 0, 0.16);
         --box-shadow-hover-color: rgba(0, 0, 0, 0.32);
         --base-font: 'Roboto', Arial, sans-serif;
+        --code-block-bg: #151f28;
+        --code-block-var: #ff39a7;
+        --code-block-num: #fed703;
+        --code-block-fun: #c653ff;
+        --code-block-keyword: #2bdcff;
+        --code-block-comment: #8292a2;
+        --code-block-tkimp: #fd971f;
     }
     ```
 

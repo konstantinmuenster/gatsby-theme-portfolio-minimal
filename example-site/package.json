@@ -12,7 +12,7 @@
         "lint": "echo \"Nothing to do here\""
     },
     "dependencies": {
-        "gatsby": "^4.7.1",
+        "gatsby": "^4.16.0",
         "gatsby-theme-portfolio-minimal": "*",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"

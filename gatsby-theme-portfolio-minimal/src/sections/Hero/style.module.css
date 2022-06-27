@@ -1,4 +1,9 @@
+.HeroContainer {
+    display: flex;
+}
+
 .Hero {
+    /* flex: 75%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,16 +57,43 @@
         line-height: 4rem;
         margin-bottom: 0;
     }
+
     .Hero .Subtitle {
         font-size: 2rem;
         line-height: 3rem;
     }
+
     .ImagePrefix {
         font-size: 2.625rem;
         line-height: 4rem;
     }
+
     .Image {
         width: 48px;
         height: 48px;
+    }
+}
+
+.heroImageCont {
+    flex: 25%;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0 3rem 3rem 0;
+}
+
+.heroImageCont .heroImage {
+    width: 100%;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .HeroContainer {
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+
+    .Hero {
+        display: block;
     }
 }

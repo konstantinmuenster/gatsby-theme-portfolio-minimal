@@ -58,7 +58,10 @@ function globalStateReducer(state: GlobalState, action: Action) {
 }
 
 function initializeTheme(defaultTheme: Theme, useDarkMode: boolean): Theme {
-    const darkModeEnabled = useMediaQuery('(prefers-color-scheme: dark)');
+    const darkModeEnabled = useMediaQuery('(prefers-color-scheme: dark)', (isMatch) => {
+        const updatedTheme = isMatch ? Theme.Dark : Theme.Light;
+        document.body.setAttribute('data-theme', updatedTheme);
+    });
     let initialTheme = defaultTheme;
     if (useDarkMode && darkModeEnabled) {
         initialTheme = Theme.Dark;

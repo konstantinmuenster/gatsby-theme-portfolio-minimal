@@ -9,6 +9,7 @@ interface HeroSectionQueryResult {
             email: string;
             image: ImageObject;
             intro: string;
+            heroPhoto: ImageObject;
             socialProfiles: {
                 from: SocialProfile[];
                 showIcons: boolean;
@@ -29,6 +30,14 @@ export const useLocalDataSource = (): HeroSectionQueryResult => {
             allHeroJson {
                 sections: nodes {
                     description
+                    heroPhoto {
+                        src {
+                            childImageSharp {
+                                gatsbyImageData(aspectRatio: 1)
+                            }
+                        }
+                        alt
+                    }
                     image {
                         alt
                         src {

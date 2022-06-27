@@ -1,5 +1,9 @@
 {
     "intro": "Hello",
+    "heroPhoto": {
+        "src": "../../images/lego-dummy.png",
+        "alt": "My Photo"
+    },
     "image": {
         "src": "../../images/waving-hand.png",
         "alt": "Waving Hand Emoji"
