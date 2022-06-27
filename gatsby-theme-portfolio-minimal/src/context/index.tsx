@@ -58,30 +58,13 @@ function globalStateReducer(state: GlobalState, action: Action) {
 }
 
 function initializeTheme(defaultTheme: Theme, useDarkMode: boolean): Theme {
-    const darkModeEnabled = useMediaQuery('(prefers-color-scheme: dark)');
+    const darkModeEnabled = useMediaQuery('(prefers-color-scheme: dark)', (isMatch) => {
+        const updatedTheme = isMatch ? Theme.Dark : Theme.Light;
+        document.body.setAttribute('data-theme', updatedTheme);
+    });
     let initialTheme = defaultTheme;
     if (useDarkMode && darkModeEnabled) {
         initialTheme = Theme.Dark;
     }
     return initialTheme;
-}
-
-export function alternTheme() {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.setAttribute('data-theme', Theme.Dark);
-    } else {
-        document.body.setAttribute('data-theme', Theme.Light);
-    }
-}
-
-// 'Watchers' into the system theme preferences, so if the user change the theme of it system the pages changes too.
-if (window.matchMedia) {
-    const DarkSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const LightSchemeQuery = window.matchMedia('(prefers-color-scheme: light)');
-    DarkSchemeQuery.addEventListener('change', () => {
-        alternTheme();
-    });
-    LightSchemeQuery.addEventListener('change', () => {
-        alternTheme();
-    });
 }

@@ -41,7 +41,7 @@ keywords:
     .AClass {
         flex-direction: column;
     }
-    .AnotherClass{
+    .AnotherClass {
         display: block;
     }
 }

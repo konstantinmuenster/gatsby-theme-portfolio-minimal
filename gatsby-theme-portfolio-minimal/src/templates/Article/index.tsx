@@ -6,8 +6,9 @@ import { Seo } from '../../components/Seo';
 import { AuthorSnippet } from '../../components/AuthorSnippet';
 import { ArticleTemplateData } from './data';
 import * as classes from './style.module.css';
+
 // Reference to the local prismjs theme (Modified)
-require('../../prism.css');
+require('../../globalStyles/prism.css');
 
 interface ArticleTemplateProps {
     pageContext: {
