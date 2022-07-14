@@ -1868,6 +1868,36 @@
   dependencies:
     "@lezer/common" "^0.15.0"
 
+"@lmdb/lmdb-darwin-arm64@2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@lmdb/lmdb-darwin-arm64/-/lmdb-darwin-arm64-2.5.3.tgz#c423b068165df18da57a81dce5c95f98c6ab9265"
+  integrity sha512-RXwGZ/0eCqtCY8FLTM/koR60w+MXyvBUpToXiIyjOcBnC81tAlTUHrRUavCEWPI9zc9VgvpK3+cbumPyR8BSuA==
+
+"@lmdb/lmdb-darwin-x64@2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@lmdb/lmdb-darwin-x64/-/lmdb-darwin-x64-2.5.3.tgz#dde76e65595b34a17289a63f770a8aee13a85a9b"
+  integrity sha512-337dNzh5yCdNCTk8kPfoU7jR3otibSlPDGW0vKZT97rKnQMb9tNdto3RtWoGPsQ8hKmlRZpojOJtmwjncq1MoA==
+
+"@lmdb/lmdb-linux-arm64@2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@lmdb/lmdb-linux-arm64/-/lmdb-linux-arm64-2.5.3.tgz#d98f32383d37a058e6c51b7ffd665c2c2f91c285"
+  integrity sha512-VJw60Mdgb4n+L0fO1PqfB0C7TyEQolJAC8qpqvG3JoQwvyOv6LH7Ib/WE3wxEW9nuHmVz9jkK7lk5HfWWgoO1Q==
+
+"@lmdb/lmdb-linux-arm@2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@lmdb/lmdb-linux-arm/-/lmdb-linux-arm-2.5.3.tgz#6251143d7b470e126b0b0fc17ae64c6680e268b2"
+  integrity sha512-mU2HFJDGwECkoD9dHQEfeTG5mp8hNS2BCfwoiOpVPMeapjYpQz9Uw3FkUjRZ4dGHWKbin40oWHuL0bk2bCx+Sg==
+
+"@lmdb/lmdb-linux-x64@2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@lmdb/lmdb-linux-x64/-/lmdb-linux-x64-2.5.3.tgz#ef3a9793391ab4a68379e753943c9055fd0f5bf3"
+  integrity sha512-qaReO5aV8griBDsBr8uBF/faO3ieGjY1RY4p8JvTL6Mu1ylLrTVvOONqKFlNaCwrmUjWw5jnf7VafxDAeQHTow==
+
+"@lmdb/lmdb-win32-x64@2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@lmdb/lmdb-win32-x64/-/lmdb-win32-x64-2.5.3.tgz#c72e8b6faae31d925d23a6db0379cc3fe0216fdd"
+  integrity sha512-cK+Elf3RjEzrm3SerAhrFWL5oQAsZSJ/LmjL1joIpTfEP1etJJ9CTRvdaV6XLYAxaEkfdhk/9hOvHLbR9yIhCA==
+
 "@microsoft/fetch-event-source@2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@microsoft/fetch-event-source/-/fetch-event-source-2.0.1.tgz#9ceecc94b49fbaa15666e38ae8587f64acce007d"
@@ -6958,6 +6988,27 @@ gatsby-core-utils@^3.16.0:
     tmp "^0.2.1"
     xdg-basedir "^4.0.0"
 
+gatsby-core-utils@^3.18.1:
+  version "3.18.1"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-3.18.1.tgz#7a9451ad1802a6489d24d5b52176720345e1b967"
+  integrity sha512-sJTxRqizLxYy/tSFk0ydfqEZ3ek1So9HDVUa39F6Oi8XuPCBTFzaAooUvowKGneI5YUbdk5y4VO4ybwVUynntw==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    ci-info "2.0.0"
+    configstore "^5.0.1"
+    fastq "^1.13.0"
+    file-type "^16.5.3"
+    fs-extra "^10.1.0"
+    got "^11.8.5"
+    import-from "^4.0.0"
+    lmdb "2.5.3"
+    lock "^1.1.0"
+    node-object-hash "^2.3.10"
+    proper-lockfile "^4.1.2"
+    resolve-from "^5.0.0"
+    tmp "^0.2.1"
+    xdg-basedir "^4.0.0"
+
 gatsby-graphiql-explorer@^2.16.0:
   version "2.16.0"
   resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-2.16.0.tgz#be1e0733047ba3ad5bc401905999e63382b0ccb7"
@@ -7176,6 +7227,23 @@ gatsby-plugin-utils@^3.10.0:
     mini-svg-data-uri "^1.4.4"
     svgo "^2.8.0"
 
+gatsby-plugin-utils@^3.12.1:
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-3.12.1.tgz#c6a3ce71b99b7ac0f1dd87c54e3565f03b036ef6"
+  integrity sha512-Rx7/MFtiJ+pyvPLqCPj5beyMN6qOx3EYMrOqmvrWJaM32nxMfHZqUqxGruufyFNVe6edfRuNuXcKaPXlGlyexA==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    "@gatsbyjs/potrace" "^2.2.0"
+    fs-extra "^10.1.0"
+    gatsby-core-utils "^3.18.1"
+    gatsby-sharp "^0.12.0"
+    graphql-compose "^9.0.7"
+    import-from "^4.0.0"
+    joi "^17.4.2"
+    mime "^3.0.0"
+    mini-svg-data-uri "^1.4.4"
+    svgo "^2.8.0"
+
 gatsby-react-router-scroll@^5.16.0:
   version "5.16.0"
   resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-5.16.0.tgz#7114bfa1e3460dc1b8edeed1951a840785eac238"
@@ -7183,6 +7251,23 @@ gatsby-react-router-scroll@^5.16.0:
   dependencies:
     "@babel/runtime" "^7.15.4"
     prop-types "^15.8.1"
+
+gatsby-remark-images@^6.18.1:
+  version "6.18.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-6.18.1.tgz#f130d01afce882b9d5e4781c3be96b122ec872f2"
+  integrity sha512-QgXVWTcgunNOSCX7B1vbGonRjamvnzwOcTC0yDYBRfOI56PListQAntE7gQE7K3CHTvRYvI+aB/VXf3MMbPDaQ==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    "@gatsbyjs/potrace" "^2.2.0"
+    chalk "^4.1.2"
+    cheerio "^1.0.0-rc.10"
+    gatsby-core-utils "^3.18.1"
+    is-relative-url "^3.0.0"
+    lodash "^4.17.21"
+    mdast-util-definitions "^4.0.0"
+    query-string "^6.14.1"
+    unist-util-select "^3.0.4"
+    unist-util-visit-parents "^3.1.1"
 
 gatsby-remark-prismjs@^6.16.0:
   version "6.16.0"
@@ -7202,6 +7287,14 @@ gatsby-sharp@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/gatsby-sharp/-/gatsby-sharp-0.10.0.tgz#f3c3beb5a2a64eb259a6139abf88cd58760fd6fe"
   integrity sha512-Wvtl5wfQJw7NDWI9J/xDhew1dXnI/MgkvHwrSulT00GgtTmBc7knplapfdU1E2k8PwpssqEBqWXvrxMszT5oWg==
+  dependencies:
+    "@types/sharp" "^0.30.0"
+    sharp "^0.30.3"
+
+gatsby-sharp@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/gatsby-sharp/-/gatsby-sharp-0.12.0.tgz#2cb886809222c9429ca114f9752be52c96f6c47a"
+  integrity sha512-dZa/AgxmPzD0vvROEZSuT3IdzAFTxnq1FfLTf9n3mywonvsKYc84zj6nf8TEzBrVrBFAaLvZek4NpVAKWGr4/w==
   dependencies:
     "@types/sharp" "^0.30.0"
     sharp "^0.30.3"
@@ -7251,13 +7344,13 @@ gatsby-transformer-json@^4.13.0:
     "@babel/runtime" "^7.15.4"
     bluebird "^3.7.2"
 
-gatsby-transformer-remark@^5.16.0:
-  version "5.16.0"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-5.16.0.tgz#647f704e97cd4e38e342244f60c504a065134e1d"
-  integrity sha512-hJO7VPWwDq71QsSQ28GafVVczmMQm3Qt0oydzKdcSbF4b2tc8+QTQGn3EhPDDUt+2mDBat2hNohS8EvNaiEpEA==
+gatsby-transformer-remark@^5.18.1:
+  version "5.18.1"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-5.18.1.tgz#11136f075ce7110d24c1458099d3b20c3d35ba5f"
+  integrity sha512-7sWIxdl1nnWFwkpfV4y72pssVzxrBvaHZ+pb7aXFEeSs0KdhKDrczIo2kUexjOeeO30T1QG+qVX8NKytqAb37w==
   dependencies:
     "@babel/runtime" "^7.15.4"
-    gatsby-core-utils "^3.16.0"
+    gatsby-core-utils "^3.18.1"
     gray-matter "^4.0.3"
     hast-util-raw "^6.0.2"
     hast-util-to-html "^7.1.3"
@@ -7279,17 +7372,17 @@ gatsby-transformer-remark@^5.16.0:
     unist-util-select "^3.0.4"
     unist-util-visit "^2.0.3"
 
-gatsby-transformer-sharp@^4.13.0:
-  version "4.16.0"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-4.16.0.tgz#9c32d9a02403bdd964c3644f85ed3661b9c5a7e8"
-  integrity sha512-EId1xRZw0ZEL9oTJypXjWPaln5JuqPuDaWRIcPsWEPCgPlaP1X3nP7Xh/1nFxdTtKWswc63Dg5dY5b+8kACPtQ==
+gatsby-transformer-sharp@^4.18.1:
+  version "4.18.1"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-4.18.1.tgz#b06eb62468dbd43f906ad8fc729cb7505d972718"
+  integrity sha512-YqY3dWdUmRzhE2DBbOtJygL/bWKFXDQf3ARn6tSEt0WqPRFGLGbsSpT/xU5makHugdO/Wc30x3x85FhwysvH6Q==
   dependencies:
     "@babel/runtime" "^7.15.4"
     "@gatsbyjs/potrace" "^2.2.0"
     bluebird "^3.7.2"
     common-tags "^1.8.2"
     fs-extra "^10.1.0"
-    gatsby-plugin-utils "^3.10.0"
+    gatsby-plugin-utils "^3.12.1"
     probe-image-size "^7.2.3"
     semver "^7.3.7"
     sharp "^0.30.3"
@@ -7719,7 +7812,7 @@ globby@^11.0.0, globby@^11.0.1, globby@^11.0.3, globby@^11.0.4, globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
-got@^11.8.2, got@^11.8.3:
+got@^11.8.2, got@^11.8.3, got@^11.8.5:
   version "11.8.5"
   resolved "https://registry.yarnpkg.com/got/-/got-11.8.5.tgz#ce77d045136de56e8f024bebb82ea349bc730046"
   integrity sha512-o0Je4NvQObAuZPHLFoRSkdG2lTgtcynqymzg2Vupdx6PorhaT5MCbIyXG6d4D94kk8ZG57QeosgdiqfJWhEhlQ==
@@ -9386,6 +9479,24 @@ lmdb@2.3.10:
     lmdb-linux-x64 "2.3.10"
     lmdb-win32-x64 "2.3.10"
 
+lmdb@2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/lmdb/-/lmdb-2.5.3.tgz#cac845a8576ef0fd2dcc279faab6fdb383f07463"
+  integrity sha512-iBA0cb13CobBSoGJLfZgnrykLlfJipDAnvtf+YwIqqzBEsTeQYsXrHaSBkaHd5wCWeabwrNvhjZoFMUrlo+eLw==
+  dependencies:
+    msgpackr "^1.5.4"
+    node-addon-api "^4.3.0"
+    node-gyp-build-optional-packages "5.0.3"
+    ordered-binary "^1.2.4"
+    weak-lru-cache "^1.2.2"
+  optionalDependencies:
+    "@lmdb/lmdb-darwin-arm64" "2.5.3"
+    "@lmdb/lmdb-darwin-x64" "2.5.3"
+    "@lmdb/lmdb-linux-arm" "2.5.3"
+    "@lmdb/lmdb-linux-arm64" "2.5.3"
+    "@lmdb/lmdb-linux-x64" "2.5.3"
+    "@lmdb/lmdb-win32-x64" "2.5.3"
+
 load-bmfont@^1.3.1, load-bmfont@^1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/load-bmfont/-/load-bmfont-1.4.1.tgz#c0f5f4711a1e2ccff725a7b6078087ccfcddd3e9"
@@ -10494,6 +10605,11 @@ node-gyp-build-optional-packages@5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/node-gyp-build-optional-packages/-/node-gyp-build-optional-packages-5.0.2.tgz#3de7d30bd1f9057b5dfbaeab4a4442b7fe9c5901"
   integrity sha512-PiN4NWmlQPqvbEFcH/omQsswWQbe5Z9YK/zdB23irp5j2XibaA2IrGvpSWmVVG4qMZdmPdwPctSy4a86rOMn6g==
+
+node-gyp-build-optional-packages@5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/node-gyp-build-optional-packages/-/node-gyp-build-optional-packages-5.0.3.tgz#92a89d400352c44ad3975010368072b41ad66c17"
+  integrity sha512-k75jcVzk5wnnc/FMxsf4udAoTEUv2jY3ycfdSd3yWu6Cnd1oee6/CfZJApyscA4FJOmdoixWwiwOyf16RzD5JA==
 
 node-gyp-build-optional-packages@^4.3.2:
   version "4.3.5"
@@ -14306,7 +14422,7 @@ unist-util-visit-children@^1.0.0:
   resolved "https://registry.yarnpkg.com/unist-util-visit-children/-/unist-util-visit-children-1.1.4.tgz#e8a087e58a33a2815f76ea1901c15dec2cb4b432"
   integrity sha512-sA/nXwYRCQVRwZU2/tQWUqJ9JSFM1X3x7JIOsIgSzrFHcfVt6NkzDtKzyxg2cZWkCwGF9CO8x4QNZRJRMK8FeQ==
 
-unist-util-visit-parents@^3.0.0:
+unist-util-visit-parents@^3.0.0, unist-util-visit-parents@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/unist-util-visit-parents/-/unist-util-visit-parents-3.1.1.tgz#65a6ce698f78a6b0f56aa0e88f13801886cdaef6"
   integrity sha512-1KROIZWo6bcMrZEwiH2UrXDyalAa0uqzWCxCJj6lPOvTve2WkfgCytoDTPaMnodXh1WrXOq0haVYHj99ynJlsg==

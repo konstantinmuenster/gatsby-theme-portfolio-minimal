@@ -90,3 +90,27 @@
     border-top: 3px solid var(--tertiary-color);
     padding-top: 3rem;
 }
+
+.Article img {
+    max-height: 660px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+:global(.gatsby-resp-image-wrapper),
+:global(.gatsby-resp-image-background-image) {
+    margin: 2rem 0;
+    max-height: 660px;
+    overflow-y: hidden;
+}
+
+.Article figure {
+    margin: 2rem 0;
+}
+
+.Article figure > figcaption {
+    margin-top: -1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--subtext-color);
+}

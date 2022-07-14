@@ -21,10 +21,26 @@ module.exports = (options) => ({
                 path: options.contentDirectory || path.join('.', 'content'),
             },
         },
+        `gatsby-transformer-sharp`,
+        `gatsby-transformer-json`,
         {
             resolve: `gatsby-transformer-remark`,
             options: {
                 plugins: [
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            // It's important to specify the maxWidth (in pixels) of
+                            // the content container as this plugin uses this as the
+                            // base for generating different widths of each image.
+                            maxWidth: 660,
+                            showCaptions: ['title'],
+                            markdownCaptions: true,
+                            withWebp: true,
+                            linkImagesToOriginal: false,
+                            backgroundColor: 'transparent',
+                        },
+                    },
                     {
                         resolve: `gatsby-remark-prismjs`,
                         options: {
@@ -54,8 +70,6 @@ module.exports = (options) => ({
                 ],
             },
         },
-        `gatsby-transformer-sharp`,
-        `gatsby-transformer-json`,
         options.siteUrl ? `gatsby-plugin-robots-txt` : null,
         options.siteUrl ? `gatsby-plugin-sitemap` : null,
         options.manifestSettings
