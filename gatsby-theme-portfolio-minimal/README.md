@@ -32,6 +32,7 @@ This repository also contains an [example-site](https://github.com/konstantinmue
         -   [Configuring the Theme Settings](#configuring-the-theme-settings)
             -   [Configuring `settings.json`](#configuring-settingsjson)
             -   [Configuring `gatsby-config.js`](#configuring-gatsby-configjs)
+        -   [Adding Custom Sections](#adding-custom-sections)
         -   [Changing the Color Scheme](#changing-the-color-scheme)
     -   [Issues?](#issues)
 
