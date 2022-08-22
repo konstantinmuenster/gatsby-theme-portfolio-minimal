@@ -389,6 +389,27 @@ module.exports = {
 };
 ```
 
+### Adding Custom Sections
+
+Besides the prebuilt sections, such as `<HeroSection />`, the theme also exposes building blocks for your own, customized sections. From the theme's package, you can import the `Animation` and `Section` component, to build your own sections like.
+
+```jsx
+import { HeroSection, Page, Section, Animation } from 'gatsby-theme-portfolio-minimal';
+
+export default function IndexPage() {
+    return (
+        <Page>
+            <HeroSection sectionId="hero" />
+            <Animation type="fadeUp">
+                <Section heading="This is a brand new section.">
+                    <p>You can add your custom JSX here.</p>
+                </Section>
+            </Animation>
+        </Page>
+    );
+}
+```
+
 ### Changing the Color Scheme
 
 Internally, Portfolio Minimal uses CSS variables to ensure a consistent color scheme across the site. You can override these colors by using the [concept of shadowing](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/) Gatsby offers. To do this, follow the instructions:
