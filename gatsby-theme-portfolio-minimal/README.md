@@ -321,6 +321,7 @@ The theme settings can be divided in two parts. There is a `settings.json` file 
             "medium": "",
             "linkedin": "",
             "twitter": "",
+            "hashnode": "",
             "mail": ""
         }
     },

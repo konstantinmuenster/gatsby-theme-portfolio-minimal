@@ -12,6 +12,7 @@ export enum SocialProfile {
     Mail = 'mail',
     LinkedIn = 'linkedin',
     Twitter = 'twitter',
+    Hashnode = 'hashnode',
 }
 
 interface SocialProfilesProps {

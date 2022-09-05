@@ -53,6 +53,7 @@ export const query = graphql`
                         mail
                         medium
                         twitter
+                        hashnode
                     }
                     titleTemplate
                 }
