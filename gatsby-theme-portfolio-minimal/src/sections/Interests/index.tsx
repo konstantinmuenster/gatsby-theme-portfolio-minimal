@@ -40,7 +40,11 @@ export function InterestsSection(props: PageSection): React.ReactElement {
                     })}
                     {shouldShowButton && shownInterests < data.interests.length && (
                         <Animation type="scaleIn" delay={(shownInterests + 1) * 100}>
-                            <Button type={ButtonType.BUTTON} onClickHandler={loadMoreHandler} label={data.button.label} />
+                            <Button
+                                type={ButtonType.BUTTON}
+                                onClickHandler={loadMoreHandler}
+                                label={data.button.label}
+                            />
                         </Animation>
                     )}
                 </div>
