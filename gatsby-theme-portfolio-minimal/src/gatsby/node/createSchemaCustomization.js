@@ -23,6 +23,12 @@ module.exports = ({ actions }) => {
         highlight: String
         suffix: String
     }
+    type CalendlyIntegration {
+        label: String
+        username: String
+        colorText: String
+        colorButton: String
+    }
     type Interest {
         label: String
         image: Image
@@ -150,6 +156,7 @@ module.exports = ({ actions }) => {
         subtitle: HeroSubtitle
         description: String
         socialProfiles: SocialProfiles
+        calendly: CalendlyIntegration
     }
     type InterestsJson implements Node @dontInfer {
         interests: [Interest]

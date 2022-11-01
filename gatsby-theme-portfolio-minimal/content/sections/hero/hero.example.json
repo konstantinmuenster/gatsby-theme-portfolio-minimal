@@ -18,5 +18,11 @@
     "socialProfiles": {
         "from": [""],
         "showIcons": false
+    },
+    "calendly": {
+        "label": "",
+        "username": "",
+        "colorText": "",
+        "colorButton": ""
     }
 }

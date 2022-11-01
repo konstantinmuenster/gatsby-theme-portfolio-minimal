@@ -46,6 +46,10 @@ If the user's OS is set to using dark mode, the Gatsby Starter will automaticall
 
 Ever dreamed of having your own blog? With Portfolio Minimal, it's possible! Just specify the route where your blog should live and start writing your first articles!
 
+#### 💬 [NEW] Calendly Integration - Embed button to schedule calls.
+
+Allow prospects to schedule meetings with you. Directly and seamlessly on your portfolio site. This integration uses Calendly's official widget.
+
 ---
 
 ## Issues?

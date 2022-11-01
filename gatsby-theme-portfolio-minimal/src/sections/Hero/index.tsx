@@ -1,6 +1,7 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Animation } from '../../components/Animation';
+import { useCalendlyWidget } from '../../hooks/useCalendlyWidget';
 import { Section } from '../../components/Section';
 import { SocialProfiles } from '../../components/SocialProfiles';
 import { useLocalDataSource } from './data';
@@ -11,8 +12,11 @@ export function HeroSection(props: PageSection): React.ReactElement {
     const response = useLocalDataSource();
     const data = response.allHeroJson.sections[0];
 
+    const CalendlyWidget = useCalendlyWidget(data.calendly);
+
     return (
         <Animation type="fadeUp" delay={400}>
+            {CalendlyWidget}
             <Section anchor={props.sectionId} additionalClasses={[classes.HeroContainer]}>
                 {data.heroPhoto?.src && (
                     <div className={classes.heroImageCont}>

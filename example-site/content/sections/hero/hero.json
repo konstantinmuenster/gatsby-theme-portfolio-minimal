@@ -18,5 +18,11 @@
     "socialProfiles": {
         "from": ["LinkedIn", "Medium", "Github", "Mail"],
         "showIcons": false
+    },
+    "calendly": {
+        "label": "Schedule time with me",
+        "username": "kmuenster",
+        "colorText": "#FFFFFF",
+        "colorButton": "#0069FF"
     }
 }

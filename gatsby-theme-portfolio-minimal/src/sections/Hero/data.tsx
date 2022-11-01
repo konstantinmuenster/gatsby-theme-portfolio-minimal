@@ -14,6 +14,12 @@ interface HeroSectionQueryResult {
                 from: SocialProfile[];
                 showIcons: boolean;
             };
+            calendly: {
+                label: string;
+                username: string;
+                colorText: string;
+                colorButton: string;
+            };
             subtitle: {
                 highlight: string;
                 prefix: string;
@@ -50,6 +56,12 @@ export const useLocalDataSource = (): HeroSectionQueryResult => {
                     socialProfiles {
                         from
                         showIcons
+                    }
+                    calendly {
+                        label
+                        username
+                        colorText
+                        colorButton
                     }
                     subtitle {
                         highlight
