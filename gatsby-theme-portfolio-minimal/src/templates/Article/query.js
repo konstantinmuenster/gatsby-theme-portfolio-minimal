@@ -1,7 +1,7 @@
 module.exports = {
     ArticleTemplateQuery: `
         query ArticleTemplateQuery {
-            allArticle(sort: {fields: date, order: DESC}) {
+            allArticle(sort: {date: DESC}) {
                 articles: nodes {
                     banner {
                         alt
