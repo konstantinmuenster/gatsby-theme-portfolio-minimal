@@ -7,6 +7,7 @@ import { IconLinkedIn } from './IconLinkedIn';
 import { IconMail } from './IconMail';
 import { IconMedium } from './IconMedium';
 import { IconTwitter } from './IconTwitter';
+import { IconMastodon } from './IconMastodon';
 
 interface IconProps {
     name: string;
@@ -29,6 +30,8 @@ export function Icon(props: IconProps): React.ReactElement | null {
             return <IconMedium color={props.color} />;
         case 'twitter':
             return <IconTwitter color={props.color} />;
+        case 'mastodon':
+            return <IconMastodon color={props.color} />;
         case 'hashnode':
             return <IconHashnode color={props.color} />;
         default:

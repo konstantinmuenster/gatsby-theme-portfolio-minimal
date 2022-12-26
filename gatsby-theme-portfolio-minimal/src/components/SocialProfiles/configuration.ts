@@ -5,5 +5,6 @@ export const socialProfileLabels = {
     linkedin: 'LinkedIn',
     mail: 'Mail',
     twitter: 'Twitter',
+    mastodon: 'Mastodon',
     hashnode: 'Hashnode',
 };

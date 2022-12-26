@@ -63,6 +63,7 @@ module.exports = ({ actions }) => {
         linkedin: String
         mail: String
         twitter: String
+        mastodon: String
         hashnode: String
     }
     type Logo {
