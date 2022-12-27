@@ -15,6 +15,7 @@ export interface SiteConfiguration {
             label: string;
             openNewTab: boolean;
             url: string;
+            visible: boolean;
         };
         footer: {
             label: string;

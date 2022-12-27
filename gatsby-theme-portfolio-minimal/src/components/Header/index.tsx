@@ -26,7 +26,7 @@ export function Header(): React.ReactElement {
                     </Link>
                 );
             })}
-            <a
+            {siteConfiguration.navigation.ctaButton.visible && <a
                 href={siteConfiguration.navigation.ctaButton.url}
                 target={siteConfiguration.navigation.ctaButton.openNewTab ? '_blank' : undefined}
                 rel="noopener noreferrer"
@@ -34,7 +34,7 @@ export function Header(): React.ReactElement {
                 onClick={!isDesktopBreakpoint ? () => setOpen(!open) : undefined}
             >
                 {siteConfiguration.navigation.ctaButton.label}
-            </a>
+            </a>}
         </>
     );
 
