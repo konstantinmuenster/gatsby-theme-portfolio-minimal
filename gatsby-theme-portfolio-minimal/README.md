@@ -322,7 +322,8 @@ The theme settings can be divided in two parts. There is a `settings.json` file 
             "linkedin": "",
             "twitter": "",
             "hashnode": "",
-            "mail": ""
+            "mail": "",
+            "mastodon": ""
         }
     },
     "siteConfiguration": {
