@@ -16,6 +16,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
     width: auto;
     height: 6.25rem;
 }
