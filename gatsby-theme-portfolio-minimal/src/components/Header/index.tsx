@@ -26,15 +26,17 @@ export function Header(): React.ReactElement {
                     </Link>
                 );
             })}
-            {siteConfiguration.navigation.ctaButton.visible && <a
-                href={siteConfiguration.navigation.ctaButton.url}
-                target={siteConfiguration.navigation.ctaButton.openNewTab ? '_blank' : undefined}
-                rel="noopener noreferrer"
-                className={classes.CtaButton}
-                onClick={!isDesktopBreakpoint ? () => setOpen(!open) : undefined}
-            >
-                {siteConfiguration.navigation.ctaButton.label}
-            </a>}
+            {siteConfiguration.navigation.ctaButton?.url && siteConfiguration.navigation.ctaButton?.label ? (
+                <a
+                    href={siteConfiguration.navigation.ctaButton.url}
+                    target={siteConfiguration.navigation.ctaButton.openNewTab ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    className={classes.CtaButton}
+                    onClick={!isDesktopBreakpoint ? () => setOpen(!open) : undefined}
+                >
+                    {siteConfiguration.navigation.ctaButton.label}
+                </a>
+            ) : null}
         </>
     );
 
