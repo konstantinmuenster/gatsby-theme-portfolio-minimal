@@ -49,12 +49,24 @@ export const query = graphql`
                     social {
                         behance
                         github
+                        medium
                         linkedin
                         mail
-                        medium
                         twitter
                         mastodon
                         hashnode
+                        devto
+                        instagram
+                        youtube
+                        twitch
+                        gitlab
+                        stackoverflow
+                        buymeacoffee
+                        discord
+                        dribble
+                        goodreads
+                        patreon
+                        reddit
                     }
                     titleTemplate
                 }

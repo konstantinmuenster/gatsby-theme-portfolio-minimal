@@ -9,12 +9,26 @@
         "avatar": "",
         "bio": "",
         "social": {
-            "behance": "https://behance.com",
+            "behance": "",
+            "buymeacoffee": "",
+            "devto": "",
+            "discord": "",
+            "dribble": "",
             "github": "",
-            "medium": "",
-            "linkedin": "",
+            "gitlab": "",
+            "goodreads": "",
             "hashnode": "",
-            "mail": "mailto:mail@konstantin.digital"
+            "instagram": "",
+            "linkedin": "",
+            "mail": "",
+            "mastodon": "",
+            "medium": "",
+            "twitter": "",
+            "twitch": "",
+            "patreon": "",
+            "reddit": "",
+            "stackoverflow": "",
+            "youtube": ""
         }
     },
     "siteConfiguration": {

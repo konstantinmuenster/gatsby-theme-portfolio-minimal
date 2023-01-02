@@ -317,13 +317,25 @@ The theme settings can be divided in two parts. There is a `settings.json` file 
         "bio": "", // Author's biography for blog article footer
         "social": { // Social Profiles for various features
             "behance": "",
+            "buymeacoffee": "",
+            "devto": "",
+            "discord": "",
+            "dribble": "",
             "github": "",
-            "medium": "",
-            "linkedin": "",
-            "twitter": "",
+            "gitlab": "",
+            "goodreads": "",
             "hashnode": "",
+            "instagram": "",
+            "linkedin": "",
             "mail": "",
-            "mastodon": ""
+            "mastodon": "",
+            "medium": "",
+            "twitter": "",
+            "twitch": "",
+            "patreon": "",
+            "reddit": "",
+            "stackoverflow": "",
+            "youtube": "",
         }
     },
     "siteConfiguration": {

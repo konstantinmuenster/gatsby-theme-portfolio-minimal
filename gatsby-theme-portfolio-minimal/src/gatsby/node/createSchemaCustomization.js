@@ -65,6 +65,18 @@ module.exports = ({ actions }) => {
         twitter: String
         mastodon: String
         hashnode: String
+        dribble: String
+        twitch: String
+        youtube: String
+        instagram: String
+        devto: String
+        gitlab: String
+        stackoverflow: String
+        goodreads: String
+        reddit: String
+        discord: String
+        patreon: String
+        buymeacoffee: String
     }
     type Logo {
         text: String

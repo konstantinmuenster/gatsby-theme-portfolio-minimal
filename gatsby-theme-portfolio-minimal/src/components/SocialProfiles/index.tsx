@@ -14,6 +14,18 @@ export enum SocialProfile {
     Twitter = 'twitter',
     Mastodon = 'mastodon',
     Hashnode = 'hashnode',
+    DevTo = 'devto',
+    Instagram = 'instagram',
+    YouTube = 'youtube',
+    Twitch = 'twitch',
+    Dribble = 'dribble',
+    GitLab = 'gitlab',
+    StackOverflow = 'stackoverflow',
+    BuyMeACoffee = 'buymeacoffee',
+    Discord = 'discord',
+    Goodreads = 'goodreads',
+    Patreon = 'patreon',
+    Reddit = 'reddit',
 }
 
 interface SocialProfilesProps {
