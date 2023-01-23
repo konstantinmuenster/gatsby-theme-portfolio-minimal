@@ -11,7 +11,7 @@ export interface SiteMetadata {
     titleTemplate: string;
     description: string;
     author: string;
-    avatar: { childImageSharp: { gatsbyImageData: IGatsbyImageData } };
+    avatar?: { childImageSharp?: { gatsbyImageData?: IGatsbyImageData } };
     bio: string;
     social: {
         [profile in SocialProfile]: string;
