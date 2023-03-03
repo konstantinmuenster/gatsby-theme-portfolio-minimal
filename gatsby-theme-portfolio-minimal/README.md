@@ -383,6 +383,7 @@ module.exports = {
                     display: '', // Used in manifest.json
                 },
                 contentDirectory: '', // Specifies the root content directory path
+                skipContentDirectorySetup: true, // Default false
                 blogSettings: {
                     // If set, the blog integration is enabled
                     path: '', // Defines the slug for the blog listing page

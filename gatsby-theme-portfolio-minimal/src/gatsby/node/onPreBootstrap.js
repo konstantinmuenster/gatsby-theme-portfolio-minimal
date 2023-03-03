@@ -2,6 +2,11 @@ const path = require('path');
 const fs = require('fs');
 
 module.exports = ({ reporter }, options) => {
+    if (options.skipContentDirectorySetup) {
+        reporter.log(`skipping content directory setup`);
+        return;
+    }
+
     const contentDirectory = options.contentDirectory || path.join('.', 'content');
 
     const contentDirectoryTree = getContentDirectoryTree(contentDirectory);
