@@ -67,6 +67,7 @@ export const query = graphql`
                         goodreads
                         patreon
                         reddit
+                        untappd
                     }
                     titleTemplate
                 }

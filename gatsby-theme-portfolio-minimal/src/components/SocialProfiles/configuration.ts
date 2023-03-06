@@ -19,4 +19,5 @@ export const socialProfileLabels = {
     goodreads: 'Goodreads',
     patreon: 'Patreon',
     reddit: 'Reddit',
+    untappd: 'Untappd',
 };

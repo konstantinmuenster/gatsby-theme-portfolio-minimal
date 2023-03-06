@@ -26,6 +26,7 @@ export enum SocialProfile {
     Goodreads = 'goodreads',
     Patreon = 'patreon',
     Reddit = 'reddit',
+    Untappd = 'untappd',
 }
 
 interface SocialProfilesProps {
