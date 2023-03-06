@@ -8,6 +8,7 @@
     background: var(--primary-color);
     border-top: none;
     margin-top: 2rem;
+    padding: 2rem 0 3rem 0;
 }
 
 .ContentWrapper {
@@ -17,9 +18,10 @@
     margin: 0 auto;
     padding: var(--page-padding);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    gap: 1rem;
 }
 
 .Links {
@@ -43,6 +45,13 @@
 }
 
 @media (min-width: 768px) {
+    .Footer {
+        padding: 0;
+    }
+    .ContentWrapper {
+        flex-direction: row;
+        align-items: center;
+    }
     .Links a {
         margin-right: 4rem;
     }

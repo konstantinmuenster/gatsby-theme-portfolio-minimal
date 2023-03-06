@@ -50,6 +50,10 @@ Ever dreamed of having your own blog? With Portfolio Minimal, it's possible! Jus
 
 Allow prospects to schedule meetings with you. Directly and seamlessly on your portfolio site. This integration uses Calendly's official widget.
 
+#### 🖼️ [NEW] Logo Integration - Use images (incl. SVG) as logos.
+
+You have your own logo? You can now embed it easily and use it throughout the site – with light and dark mode support!
+
 ---
 
 ## Issues?

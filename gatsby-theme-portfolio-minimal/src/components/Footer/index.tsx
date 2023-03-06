@@ -19,10 +19,11 @@ export function Footer(): React.ReactElement {
             }}
         >
             <div className={classes.ContentWrapper}>
-                <Link to="/" aria-label="home">
+                <Link to="/" aria-label="home" className={classes.FooterLogo}>
                     <Logo
                         fontSize="1.5rem"
                         color={darkModeEnabled ? 'var(--primary-color)' : 'var(--background-color)'}
+                        theme={Theme.Dark}
                     />
                 </Link>
                 <div className={classes.Links}>

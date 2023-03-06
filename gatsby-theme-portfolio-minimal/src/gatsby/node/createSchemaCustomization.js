@@ -80,6 +80,8 @@ module.exports = ({ actions }) => {
     }
     type Logo {
         text: String
+        image: File @fileByRelativePath
+        imageDark: File @fileByRelativePath
     }
     type NavigationItem {
         label: String

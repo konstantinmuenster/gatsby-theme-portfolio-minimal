@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { AllSettingsQueryResult } from '../types';
 
 export interface SiteConfiguration {
@@ -9,6 +10,18 @@ export interface SiteConfiguration {
     };
     logo: {
         text: string;
+        image?: {
+            extension?: string;
+            publicURL?: string;
+            svg?: { originalContent?: string };
+            childImageSharp?: { gatsbyImageData?: IGatsbyImageData };
+        };
+        imageDark?: {
+            extension?: string;
+            publicURL?: string;
+            svg?: { originalContent?: string };
+            childImageSharp?: { gatsbyImageData?: IGatsbyImageData };
+        };
     };
     navigation: {
         ctaButton: {
@@ -44,6 +57,26 @@ export const query = graphql`
                     }
                     logo {
                         text
+                        image {
+                            extension
+                            publicURL
+                            svg {
+                                originalContent
+                            }
+                            childImageSharp {
+                                gatsbyImageData(width: 320, placeholder: BLURRED)
+                            }
+                        }
+                        imageDark {
+                            extension
+                            publicURL
+                            svg {
+                                originalContent
+                            }
+                            childImageSharp {
+                                gatsbyImageData(width: 320, placeholder: BLURRED)
+                            }
+                        }
                     }
                     navigation {
                         ctaButton {

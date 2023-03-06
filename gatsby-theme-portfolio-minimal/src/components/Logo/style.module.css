@@ -1,6 +1,6 @@
 .Logo {
     position: relative;
-    z-index: 13;
+    z-index: 9;
     font-size: 1.75rem;
     font-weight: 900;
     color: var(--primary-color);
@@ -9,4 +9,11 @@
     pointer-events: auto !important;
     user-select: auto !important;
     line-height: 2.5rem;
+}
+
+.Logo img,
+.Logo svg {
+    width: 160px;
+    height: 80px;
+    object-fit: contain;
 }

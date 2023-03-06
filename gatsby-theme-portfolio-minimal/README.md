@@ -339,7 +339,11 @@ The theme settings can be divided in two parts. There is a `settings.json` file 
         }
     },
     "siteConfiguration": {
-        "logo": { "text": "" }, // Site logo
+        "logo": {
+            "text": "",
+            "image": "", // Relative path to image
+            "imageDark": "", // Used on dark backgrounds
+        },
         "navigation": {
             "header": [
                 { "label": "About", "url": "/#about" },

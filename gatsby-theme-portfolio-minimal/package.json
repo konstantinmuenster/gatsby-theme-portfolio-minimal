@@ -62,6 +62,7 @@
         "gatsby-remark-images": "^7.0.0",
         "gatsby-remark-prismjs": "^7.0.0",
         "gatsby-source-filesystem": "^5.0.0",
+        "gatsby-transformer-inline-svg": "^1.2.0",
         "gatsby-transformer-json": "^5.0.0",
         "gatsby-transformer-remark": "^6.0.0",
         "gatsby-transformer-sharp": "^5.0.0",
