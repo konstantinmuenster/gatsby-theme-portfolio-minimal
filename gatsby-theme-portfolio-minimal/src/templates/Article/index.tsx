@@ -6,6 +6,7 @@ import { Seo } from '../../components/Seo';
 import { AuthorSnippet } from '../../components/AuthorSnippet';
 import { ArticleTemplateData } from './data';
 import * as classes from './style.module.css';
+import { pluralize } from '../../utils/pluralize';
 
 // Reference to the local prismjs theme (Modified)
 require('../../globalStyles/prism.css');
@@ -14,6 +15,7 @@ interface ArticleTemplateProps {
     pageContext: {
         article: ArticleTemplateData;
         listingPagePath: string;
+        entityName?: string;
     };
 }
 
@@ -25,9 +27,12 @@ export default function ArticleTemplate(props: ArticleTemplateProps): React.Reac
             <Page>
                 <article className={classes.Article}>
                     <div className={classes.Breadcrumb}>
-                        <Link to={props.pageContext.listingPagePath} title="Back To Article Listing">
+                        <Link
+                            to={props.pageContext.listingPagePath}
+                            title={`Back To All ${pluralize(props.pageContext.entityName) ?? 'Articles'}`}
+                        >
                             <span className={classes.BackArrow}>&#10094;</span>
-                            All Articles
+                            All {pluralize(props.pageContext.entityName) ?? 'Articles'}
                         </Link>
                     </div>
                     <section className={classes.Header}>

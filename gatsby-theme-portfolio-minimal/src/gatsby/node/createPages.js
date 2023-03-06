@@ -21,6 +21,7 @@ module.exports = async ({ graphql, actions, reporter }, options) => {
         component: path.resolve(templateDir, 'ArticleListing', 'index.tsx'),
         context: {
             articles: data.allArticle.articles,
+            entityName: options.blogSettings.entityName,
         },
     });
 
@@ -33,6 +34,7 @@ module.exports = async ({ graphql, actions, reporter }, options) => {
             context: {
                 article: article,
                 listingPagePath: articleListingPageSlug,
+                entityName: options.blogSettings.entityName,
             },
         });
     });

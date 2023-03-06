@@ -15,8 +15,9 @@ module.exports = {
                 },
                 contentDirectory: './content',
                 blogSettings: {
+                    entityName: 'Article', // Used for the blog listing page title etc.
                     path: '/blog', // Defines the slug for the blog listing page
-                    usePathPrefixForArticles: false, // Default true (i.e. path will be /blog/first-article)
+                    usePathPrefixForArticles: false, // Default true (i.e. path will be /blog/first-article),
                 },
                 // skipContentDirectorySetup: true, // Default false
                 // plausibleAnalytics: {

@@ -216,6 +216,7 @@ If you want to extend your portfolio site with a blog, you can do so easily with
                 resolve: 'gatsby-theme-portfolio-minimal',
                 options: {
                     blogSettings: {
+                        entityName: 'Article',
                         path: '/blog',
                         usePathPrefixForArticles: false,
                     },
@@ -391,6 +392,7 @@ module.exports = {
                 skipContentDirectorySetup: true, // Default false
                 blogSettings: {
                     // If set, the blog integration is enabled
+                    entityName: '', // Defines naming of posts throughout site (e.g. title of blog post listing)
                     path: '', // Defines the slug for the blog listing page
                     usePathPrefixForArticles: false, // Default true (i.e. path will be /blog/first-article)
                 },

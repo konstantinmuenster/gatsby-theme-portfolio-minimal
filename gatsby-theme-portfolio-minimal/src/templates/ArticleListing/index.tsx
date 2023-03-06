@@ -7,10 +7,12 @@ import { ArticleCard } from '../../components/ArticleCard';
 import { Button, ButtonType } from '../../components/Button';
 import { ArticleTemplateData } from '../Article/data';
 import * as classes from './style.module.css';
+import { pluralize } from '../../utils/pluralize';
 
 interface ArticleListingTemplateProps {
     pageContext: {
         articles: ArticleTemplateData[];
+        entityName?: string;
     };
 }
 
@@ -55,13 +57,15 @@ export default function ArticleListingTemplate(props: ArticleListingTemplateProp
             .filter((id, index, arr) => arr.indexOf(id) === index); // Remove duplicate article ids
     }
 
+    const entities = pluralize(props.pageContext.entityName) ?? 'Articles';
+
     return (
         <>
-            <Seo title="All Articles" useTitleTemplate={true} />
+            <Seo title={`All ${entities}`} useTitleTemplate={true} />
             <Page>
-                <Section anchor="articleListing" heading="Articles">
+                <Section anchor="articleListing" heading={entities}>
                     <div className={classes.Filter}>
-                        Select categories to filter articles
+                        Select categories to filter {entities.toLocaleLowerCase()}
                         <Slider additionalClasses={[classes.Options]}>
                             {filterOptions.map((option, key) => {
                                 return (
