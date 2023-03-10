@@ -153,6 +153,7 @@ module.exports = ({ actions }) => {
     type MarkdownRemarkFrontmatter {
         imageSrc: File @fileByRelativePath
         imageAlt: String
+        sectionId: String
     }
     type MarkdownRemark implements Node {
         frontmatter: MarkdownRemarkFrontmatter
