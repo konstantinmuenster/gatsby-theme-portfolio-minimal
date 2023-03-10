@@ -75,11 +75,12 @@
 }
 
 .heroImageCont {
-    flex: 25%;
+    flex: 33%;
+    flex-shrink: 0;
     width: 100%;
     margin-top: auto;
     margin-bottom: auto;
-    padding: 0 3rem 3rem 0;
+    padding: 0 5rem 3rem 0;
 }
 
 .heroImageCont .heroImage {
@@ -88,6 +89,11 @@
 }
 
 @media (max-width: 768px) {
+    .heroImageCont {
+        max-width: 140px;
+        padding: 0 0 2rem 0;
+    }
+
     .HeroContainer {
         flex-direction: column;
         margin-bottom: 50px;
