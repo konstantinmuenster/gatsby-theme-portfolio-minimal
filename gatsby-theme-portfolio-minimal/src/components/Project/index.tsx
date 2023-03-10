@@ -64,7 +64,7 @@ export function Project(props: ProjectProps): React.ReactElement {
                                     key={key}
                                     href={link.url}
                                     target="_blank"
-                                    rel="nofollow noopener noreferrer"
+                                    rel="noopener noreferrer"
                                     aria-label="External Link"
                                 >
                                     <Icon name={link.type} color="var(--subtext-color)" />

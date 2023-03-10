@@ -62,7 +62,7 @@ export function SocialProfiles(props: SocialProfilesProps): React.ReactElement {
                         className={classes.Profile}
                         href={profile.url}
                         target="_blank"
-                        rel="nofollow noopener noreferrer"
+                        rel="noopener noreferrer"
                         aria-label={profile.label}
                         style={props.showIcon ? { padding: '0.5rem 1.25rem' } : undefined}
                     >

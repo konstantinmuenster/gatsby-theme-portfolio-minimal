@@ -29,7 +29,7 @@ export function Button(props: ButtonProps): React.ReactElement {
                         className={classes.Button}
                         href={props.url}
                         target="_blank"
-                        rel="nofollow noopener noreferrer"
+                        rel="noopener noreferrer"
                         aria-label="External Link"
                     >
                         {props.label}

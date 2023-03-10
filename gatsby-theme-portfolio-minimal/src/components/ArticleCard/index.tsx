@@ -58,7 +58,7 @@ export function ArticleCard(props: ArticleCardProps): React.ReactElement {
     );
 
     return absoluteUrl ? (
-        <a href={props.data.link} target="_blank" rel="nofollow noopener noreferrer" title={props.data.title}>
+        <a href={props.data.link} target="_blank" rel="noopener noreferrer" title={props.data.title}>
             {articleCard}
         </a>
     ) : (
