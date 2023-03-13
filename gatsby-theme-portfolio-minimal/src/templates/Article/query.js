@@ -8,7 +8,7 @@ module.exports = {
                         caption
                         src {
                             childImageSharp {
-                                gatsbyImageData(width: 660, height: 400, placeholder: TRACED_SVG)
+                                gatsbyImageData(width: 660, height: 400, placeholder: BLURRED)
                             }
                         }
                     }
