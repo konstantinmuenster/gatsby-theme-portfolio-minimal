@@ -14,6 +14,6 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
 
             const validElement = selector ? document.getElementById(selector) : null;
             if (hash && !!validElement) validElement.scrollIntoView({ behavior: 'smooth' });
-        }, 500);
+        }, 750);
     }
 };
