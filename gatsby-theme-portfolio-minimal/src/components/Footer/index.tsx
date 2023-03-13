@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'gatsby';
+
 import { Logo } from '../Logo';
+import { Link } from '../Link';
 import { Theme, useGlobalState } from '../../context';
 import { useSiteConfiguration } from '../../hooks/useSiteConfiguration';
 import * as classes from './style.module.css';

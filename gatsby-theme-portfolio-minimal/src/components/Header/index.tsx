@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { Logo } from '../Logo';
 import { Helmet } from 'react-helmet';
+
+import { Logo } from '../Logo';
+import { Link } from '../Link';
+import { Animation } from '../Animation';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useSiteConfiguration } from '../../hooks/useSiteConfiguration';
-import { Animation } from '../Animation';
 import * as classes from './style.module.css';
 
 export function Header(): React.ReactElement {
@@ -27,15 +28,14 @@ export function Header(): React.ReactElement {
                 );
             })}
             {siteConfiguration.navigation.ctaButton?.url && siteConfiguration.navigation.ctaButton?.label ? (
-                <a
-                    href={siteConfiguration.navigation.ctaButton.url}
+                <Link
+                    to={siteConfiguration.navigation.ctaButton.url}
                     target={siteConfiguration.navigation.ctaButton.openNewTab ? '_blank' : undefined}
-                    rel="noopener noreferrer"
                     className={classes.CtaButton}
                     onClick={!isDesktopBreakpoint ? () => setOpen(!open) : undefined}
                 >
                     {siteConfiguration.navigation.ctaButton.label}
-                </a>
+                </Link>
             ) : null}
         </>
     );
