@@ -5,7 +5,7 @@ import { isExternalURL } from '../../utils/isExternalURL';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Link({ to, children, ref, ...rest }: GatsbyLinkProps<undefined>): React.ReactElement {
-    if (!isExternalURL(to)) {
+    if (!isExternalURL(to) && rest.target !== '_blank') {
         return (
             <GatsbyLink to={to} {...rest}>
                 {children}
