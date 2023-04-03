@@ -108,6 +108,6 @@ module.exports = (options) => ({
                   },
               }
             : null,
-        `gatsby-plugin-offline`,
+        options.disableGatsbyPluginOffline ? null : `gatsby-plugin-offline`,
     ].filter((plugin) => plugin !== null),
 });

@@ -20,6 +20,7 @@ module.exports = {
                     usePathPrefixForArticles: false, // Default true (i.e. path will be /blog/first-article),
                 },
                 // skipContentDirectorySetup: true, // Default false
+                // disableGatsbyPluginOffline: true, // Default false
                 // plausibleAnalytics: {
                 //     domain: 'example.com',
                 // },

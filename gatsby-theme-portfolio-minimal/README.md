@@ -390,6 +390,7 @@ module.exports = {
                 },
                 contentDirectory: '', // Specifies the root content directory path
                 skipContentDirectorySetup: true, // Default false
+                disableGatsbyPluginOffline: true, // Default false
                 blogSettings: {
                     // If set, the blog integration is enabled
                     entityName: '', // Defines naming of posts throughout site (e.g. title of blog post listing)
