@@ -35,6 +35,7 @@ export const useLocalDataSource = (): InterestsSectionQueryResult => {
                                     gatsbyImageData(width: 20, height: 20)
                                 }
                             }
+                            objectFit
                         }
                         label
                     }

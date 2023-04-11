@@ -14,6 +14,7 @@ interface ImageObject {
             gatsbyImageData: IGatsbyImageData;
         };
     } | null;
+    objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
 }
 
 interface PageSection {
