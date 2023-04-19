@@ -32,8 +32,6 @@ interface ProjectProps {
 export function Project(props: ProjectProps): React.ReactElement {
     const isDesktopBreakpoint = useMediaQuery('(min-width: 992px)');
 
-    console.log(props.data.image);
-
     return (
         <Animation
             type="fadeUp"
@@ -80,7 +78,7 @@ export function Project(props: ProjectProps): React.ReactElement {
                     <GatsbyImage
                         className={classes.ProjectImageWrapper}
                         imgClassName={classes.ProjectImage}
-                        objectFit={props.data.image.objectFit || 'cover'}
+                        objectFit={props.data.image.objectFit}
                         image={props.data.image.src.childImageSharp.gatsbyImageData}
                         alt={props.data.image.alt || `Project ${props.data.title}`}
                     />
@@ -90,7 +88,7 @@ export function Project(props: ProjectProps): React.ReactElement {
                 <GatsbyImage
                     className={classes.ProjectImageWrapper}
                     imgClassName={classes.ProjectImage}
-                    objectFit={props.data.image.objectFit || 'cover'}
+                    objectFit={props.data.image.objectFit}
                     image={props.data.image.src.childImageSharp.gatsbyImageData}
                     alt={props.data.image.alt || `Project ${props.data.title}`}
                 />
