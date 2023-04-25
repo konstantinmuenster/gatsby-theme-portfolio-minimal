@@ -4,7 +4,8 @@
     "description": "",
     "image": {
         "src": "",
-        "alt": ""
+        "alt": "",
+        "objectFit": ""
     },
     "socialProfiles": {
         "from": [""],
