@@ -35,6 +35,7 @@ export const useLocalDataSource = (): ProjectsSectionQueryResult => {
                                     gatsbyImageData(width: 400)
                                 }
                             }
+                            objectFit
                         }
                         links {
                             type

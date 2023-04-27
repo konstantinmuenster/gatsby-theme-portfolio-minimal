@@ -51,6 +51,7 @@ export const useLocalDataSource = (): HeroSectionQueryResult => {
                                 gatsbyImageData(width: 48, aspectRatio: 1)
                             }
                         }
+                        objectFit
                     }
                     intro
                     socialProfiles {

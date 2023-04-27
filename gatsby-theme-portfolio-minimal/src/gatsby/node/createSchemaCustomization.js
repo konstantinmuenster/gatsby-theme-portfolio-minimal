@@ -8,11 +8,13 @@ module.exports = ({ actions }) => {
     type Image {
         src: File @fileByRelativePath
         alt: String
+        objectFit: String
     }
     type LinkedImage {
         src: File @fileByRelativePath
         alt: String
         linkTo: String
+        objectFit: String
     }
     type SocialProfiles {
         from: [String!]!
