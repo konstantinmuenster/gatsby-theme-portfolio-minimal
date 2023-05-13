@@ -78,6 +78,7 @@ export function Project(props: ProjectProps): React.ReactElement {
                     <GatsbyImage
                         className={classes.ProjectImageWrapper}
                         imgClassName={classes.ProjectImage}
+                        objectFit={props.data.image.objectFit}
                         image={props.data.image.src.childImageSharp.gatsbyImageData}
                         alt={props.data.image.alt || `Project ${props.data.title}`}
                     />
@@ -87,6 +88,7 @@ export function Project(props: ProjectProps): React.ReactElement {
                 <GatsbyImage
                     className={classes.ProjectImageWrapper}
                     imgClassName={classes.ProjectImage}
+                    objectFit={props.data.image.objectFit}
                     image={props.data.image.src.childImageSharp.gatsbyImageData}
                     alt={props.data.image.alt || `Project ${props.data.title}`}
                 />

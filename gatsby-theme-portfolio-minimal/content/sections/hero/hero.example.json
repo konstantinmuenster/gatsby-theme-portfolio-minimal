@@ -6,7 +6,8 @@
     },
     "image": {
         "src": "",
-        "alt": ""
+        "alt": "",
+        "objectFit": ""
     },
     "title": "",
     "subtitle": {

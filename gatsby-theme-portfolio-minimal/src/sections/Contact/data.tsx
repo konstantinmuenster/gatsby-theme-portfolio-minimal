@@ -31,6 +31,7 @@ export const useLocalDataSource = (): ContactSectionQueryResult => {
                                 gatsbyImageData(width: 140)
                             }
                         }
+                        objectFit
                     }
                     name
                     socialProfiles {

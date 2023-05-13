@@ -4,7 +4,8 @@
             "label": "",
             "image": {
                 "src": "",
-                "alt": ""
+                "alt": "",
+                "objectFit": ""
             }
         }
     ],

@@ -38,6 +38,7 @@ export function ArticleCard(props: ArticleCardProps): React.ReactElement {
                         <GatsbyImage
                             className={classes.ImageWrapper}
                             imgClassName={classes.Image}
+                            objectFit={props.data.image.objectFit || 'cover'}
                             image={props.data.image.src.childImageSharp.gatsbyImageData}
                             alt={props.data.image.alt || props.data.title}
                         />

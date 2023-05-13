@@ -9,7 +9,8 @@
             "image": {
                 "src": "",
                 "alt": "",
-                "linkTo": ""
+                "linkTo": "",
+                "objectFit": ""
             },
             "links": [
                 {
