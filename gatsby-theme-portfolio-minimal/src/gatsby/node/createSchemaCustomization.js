@@ -1,5 +1,12 @@
 module.exports = ({ actions }) => {
     actions.createTypes(`
+    type InlineSvg {
+        content: String
+        originalContent: String
+        dataURI: String
+        absolutePath: String
+        relativePath: String
+    }
     type BannerImage {
         src: File @fileByRelativePath
         alt: String

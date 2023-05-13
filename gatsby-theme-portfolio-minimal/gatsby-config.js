@@ -21,7 +21,6 @@ module.exports = (options) => ({
                 path: options.contentDirectory || path.join('.', 'content'),
             },
         },
-        `gatsby-transformer-inline-svg`,
         `gatsby-transformer-sharp`,
         `gatsby-transformer-json`,
         {
