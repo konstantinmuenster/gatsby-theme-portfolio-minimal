@@ -7,7 +7,7 @@
     background-position: right bottom;
     border-radius: var(--border-radius);
     border: 0.125rem solid var(--primary-color);
-    padding: 0.3rem 1.25rem;
+    padding: 0.25rem 1.25rem;
     margin-right: 0.5rem;
     transition: all 0.1s ease-out;
     font-size: 1rem;
