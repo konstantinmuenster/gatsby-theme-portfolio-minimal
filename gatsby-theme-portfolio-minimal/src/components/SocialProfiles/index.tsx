@@ -27,7 +27,7 @@ export enum SocialProfile {
     Patreon = 'patreon',
     Reddit = 'reddit',
     Untappd = 'untappd',
-    Facebook = 'facebook'
+    Facebook = 'facebook',
 }
 
 interface SocialProfilesProps {

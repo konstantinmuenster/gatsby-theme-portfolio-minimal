@@ -20,5 +20,5 @@ export const socialProfileLabels = {
     patreon: 'Patreon',
     reddit: 'Reddit',
     untappd: 'Untappd',
-    facebook: 'Facebook'
+    facebook: 'Facebook',
 };
