@@ -68,6 +68,7 @@ export const query = graphql`
                         patreon
                         reddit
                         untappd
+                        facebook
                     }
                     titleTemplate
                 }

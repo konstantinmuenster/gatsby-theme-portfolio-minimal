@@ -87,6 +87,7 @@ module.exports = ({ actions }) => {
         patreon: String
         buymeacoffee: String
         untappd: String
+        facebook: String
     }
     type Logo {
         text: String
