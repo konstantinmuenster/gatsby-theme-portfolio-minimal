@@ -10,21 +10,23 @@ module.exports = async ({ graphql, actions, reporter }, options) => {
     if (!data && response.errors) {
         throw new Error(`Error while fetching article data, ${response.errors}`);
     } else if (data.allArticle.articles.length !== 0 && (!options.blogSettings || !options.blogSettings.path)) {
+        // Throw error if there are articles in the content/articles folder, but blog settings have not been configured
         throw new Error(`No path for ArticleListing page in gatsby-config specified`);
     }
 
-    // Create ArticleListing page
-    const articleListingPageSlug = options.blogSettings.path.replace(/\/\/+/g, '/'); // remove duplicate slashes
-    reporter.info(`Creating ArticleListing page under ${articleListingPageSlug}`);
-    actions.createPage({
-        path: articleListingPageSlug,
-        component: path.resolve(templateDir, 'ArticleListing', 'index.tsx'),
-        context: {
-            articles: data.allArticle.articles,
-            entityName: options.blogSettings.entityName,
-        },
-    });
-
+    // Create ArticleListing page if blog settings have been configured 
+    if (options.blogSettings && options.blogSettings.path) {
+        const articleListingPageSlug = options.blogSettings.path.replace(/\/\/+/g, '/'); // remove duplicate slashes
+        reporter.info(`Creating ArticleListing page under ${articleListingPageSlug}`);
+        actions.createPage({
+            path: articleListingPageSlug,
+            component: path.resolve(templateDir, 'ArticleListing', 'index.tsx'),
+            context: {
+                articles: data.allArticle.articles,
+                entityName: options.blogSettings.entityName,
+            },
+        });
+    }
     // Create pages for each individual Article
     data.allArticle.articles.forEach((article) => {
         reporter.info(`Creating Article page under ${article.slug}`);
