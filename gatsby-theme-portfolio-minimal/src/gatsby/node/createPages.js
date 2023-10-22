@@ -11,6 +11,9 @@ module.exports = async ({ graphql, actions, reporter }, options) => {
         throw new Error(`Error while fetching article data, ${response.errors}`);
     } else if (data.allArticle.articles.length !== 0 && (!options.blogSettings || !options.blogSettings.path)) {
         throw new Error(`No path for ArticleListing page in gatsby-config specified`);
+    } else if (data.allArticle.articles.length === 0 && !options.blogSettings) {
+        reporter.info('Blog disabled, skipping articles page creation');
+        return;
     }
 
     // Create ArticleListing page
