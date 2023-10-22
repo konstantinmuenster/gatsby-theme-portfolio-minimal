@@ -37,7 +37,7 @@ jobs:
                   key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
             - run: yarn install
             - run: yarn build
-            - run: npx netlify-cli deploy --dir=example-site/public --alias=dev
+            - run: npx netlify-cli deploy --dir=example-site/public --filter=example-site --alias=dev
               env:
                   NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
                   NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
