@@ -5,8 +5,8 @@ interface AboutSectionQueryResult {
     allAboutMarkdown: {
         sections: {
             frontmatter: {
-                imageAlt: string;
-                imageSrc: {
+                imageAlt?: string;
+                imageSrc?: {
                     childImageSharp: {
                         gatsbyImageData: IGatsbyImageData;
                     };
