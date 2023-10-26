@@ -10,23 +10,28 @@ import * as classes from './style.module.css';
 
 export function ProjectsSection(props: PageSection): React.ReactElement {
     const response = useLocalDataSource();
-    const data = response.allProjectsJson.sections[0];
+    const allFiles = response.allFile.projectFiles;
+    const fileNameNeedle = props.fileName ? props.fileName : 'projects';
+    const result = allFiles.find((file) => {
+        return file.name == fileNameNeedle;
+    });
+    const section = result ? result.section[0] : allFiles[0].section[0];
 
     return (
         <Animation type="fadeIn">
             <Section anchor={props.sectionId} heading={props.heading}>
                 <Slider additionalClasses={[classes.Projects]}>
-                    {data.projects.map((project, key) => {
+                    {section.projects.map((project, key) => {
                         return project.visible ? <Project key={key} index={key} data={project} /> : null;
                     })}
                 </Slider>
-                {data.button !== undefined && data.button.visible !== false && (
+                {section.button !== undefined && section.button.visible !== false && (
                     <Animation className={classes.MoreProjects} type="fadeIn">
                         <Button
                             type={ButtonType.LINK}
                             externalLink={true}
-                            url={data.button.url}
-                            label={data.button.label}
+                            url={section.button.url}
+                            label={section.button.label}
                         />
                     </Animation>
                 )}
