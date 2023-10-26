@@ -1,0 +1,30 @@
+{
+    "interests": [
+        {
+            "label": "Gaming",
+            "image": {
+                "src": "../../images/joystick.png",
+                "alt": ""
+            }
+        },
+        {
+            "label": "Surfing the Web",
+            "image": {
+                "src": "../../images/notebook.png",
+                "alt": ""
+            }
+        },
+        {
+            "label": "Mobile Games",
+            "image": {
+                "src": "../../images/mobile-phone.png",
+                "alt": ""
+            }
+        }
+    ],
+    "button": {
+        "visible": false,
+        "label": "+ Load More",
+        "initiallyShownInterests": 5
+    }
+}

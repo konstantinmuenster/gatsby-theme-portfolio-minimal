@@ -193,6 +193,7 @@ content
     │     └── hero.json # has to be JSON
     │ └── interests
     │     └── interests.json # has to be JSON
+    │     └── more_interests.json # has to be JSON
     │ └── legal
     │     └── imprint.md # has to be Markdown
     │ └── projects
@@ -271,14 +272,14 @@ Most section components work the following way: You import and configure the com
 
 The following table shows which section components are available and how they can be configured.
 
-| Section Component  | Available Props                                                                                          | Associated Content File                               |
-|--------------------|----------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| `AboutSection`     | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                    | `*contentRootDir*/sections/about/*yourFile*.md`       |
-| `ContactSection`   | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                    | `*contentRootDir*/sections/contact/*yourFile*.json`   |
-| `HeroSection`      | `sectionId` _(required)_                                                                                 | `*contentRootDir*/sections/hero/*yourFile*.json`      |
-| `InterestsSection` | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                    | `*contentRootDir*/sections/interests/*yourFile*.json` |
-| `LegalSection`     | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                    | `*contentRootDir*/sections/legal/*yourFile*.md`       |
-| `ProjectsSection`  | `sectionId` _(required)_ <br/> `heading` _(optional)_ <br/> `fileName` _(optional, default: "projects")_ | `*contentRootDir*/sections/projects/*fileName*.json`  |
+| Section Component  | Available Props                                                                                           | Associated Content File                               |
+|--------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| `AboutSection`     | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                     | `*contentRootDir*/sections/about/*yourFile*.md`       |
+| `ContactSection`   | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                     | `*contentRootDir*/sections/contact/*yourFile*.json`   |
+| `HeroSection`      | `sectionId` _(required)_                                                                                  | `*contentRootDir*/sections/hero/*yourFile*.json`      |
+| `InterestsSection` | `sectionId` _(required)_ <br/> `heading` _(optional)_ <br/> `fileName` _(optional, default: "interests")_ | `*contentRootDir*/sections/interests/*fileName*.json` |
+| `LegalSection`     | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                     | `*contentRootDir*/sections/legal/*yourFile*.md`       |
+| `ProjectsSection`  | `sectionId` _(required)_ <br/> `heading` _(optional)_ <br/> `fileName` _(optional, default: "projects")_  | `*contentRootDir*/sections/projects/*fileName*.json`  |
 
 #### Utility Components
 
