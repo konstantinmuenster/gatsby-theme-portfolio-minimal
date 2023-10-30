@@ -10,47 +10,55 @@ import * as classes from './style.module.css';
 
 export function HeroSection(props: PageSection): React.ReactElement {
     const response = useLocalDataSource();
-    const data = response.allHeroJson.sections[0];
+    const allFiles = response.allFile.heroFiles;
+    const fileNameNeedle = props.fileName ? props.fileName : 'projects';
+    const result = allFiles.find((file) => {
+        return file.name == fileNameNeedle;
+    });
+    const section = result ? result.section[0] : allFiles[0].section[0];
 
-    const CalendlyWidget = useCalendlyWidget(data.calendly);
+    const CalendlyWidget = useCalendlyWidget(section.calendly);
 
     return (
         <Animation type="fadeUp" delay={400}>
             {CalendlyWidget}
             <Section anchor={props.sectionId} additionalClasses={[classes.HeroContainer]}>
-                {data.heroPhoto?.src && (
+                {section.heroPhoto?.src && (
                     <div className={classes.heroImageCont}>
                         <GatsbyImage
                             className={classes.heroImage}
-                            image={data.heroPhoto.src.childImageSharp.gatsbyImageData}
-                            alt={data.heroPhoto.alt || `Profile Image`}
+                            image={section.heroPhoto.src.childImageSharp.gatsbyImageData}
+                            alt={section.heroPhoto.alt || `Profile Image`}
                             loading="eager"
                         />
                     </div>
                 )}
                 <div className={classes.Hero}>
                     <div className={classes.Intro}>
-                        {data.intro && <span className={classes.ImagePrefix}>{data.intro}</span>}
-                        {data.image?.src && (
+                        {section.intro && <span className={classes.ImagePrefix}>{section.intro}</span>}
+                        {section.image?.src && (
                             <Animation className={classes.Image} type="waving-hand" duration={2500} iterationCount={3}>
                                 <GatsbyImage
-                                    image={data.image.src.childImageSharp.gatsbyImageData}
-                                    alt={data.image.alt || `Intro Image`}
+                                    image={section.image.src.childImageSharp.gatsbyImageData}
+                                    alt={section.image.alt || `Intro Image`}
                                     loading="eager"
                                 />
                             </Animation>
                         )}
                     </div>
-                    <h1 className={classes.Title}>{data.title}</h1>
+                    <h1 className={classes.Title}>{section.title}</h1>
                     <h2 className={classes.Subtitle}>
-                        {data.subtitle.prefix}
-                        <u>{data.subtitle.highlight}</u>
-                        {data.subtitle.suffix}
+                        {section.subtitle.prefix}
+                        <u>{section.subtitle.highlight}</u>
+                        {section.subtitle.suffix}
                     </h2>
-                    <p>{data.description}</p>
+                    <p>{section.description}</p>
                     <Animation type="fadeLeft" delay={600}>
-                        {data.socialProfiles && (
-                            <SocialProfiles from={data.socialProfiles.from} showIcon={data.socialProfiles.showIcons} />
+                        {section.socialProfiles && (
+                            <SocialProfiles
+                                from={section.socialProfiles.from}
+                                showIcon={section.socialProfiles.showIcons}
+                            />
                         )}
                     </Animation>
                 </div>
