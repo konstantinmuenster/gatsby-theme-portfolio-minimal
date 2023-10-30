@@ -273,8 +273,8 @@ Most section components work the following way: You import and configure the com
 The following table shows which section components are available and how they can be configured.
 
 | Section Component  | Available Props                                                                                           | Associated Content File                               |
-|--------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| `AboutSection`     | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                     | `*contentRootDir*/sections/about/*yourFile*.md`       |
+| ------------------ | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `AboutSection`     | `sectionId` _(required)_ <br/> `heading` _(optional)_ <br/> `fileName` _(optional, default: "about")_     | `*contentRootDir*/sections/about/*fileName*.md`       |
 | `ContactSection`   | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                     | `*contentRootDir*/sections/contact/*yourFile*.json`   |
 | `HeroSection`      | `sectionId` _(required)_                                                                                  | `*contentRootDir*/sections/hero/*yourFile*.json`      |
 | `InterestsSection` | `sectionId` _(required)_ <br/> `heading` _(optional)_ <br/> `fileName` _(optional, default: "interests")_ | `*contentRootDir*/sections/interests/*fileName*.json` |

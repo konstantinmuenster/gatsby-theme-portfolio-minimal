@@ -2,35 +2,47 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface AboutSectionQueryResult {
-    allAboutMarkdown: {
-        sections: {
-            frontmatter: {
-                imageAlt?: string;
-                imageSrc?: {
-                    childImageSharp: {
-                        gatsbyImageData: IGatsbyImageData;
+    allFile: {
+        aboutFiles: {
+            name: string;
+            relativePath: string;
+            section: {
+                frontmatter: {
+                    imageAlt?: string;
+                    imageSrc?: {
+                        childImageSharp: {
+                            gatsbyImageData: IGatsbyImageData;
+                        };
                     };
                 };
-            };
-            html: string;
+                html: string;
+            }[];
         }[];
     };
 }
 
 export const useLocalDataSource = (): AboutSectionQueryResult => {
     return useStaticQuery(graphql`
-        query AboutSectionQuery {
-            allAboutMarkdown: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/sections/about/" } }) {
-                sections: nodes {
-                    frontmatter {
-                        imageAlt
-                        imageSrc {
-                            childImageSharp {
-                                gatsbyImageData(width: 400)
+        query AboutByFilename {
+            allFile(
+                filter: { childMarkdownRemark: { id: { ne: null } }, relativePath: { regex: "/sections/about/" } }
+            ) {
+                aboutFiles: nodes {
+                    name
+                    relativePath
+                    section: children {
+                        ... on MarkdownRemark {
+                            frontmatter {
+                                imageAlt
+                                imageSrc {
+                                    childImageSharp {
+                                        gatsbyImageData(width: 400)
+                                    }
+                                }
                             }
+                            html
                         }
                     }
-                    html
                 }
             }
         }
