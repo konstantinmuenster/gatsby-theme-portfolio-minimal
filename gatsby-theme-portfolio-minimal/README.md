@@ -275,7 +275,7 @@ The following table shows which section components are available and how they ca
 | Section Component  | Available Props                                                                                           | Associated Content File                               |
 | ------------------ | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | `AboutSection`     | `sectionId` _(required)_ <br/> `heading` _(optional)_ <br/> `fileName` _(optional, default: "about")_     | `*contentRootDir*/sections/about/*fileName*.md`       |
-| `ContactSection`   | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                     | `*contentRootDir*/sections/contact/*yourFile*.json`   |
+| `ContactSection`   | `sectionId` _(required)_ <br/> `heading` _(optional)_ <br/> `fileName` _(optional, default: "contact")_   | `*contentRootDir*/sections/contact/*fileName*.json`   |
 | `HeroSection`      | `sectionId` _(required)_                                                                                  | `*contentRootDir*/sections/hero/*yourFile*.json`      |
 | `InterestsSection` | `sectionId` _(required)_ <br/> `heading` _(optional)_ <br/> `fileName` _(optional, default: "interests")_ | `*contentRootDir*/sections/interests/*fileName*.json` |
 | `LegalSection`     | `sectionId` _(required)_ <br/> `heading` _(optional)_                                                     | `*contentRootDir*/sections/legal/*yourFile*.md`       |

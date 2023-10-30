@@ -9,29 +9,34 @@ import * as classes from './style.module.css';
 
 export function ContactSection(props: PageSection): React.ReactElement {
     const response = useLocalDataSource();
-    const data = response.allContactJson.sections[0];
+    const allFiles = response.allFile.contactFiles;
+    const fileNameNeedle = props.fileName ? props.fileName : 'contact';
+    const result = allFiles.find((file) => {
+        return file.name == fileNameNeedle;
+    });
+    const section = result ? result.section[0] : allFiles[0].section[0];
 
     return (
         <Animation type="fadeUp">
             <Section anchor={props.sectionId} heading={props.heading} additionalClasses={[classes.Contact]}>
-                {data.description && <p className={classes.Description}>{data.description}</p>}
+                {section.description && <p className={classes.Description}>{section.description}</p>}
                 <div className={classes.Profile}>
-                    {data.image.src && (
+                    {section.image.src && (
                         <GatsbyImage
                             className={classes.Avatar}
-                            image={data.image.src.childImageSharp.gatsbyImageData}
-                            alt={data.image.alt || `Profile ${data.name}`}
+                            image={section.image.src.childImageSharp.gatsbyImageData}
+                            alt={section.image.alt || `Profile ${section.name}`}
                         />
                     )}
                     <div className={classes.ContactDetails}>
-                        <div className={classes.Name}>{data.name}</div>
+                        <div className={classes.Name}>{section.name}</div>
                         <u>
-                            <a href={`mailto:${data.email}`}>{data.email}</a>
+                            <a href={`mailto:${section.email}`}>{section.email}</a>
                         </u>
                     </div>
                 </div>
-                {data.socialProfiles && (
-                    <SocialProfiles from={data.socialProfiles.from} showIcon={data.socialProfiles.showIcons} />
+                {section.socialProfiles && (
+                    <SocialProfiles from={section.socialProfiles.from} showIcon={section.socialProfiles.showIcons} />
                 )}
             </Section>
         </Animation>
