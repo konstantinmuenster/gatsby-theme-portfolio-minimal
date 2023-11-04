@@ -1,5 +1,7 @@
 require('./src/globalStyles/prism.css');
 
+const Cookies = require('js-cookie');
+
 exports.onRouteUpdate = ({ location, prevLocation }) => {
     if (location && location.state) location.state.referrer = prevLocation ? prevLocation.pathname : null;
 
@@ -15,5 +17,13 @@ exports.onRouteUpdate = ({ location, prevLocation }) => {
             const validElement = selector ? document.getElementById(selector) : null;
             if (hash && !!validElement) validElement.scrollIntoView({ behavior: 'smooth' });
         }, 750);
+    }
+};
+
+exports.onClientEntry = (_, options) => {
+    if (options.googleAnalytics) {
+        Cookies.set('portfolio-minimal-ga-configured', true, { expires: 365 });
+    } else {
+        Cookies.remove('portfolio-minimal-ga-configured');
     }
 };
