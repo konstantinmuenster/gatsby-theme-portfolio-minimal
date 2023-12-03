@@ -12,8 +12,9 @@
 }
 
 .Logo img,
-.Logo svg {
-    width: 160px;
-    height: 80px;
-    object-fit: contain;
+.Logo svg,
+.Logo picture > img {
+    width: 160px !important;
+    height: 80px !important;
+    object-fit: contain !important;
 }
