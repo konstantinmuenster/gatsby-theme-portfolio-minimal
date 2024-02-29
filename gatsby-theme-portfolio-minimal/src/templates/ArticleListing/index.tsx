@@ -35,15 +35,6 @@ export default function ArticleListingTemplate(props: ArticleListingTemplateProp
         setFilterOptions(updatedFilterOptions);
     }
 
-    function handleLoadMoreButtonClick(articlesNumber: number, selectedArticlesNumber?: number): void {
-        const incrementedArticleNumber = shownArticlesNumber + 3;
-        if (selectedArticlesNumber && selectedArticlesNumber >= incrementedArticleNumber) {
-            setShownArticlesNumber(incrementedArticleNumber);
-        } else if (!selectedArticlesNumber && articlesNumber >= incrementedArticleNumber) {
-            setShownArticlesNumber(incrementedArticleNumber);
-        }
-    }
-
     // Check if at least one filter option is selected. If so, create an array of all article ids that
     // are selected based on the current filter option selection. We use this later on to easily check
     // which articles to show.
@@ -111,12 +102,7 @@ export default function ArticleListingTemplate(props: ArticleListingTemplateProp
                             <Button
                                 type={ButtonType.BUTTON}
                                 label="Load More"
-                                onClickHandler={() =>
-                                    handleLoadMoreButtonClick(
-                                        articles.length,
-                                        filterSelected ? selectedArticleIds.length : undefined,
-                                    )
-                                }
+                                onClickHandler={() => setShownArticlesNumber((prev) => prev + 6)}
                             />
                         </div>
                     ) : null}
