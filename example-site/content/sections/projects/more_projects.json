@@ -1,0 +1,26 @@
+{
+    "projects": [
+        {
+            "visible": true,
+            "category": "🧰 EXTENDABLE LAYOUT",
+            "title": "Multiple Project sections!",
+            "description": "You can now use more than one projects/*.json file to define separate Projects sections. Photo by Kelly Sikkema on Unsplash.",
+            "tags": ["Custom Sections", "Easy-2-Use"],
+            "image": {
+                "src": "../../images/kelly-sikkema-Hl3LUdyKRic-unsplash.jpg",
+                "alt": "Extendable Layout"
+            },
+            "links": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme"
+                }
+            ]
+        }
+    ],
+    "button": {
+        "visible": true,
+        "label": "Test it now",
+        "url": "https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal"
+    }
+}

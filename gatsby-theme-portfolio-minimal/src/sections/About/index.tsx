@@ -8,20 +8,25 @@ import * as classes from './style.module.css';
 
 export function AboutSection(props: PageSection): React.ReactElement {
     const response = useLocalDataSource();
-    const data = response.allAboutMarkdown.sections[0];
+    const allFiles = response.allFile.aboutFiles;
+    const fileNameNeedle = props.fileName ? props.fileName : 'about';
+    const result = allFiles.find((file) => {
+        return file.name == fileNameNeedle;
+    });
+    const section = result ? result.section[0] : allFiles[0].section[0];
 
     return (
         <Animation type="fadeUp">
             <Section anchor={props.sectionId} heading={props.heading}>
                 <div className={classes.About}>
-                    <div className={classes.Description} dangerouslySetInnerHTML={{ __html: data.html }} />
-                    {data.frontmatter.imageSrc && (
+                    <div className={classes.Description} dangerouslySetInnerHTML={{ __html: section.html }} />
+                    {section.frontmatter.imageSrc && (
                         <Animation type="fadeLeft" delay={200}>
                             <div className={classes.ImageWrapper}>
                                 <GatsbyImage
-                                    image={data.frontmatter.imageSrc.childImageSharp.gatsbyImageData}
+                                    image={section.frontmatter.imageSrc.childImageSharp.gatsbyImageData}
                                     className={classes.Image}
-                                    alt={data.frontmatter.imageAlt || `About Image`}
+                                    alt={section.frontmatter.imageAlt || `About Image`}
                                 />
                             </div>
                         </Animation>

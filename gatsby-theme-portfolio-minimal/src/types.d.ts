@@ -20,6 +20,7 @@ interface ImageObject {
 interface PageSection {
     sectionId: string;
     heading?: string;
+    fileName?: string;
 }
 
 interface GatsbyNodeHelpers {
